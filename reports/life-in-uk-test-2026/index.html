@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Life in the UK test study guide: the 50 questions most likely to appear, ranked by probability, with answers, plain-English explanations and handbook chapter tags.">
+<meta name="color-scheme" content="light dark">
+<title>Life in the UK Test | 50 Most Likely Questions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Geist:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light dark;
+  --bg:#f7f7f5;
+  --surface:#ffffff;
+  --ink:#171a20;
+  --ink-2:#555c67;
+  --ink-3:#878e99;
+  --line:#e5e7ea;
+  --line-2:#d4d8dd;
+  --accent:#0f7a6b;
+  --accent-ink:#0b5c51;
+  --accent-soft:#e0ece8;
+  --warn:#b45309;
+  --warn-soft:#fbeedd;
+  --mono:IBM Plex Mono, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --sans:Geist, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  --display:Space Grotesk, var(--sans);
+  --radius:14px;
+  --shadow:0 1px 2px rgba(23,26,32,.05),0 8px 24px rgba(23,26,32,.06);
+  --maxw:1060px;
+  --content:720px;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0f1216;
+    --surface:#161a20;
+    --ink:#e9ebee;
+    --ink-2:#9aa3ae;
+    --ink-3:#68717d;
+    --line:#232930;
+    --line-2:#313943;
+    --accent:#3ec9b2;
+    --accent-ink:#7fe3d2;
+    --accent-soft:#14332c;
+    --warn:#e8a15c;
+    --warn-soft:#33240f;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px rgba(0,0,0,.5);
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--sans);font-size:16.5px;line-height:1.72;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--accent-ink);text-decoration:none}
+a:hover{text-decoration:underline}
+::selection{background:var(--accent-soft);color:var(--ink)}
+
+/* header */
+.site{
+  position:sticky;top:0;z-index:20;
+  background:color-mix(in srgb,var(--bg) 82%,transparent);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.site .inner{max-width:var(--maxw);margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center;gap:16px;justify-content:space-between}
+.brand{font-family:var(--display);font-weight:600;font-size:15px;letter-spacing:.01em;display:flex;align-items:center;gap:9px}
+.brand a{color:var(--ink)}
+.brand a:hover{text-decoration:none}
+.brand .mark{width:9px;height:9px;border-radius:50%;background:var(--accent);display:inline-block}
+.brand .dim{color:var(--ink-3);font-weight:500}
+nav.actions{display:flex;gap:6px;align-items:center;font-size:13.5px}
+nav.actions a{padding:6px 12px;border-radius:8px;color:var(--ink-2);border:1px solid transparent}
+nav.actions a:hover{text-decoration:none;color:var(--ink);background:var(--surface);border-color:var(--line-2)}
+nav.actions a.primary{color:var(--accent-ink);border-color:var(--line-2);background:var(--surface)}
+
+/* layout */
+.page{max-width:var(--maxw);margin:0 auto;padding:0 24px 72px;display:grid;grid-template-columns:1fr;gap:0}
+@media(min-width:960px){.page{grid-template-columns:200px minmax(0,1fr);column-gap:48px}}
+.toc{display:none}
+@media(min-width:960px){.toc{display:block;padding-top:56px}}
+.toc nav{position:sticky;top:84px;font-size:13px}
+.toc .label{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin:0 0 12px}
+.toc ul{list-style:none;margin:0;padding:0;display:grid;gap:1px}
+.toc li a{display:flex;gap:10px;align-items:baseline;padding:5px 0;color:var(--ink-2);border-bottom:1px solid var(--line)}
+.toc li a .n{font-family:var(--mono);font-size:10.5px;color:var(--ink-3)}
+.toc li a:hover{text-decoration:none;color:var(--ink)}
+article{min-width:0;padding-top:44px}
+
+/* hero */
+.hero{padding-bottom:40px;border-bottom:1px solid var(--line);position:relative}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-ink);margin:0 0 18px}
+h1.title{font-family:var(--display);font-weight:600;font-size:clamp(34px,5.2vw,54px);line-height:1.04;letter-spacing:-.028em;margin:0 0 18px}
+h1.title .sub{color:var(--ink-3);font-weight:500}
+.framing{font-size:18px;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0 0 22px}
+.framing strong{color:var(--ink);font-weight:600}
+.meta{display:flex;flex-wrap:wrap;gap:10px 0;font-size:13px;color:var(--ink-2);align-items:center}
+.meta .it{display:inline-flex;align-items:center;gap:7px;padding-right:16px;border-right:1px solid var(--line-2);margin-right:16px}
+.meta .it:last-child{border-right:0;padding-right:0;margin-right:0}
+.meta .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.meta .v{font-weight:500;color:var(--ink)}
+
+.hero-grid{display:grid;grid-template-columns:1fr;gap:36px;margin-top:36px;align-items:center}
+@media(min-width:860px){.hero-grid{grid-template-columns:1.05fr .95fr}}
+.hero-facts{display:grid;gap:2px;border-top:1px solid var(--line)}
+.fact{display:grid;grid-template-columns:150px 1fr;gap:18px;padding:14px 0;border-bottom:1px solid var(--line);align-items:baseline}
+@media(max-width:560px){.fact{grid-template-columns:1fr;gap:2px}}
+.fact .f-label{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--ink-3);text-transform:uppercase}
+.fact .f-val{font-size:15px;color:var(--ink);font-weight:500}
+.fact .f-val b{font-family:var(--mono);font-weight:600;color:var(--accent-ink)}
+.fact .f-val .src{color:var(--ink-3);font-size:12.5px;font-weight:400}
+
+/* test-day card */
+.daycard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px}
+.daycard .d-k{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);margin:0 0 10px}
+.daycard .d-date{font-family:var(--display);font-weight:600;font-size:clamp(26px,3vw,34px);letter-spacing:-.02em;margin:0 0 2px}
+.daycard .d-days{font-family:var(--mono);font-weight:600;font-size:14px;color:var(--accent-ink);margin:0 0 14px}
+.daycard ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;border-top:1px solid var(--line);padding-top:14px}
+.daycard li{font-size:13.5px;color:var(--ink-2);padding-left:18px;position:relative}
+.daycard li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.daycard li b{color:var(--ink);font-weight:600}
+
+/* stats band */
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin:40px 0 8px}
+@media(min-width:720px){.stats{grid-template-columns:repeat(4,1fr)}}
+.stat{background:var(--surface);padding:22px 22px 20px;display:grid;gap:4px}
+.stat .s-k{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3)}
+.stat .s-v{font-family:var(--mono);font-weight:600;font-size:26px;letter-spacing:-.02em;color:var(--ink)}
+.stat .s-v .unit{font-size:15px;color:var(--ink-3);font-weight:500}
+.stat .s-s{font-size:12.5px;color:var(--ink-3);line-height:1.45}
+.stat.hl{background:var(--accent);color:#fff}
+.stat.hl .s-k{color:rgba(255,255,255,.72)}
+.stat.hl .s-v{color:#fff}
+.stat.hl .s-s{color:rgba(255,255,255,.85)}
+.s-note{margin:14px 0 0;font-size:12.5px;color:var(--ink-3)}
+
+/* prose */
+article h2{font-family:var(--display);font-weight:600;font-size:clamp(24px,3vw,30px);letter-spacing:-.018em;line-height:1.15;margin:64px 0 6px;scroll-margin-top:84px}
+article h2 .n{font-family:var(--mono);font-size:12px;color:var(--accent-ink);display:inline-block;margin-right:12px;font-weight:500}
+article h2 .lead{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-top:2px}
+article h3{font-family:var(--display);font-weight:600;font-size:18.5px;margin:34px 0 8px;letter-spacing:-.01em}
+article p{margin:0 0 18px;max-width:var(--content)}
+article p.lede{font-size:18px;color:var(--ink-2);line-height:1.6;max-width:60ch}
+article p.lede strong{color:var(--ink)}
+article ul,article ol{margin:0 0 20px;padding-left:0;max-width:var(--content)}
+article li{list-style:none;padding:11px 0 11px 26px;border-bottom:1px solid var(--line);position:relative}
+article li:last-child{border-bottom:0}
+article li::before{content:"";position:absolute;left:2px;top:20px;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+article li strong{font-weight:600}
+article li .where{font-family:var(--mono);font-size:12px;color:var(--ink-3)}
+
+.callout{margin:26px 0;padding:20px 24px;border:1px solid var(--line-2);border-left:3px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;background:var(--surface)}
+.callout p{margin:0;color:var(--ink-2);max-width:none}
+.callout p strong{color:var(--ink)}
+.warn-call{margin:26px 0;padding:20px 24px;border:1px solid var(--warn-soft);border-left:3px solid var(--warn);border-radius:0 var(--radius) var(--radius) 0;background:var(--warn-soft)}
+.warn-call .w-k{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--warn);display:block;margin-bottom:6px}
+.warn-call p{margin:0;color:var(--ink);max-width:none}
+.warn-call p .em{font-family:var(--mono);font-weight:600;color:var(--warn)}
+
+/* chapter split bars */
+.bars{margin:26px 0;display:grid;gap:12px}
+.bar{display:grid;grid-template-columns:120px 1fr auto;gap:14px;align-items:center;font-size:13.5px}
+@media(max-width:560px){.bar{grid-template-columns:1fr;gap:4px}}
+.bar .b-l{font-family:var(--mono);font-size:11.5px;letter-spacing:.03em;color:var(--ink-2);text-transform:uppercase}
+.bar .b-tr{height:18px;background:var(--surface);border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.bar .b-fill{display:block;height:100%;border-radius:999px;background:var(--accent);width:0}
+.bar .b-n{font-family:var(--mono);font-size:12.5px;color:var(--ink-3);font-weight:500}
+.bars-note{margin:6px 0 0;font-size:12.5px;color:var(--ink-3)}
+
+/* tier legend */
+.tiers{display:grid;gap:8px;margin:20px 0 26px}
+.tier{display:grid;grid-template-columns:16px 1fr auto;gap:14px;align-items:center;padding:12px 16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);font-size:14px}
+.tier .t-dot{width:10px;height:10px;border-radius:50%}
+.tier .t-n{font-family:var(--mono);font-weight:600;font-size:13px;letter-spacing:.03em;text-transform:uppercase}
+.tier .t-x{color:var(--ink-2);font-size:13.5px}
+.tier .t-n .n{color:var(--ink-3);font-weight:500;margin-right:8px}
+.t1 .t-dot{background:var(--accent)}
+.t2 .t-dot{background:#7fb0a4}
+.t3 .t-dot{background:#a9b2bd}
+.t4 .t-dot{background:var(--ink-3)}
+.tier .t-ct{font-family:var(--mono);font-size:12px;color:var(--ink-3)}
+
+/* question cards */
+.qlist{display:grid;gap:12px;margin:24px 0}
+.qcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 22px}
+.qcard .qc-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.qcard .qc-rank{font-family:var(--mono);font-weight:600;font-size:13px;color:var(--accent-ink);background:var(--accent-soft);padding:3px 9px;border-radius:7px;letter-spacing:.02em}
+.qcard .qc-ch{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.qcard .qc-tier{margin-left:auto;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:999px;font-weight:600}
+.qc-tier.t1{color:var(--accent-ink);background:var(--accent-soft)}
+.qc-tier.t2{color:var(--ink-2);background:var(--surface);border:1px solid var(--line-2)}
+.qc-tier.t3{color:var(--ink-3);background:var(--surface);border:1px solid var(--line)}
+.qc-tier.t4{color:var(--ink-3);background:var(--surface);border:1px dashed var(--line-2)}
+.qcard .qc-q{margin:0 0 10px;font-weight:600;font-size:15.5px;line-height:1.55;max-width:var(--content)}
+.qcard .qc-a{margin:0 0 8px;font-size:14.5px;color:var(--ink-2);max-width:var(--content)}
+.qcard .qc-a b{color:var(--accent-ink);font-family:var(--mono);font-weight:600;font-size:13.5px}
+.qcard .qc-x{margin:0;font-size:14px;color:var(--ink-3);line-height:1.6;max-width:var(--content)}
+.qcard .qc-x b{color:var(--ink-2);font-weight:500}
+
+.group-head{margin:44px 0 4px;padding-top:26px;border-top:1px solid var(--line)}
+.group-head h3{margin:0 0 4px}
+.group-head .g-x{font-size:14px;color:var(--ink-2);margin:0;max-width:var(--content)}
+
+/* sources */
+.sources{font-size:13.5px;color:var(--ink-2)}
+.sources li{border-bottom:1px solid var(--line)}
+.sources li::before{display:none}
+.sources .s{color:var(--ink);font-weight:500}
+.sources a{word-break:break-word}
+
+.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;max-width:var(--maxw);margin:0 auto;padding:26px 24px 56px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-3);font-family:var(--mono)}
+
+/* print */
+@media print{
+  body{background:#fff;color:#111;font-size:11pt}
+  .site,.toc,.no-print{display:none!important}
+  .page{display:block;max-width:100%;padding:0}
+  article{padding-top:0}
+  h1.title{font-size:26pt}
+  .hero{border-bottom:none}
+  .hero-grid{display:block}
+  .fact{grid-template-columns:150px 1fr;break-inside:avoid}
+  .stats,.qcard{break-inside:avoid}
+  article h2{page-break-before:always;margin-top:0}
+  article h2.first{page-break-before:avoid}
+  .chart-card,.callout,.warn-call,.qcard{box-shadow:none}
+  a{color:#0b5c51}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .bar .b-fill{transition:none}
+}
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="inner">
+    <div class="brand"><span class="mark"></span><a href="https://thisisirfansbackup-cyber.github.io/research-reports/">Research Reports</a></div>
+    <nav class="actions">
+      <a href="https://thisisirfansbackup-cyber.github.io/research-reports/" class="no-print">All reports</a>
+      <a href="#" onclick="window.print();return false;" class="primary no-print">Export PDF</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page">
+  <aside class="toc no-print">
+    <nav>
+      <p class="label">Contents</p>
+      <ul>
+        <li><a href="#numbers"><span class="n">01</span>Your test in numbers</a></li>
+        <li><a href="#split"><span class="n">02</span>How questions split</a></li>
+        <li><a href="#method"><span class="n">03</span>How the ranking works</a></li>
+        <li><a href="#questions"><span class="n">04</span>The 50 questions</a></li>
+        <li><a href="#study"><span class="n">05</span>How to study</a></li>
+        <li><a href="#sources"><span class="n">06</span>Sources</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <article>
+    <header class="hero">
+      <p class="kicker">Study Guide / 2026</p>
+      <h1 class="title">Life in the UK Test <span class="sub">50 most likely questions</span></h1>
+      <p class="framing">Your test is <strong>3 September 2026</strong>. You need <strong>18 of 24</strong> correct to pass. This guide ranks the <strong>50 questions most likely to appear</strong>, from most to least likely, each with the correct answer, a plain-English explanation and the handbook chapter it comes from.</p>
+      <div class="meta">
+        <span class="it"><span class="k">Prepared</span>&nbsp;<span class="v">2026-08-14</span></span>
+        <span class="it"><span class="k">Test date</span>&nbsp;<span class="v">03 Sep 2026</span></span>
+        <span class="it"><span class="k">Read time</span>&nbsp;<span class="v">20 min</span></span>
+        <span class="it"><span class="k">Pass mark</span>&nbsp;<span class="v">75%</span></span>
+      </div>
+
+      <div class="hero-grid">
+        <div class="hero-facts">
+          <div class="fact"><span class="f-label">Questions</span><span class="f-val"><b>24</b> multiple choice <span class="src">official test</span></span></div>
+          <div class="fact"><span class="f-label">Time</span><span class="f-val"><b>45</b> minutes <span class="src">about 1.9 min per question</span></span></div>
+          <div class="fact"><span class="f-label">Pass mark</span><span class="f-val"><b>18 of 24</b> correct (75%)</span></div>
+          <div class="fact"><span class="f-label">Fee</span><span class="f-val"><b>£50</b> <span class="src">retake costs the same</span></span></div>
+        </div>
+        <div class="daycard">
+          <p class="d-k">Your test day</p>
+          <p class="d-date">3 September 2026</p>
+          <p class="d-days"><span id="days-left">20</span> days to go</p>
+          <ul>
+            <li>Book only at an official centre, online at gov.uk</li>
+            <li>Bring original ID and proof of address</li>
+            <li>Pass mark: 18 of 24 correct (75%)</li>
+            <li>If you fail, you must wait <b>7 days</b> to retake</li>
+            <li>A pass never expires</li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <div class="stats">
+      <div class="stat"><span class="s-k">Ranked questions</span><span class="s-v" data-count="50">0</span><span class="s-s">highest to lowest probability</span></div>
+      <div class="stat"><span class="s-k">Real test questions</span><span class="s-v">24</span><span class="s-s">random for each candidate</span></div>
+      <div class="stat hl"><span class="s-k">Pass mark</span><span class="s-v">75%</span><span class="s-s">18 of 24 must be right</span></div>
+      <div class="stat"><span class="s-k">History share</span><span class="s-v" data-count="9">0</span><span class="s-s">of 24 questions, on average</span></div>
+    </div>
+    <p class="s-note">Chapter shares are estimates from practice-bank experience. They vary between tests.</p>
+
+    <h2 id="numbers" class="first"><span class="n">01</span>Your test in numbers<span class="lead">The rules that decide your result</span></h2>
+    <p class="lede">The Life in the UK test is a computer-based test with <strong>24 multiple-choice questions</strong>. You get <strong>45 minutes</strong>, and you must answer <strong>18 correctly (75%)</strong> to pass.</p>
+
+    <div class="callout">
+      <p><strong>What the test covers.</strong> Every question comes from the official handbook, <em>Life in the United Kingdom: A Guide for New Residents</em> (third edition). The handbook has six chapters, and the test pulls from all of them. There is no published bank of real test questions, so the ranking below is built from the questions that appear again and again in practice tests.</p>
+    </div>
+
+    <ul>
+      <li><strong>Pass mark.</strong> You need 18 of 24 correct, which is 75%.</li>
+      <li><strong>Time.</strong> 45 minutes for 24 questions, so about 2 minutes per question. Almost everyone finishes in time.</li>
+      <li><strong>Language.</strong> The test is in English. You can request Welsh or Scottish Gaelic.</li>
+      <li><strong>Booking.</strong> Book online at gov.uk for an official test centre. There are around 60 centres. Book only through the official site.</li>
+      <li><strong>On the day.</strong> Take original ID and proof of your address. Without them you cannot sit the test.</li>
+      <li><strong>If you fail.</strong> You must wait 7 days before retaking, and you pay the £50 fee again.</li>
+      <li><strong>If you pass.</strong> The pass never expires. You can use the certificate for your application.</li>
+    </ul>
+
+    <div class="warn-call">
+      <span class="w-k">Important</span>
+      <p>Do not buy tests from unofficial websites. Only the official test at gov.uk counts, and a pass certificate from any other place will be rejected. The handbook is all you need to prepare.</p>
+    </div>
+
+    <h2 id="split"><span class="n">02</span>How the 24 questions split<span class="lead">Approximate chapter share of a typical test</span></h2>
+    <p class="lede">History is the biggest chapter by far. It usually provides about a third to two fifths of your questions. Government and law is the second biggest.</p>
+
+    <div class="bars">
+      <div class="bar"><span class="b-l">History</span><span class="b-tr"><span class="b-fill" data-w="37"></span></span><span class="b-n">9 of 24</span></div>
+      <div class="bar"><span class="b-l">Gov &amp; law</span><span class="b-tr"><span class="b-fill" data-w="21"></span></span><span class="b-n">5 of 24</span></div>
+      <div class="bar"><span class="b-l">Modern society</span><span class="b-tr"><span class="b-fill" data-w="17"></span></span><span class="b-n">4 of 24</span></div>
+      <div class="bar"><span class="b-l">What is the UK</span><span class="b-tr"><span class="b-fill" data-w="13"></span></span><span class="b-n">3 of 24</span></div>
+      <div class="bar"><span class="b-l">Values</span><span class="b-tr"><span class="b-fill" data-w="8"></span></span><span class="b-n">2 of 24</span></div>
+      <div class="bar"><span class="b-l">Everyday needs</span><span class="b-tr"><span class="b-fill" data-w="4"></span></span><span class="b-n">1 of 24</span></div>
+    </div>
+    <p class="bars-note">Rounded to 24 total. Because questions are random, your own mix will be slightly different.</p>
+
+    <h2 id="method"><span class="n">03</span>How the ranking works<span class="lead">Why some questions are above others</span></h2>
+    <p class="lede">Each question is scored by how often it appears in practice banks, then weighted by its chapter's share of the real test. Questions from bigger chapters, and facts the handbook repeats, rank higher.</p>
+
+    <div class="tiers">
+      <div class="tier t1"><span class="t-dot"></span><span class="t-n"><span class="n">Tier 1</span>Very high</span><span class="t-x">Appears in nearly every practice test. Questions 1 to 15. Learn these first.</span><span class="t-ct">15</span></div>
+      <div class="tier t2"><span class="t-dot"></span><span class="t-n"><span class="n">Tier 2</span>High</span><span class="t-x">Appears in most practice tests. Questions 16 to 30.</span><span class="t-ct">15</span></div>
+      <div class="tier t3"><span class="t-dot"></span><span class="t-n"><span class="n">Tier 3</span>Medium</span><span class="t-x">Appears regularly, often with slightly different wording. Questions 31 to 42.</span><span class="t-ct">12</span></div>
+      <div class="tier t4"><span class="t-dot"></span><span class="t-n"><span class="n">Tier 4</span>Lower</span><span class="t-x">Appears sometimes. Worth learning once Tier 1 to 3 are solid. Questions 43 to 50.</span><span class="t-ct">8</span></div>
+    </div>
+
+    <div class="warn-call">
+      <span class="w-k">Honesty note</span>
+      <p>The Home Office does not publish the real question bank, so no one can guarantee which questions you will get. The 50 below are the ones that appear most often in practice tests, written in our own words and checked against the handbook. If you know all 50 cold, you will cover most of what the real test can ask.</p>
+    </div>
+
+    <h2 id="questions"><span class="n">04</span>The 50 questions<span class="lead">Ranked from most to least likely to appear</span></h2>
+
+    <div class="group-head" id="tier1">
+      <h3>Tier 1: questions 1 to 15</h3>
+      <p class="g-x">Very high probability. These are the anchor questions of the test.</p>
+    </div>
+    <div class="qlist">
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">01</span><span class="qc-ch">History</span><span class="qc-tier t1">Very high</span></div>
+        <p class="qc-q">In which year did King John sign the Magna Carta?</p>
+        <p class="qc-a">Answer: <b>1215</b></p>
+        <p class="qc-x">The Magna Carta of 1215 said the king is subject to the law, not above it. It is seen as one of the most important documents in history, and its ideas later shaped democracy around the world.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">02</span><span class="qc-ch">History</span><span class="qc-tier t1">Very high</span></div>
+        <p class="qc-q">In which year was the Battle of Hastings?</p>
+        <p class="qc-a">Answer: <b>1066</b></p>
+        <p class="qc-x">The Battle of Hastings in 1066 changed the history of England. William of Normandy defeated King Harold and became king.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">03</span><span class="qc-ch">History</span><span class="qc-tier t1">Very high</span></div>
+        <p class="qc-q">After the Battle of Hastings, who became king of England?</p>
+        <p class="qc-a">Answer: <b>William the Conqueror (William I)</b></p>
+        <p class="qc-x">William of Normandy, called William the Conqueror, became the first Norman king in 1066. He built the Tower of London and ordered the Domesday Book.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">04</span><span class="qc-ch">History</span><span class="qc-tier t1">Very high</span></div>
+        <p class="qc-q">Which queen was on the throne when the Spanish Armada was defeated in 1588?</p>
+        <p class="qc-a">Answer: <b>Queen Elizabeth I</b></p>
+        <p class="qc-x">The English navy defeated the Spanish Armada in 1588 during the reign of Elizabeth I. It was one of England's most famous victories.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">05</span><span class="qc-ch">History</span><span class="qc-tier t1">Very high</span></div>
+        <p class="qc-q">In which years did the First World War take place?</p>
+        <p class="qc-a">Answer: <b>1914 to 1918</b></p>
+        <p class="qc-x">The First World War started in 1914 and ended in 1918. Millions of people fought and died, and the war ended with victory for the Allies.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">06</span><span class="qc-ch">History</span><span class="qc-tier t1">Very high</span></div>
+        <p class="qc-q">In which years did the Second World War take place?</p>
+        <p class="qc-a">Answer: <b>1939 to 1945</b></p>
+        <p class="qc-x">The Second World War started in 1939 and ended in 1945. Britain fought against Germany and the Axis powers and was on the winning side.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">07</span><span class="qc-ch">History</span><span class="qc-tier t1">Very high</span></div>
+        <p class="qc-q">Who was Prime Minister for most of the Second World War?</p>
+        <p class="qc-a">Answer: <b>Winston Churchill</b></p>
+        <p class="qc-x">Winston Churchill led Britain through most of the Second World War. He is one of the most famous prime ministers in British history.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">08</span><span class="qc-ch">History</span><span class="qc-tier t1">Very high</span></div>
+        <p class="qc-q">Who was the first woman to become Prime Minister of the UK?</p>
+        <p class="qc-a">Answer: <b>Margaret Thatcher</b></p>
+        <p class="qc-x">Margaret Thatcher became the first woman Prime Minister in 1979. She was also the longest-serving Prime Minister of the 20th century, in office until 1990.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">09</span><span class="qc-ch">Gov &amp; law</span><span class="qc-tier t1">Very high</span></div>
+        <p class="qc-q">At what age can most people in the UK vote in a general election?</p>
+        <p class="qc-a">Answer: <b>18</b></p>
+        <p class="qc-x">The voting age is 18. You also need to be on the electoral register and be a British, Irish, Commonwealth or EU citizen living in the UK.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">10</span><span class="qc-ch">Gov &amp; law</span><span class="qc-tier t1">Very high</span></div>
+        <p class="qc-q">How often must a general election be held, at most?</p>
+        <p class="qc-a">Answer: <b>At least every 5 years</b></p>
+        <p class="qc-x">The law says a general election must be held at least every 5 years. The Prime Minister can call one earlier.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">11</span><span class="qc-ch">Gov &amp; law</span><span class="qc-tier t1">Very high</span></div>
+        <p class="qc-q">What are the two Houses of Parliament called?</p>
+        <p class="qc-a">Answer: <b>The House of Commons and the House of Lords</b></p>
+        <p class="qc-x">Parliament has two parts. The House of Commons is elected by voters. The House of Lords is not elected.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">12</span><span class="qc-ch">Gov &amp; law</span><span class="qc-tier t1">Very high</span></div>
+        <p class="qc-q">Is the House of Lords elected by voters?</p>
+        <p class="qc-a">Answer: <b>No</b></p>
+        <p class="qc-x">The House of Lords is not elected. Its members are appointed (life peers), include bishops, and a small number inherit their seats.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">13</span><span class="qc-ch">What is the UK</span><span class="qc-tier t1">Very high</span></div>
+        <p class="qc-q">Which places are the Crown Dependencies?</p>
+        <p class="qc-a">Answer: <b>The Isle of Man and the Channel Islands</b></p>
+        <p class="qc-x">The Crown Dependencies are the Isle of Man and the Channel Islands (Jersey and Guernsey). They are not part of the UK, but the UK is responsible for them.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">14</span><span class="qc-ch">What is the UK</span><span class="qc-tier t1">Very high</span></div>
+        <p class="qc-q">Which countries make up Great Britain?</p>
+        <p class="qc-a">Answer: <b>England, Scotland and Wales</b></p>
+        <p class="qc-x">Great Britain is the island that holds England, Scotland and Wales. Northern Ireland is not part of Great Britain.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">15</span><span class="qc-ch">What is the UK</span><span class="qc-tier t1">Very high</span></div>
+        <p class="qc-q">Which countries make up the United Kingdom?</p>
+        <p class="qc-a">Answer: <b>England, Scotland, Wales and Northern Ireland</b></p>
+        <p class="qc-x">The United Kingdom is made up of four countries: England, Scotland, Wales and Northern Ireland.</p>
+      </div>
+
+    </div>
+
+    <div class="group-head" id="tier2">
+      <h3>Tier 2: questions 16 to 30</h3>
+      <p class="g-x">High probability. Saints, capitals, courts and the constitution.</p>
+    </div>
+    <div class="qlist">
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">16</span><span class="qc-ch">Modern society</span><span class="qc-tier t2">High</span></div>
+        <p class="qc-q">Who is the patron saint of England?</p>
+        <p class="qc-a">Answer: <b>St George</b></p>
+        <p class="qc-x">St George is the patron saint of England. His day is 23 April, and his cross is part of the English flag and the Union Flag.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">17</span><span class="qc-ch">Modern society</span><span class="qc-tier t2">High</span></div>
+        <p class="qc-q">Who is the patron saint of Scotland?</p>
+        <p class="qc-a">Answer: <b>St Andrew</b></p>
+        <p class="qc-x">St Andrew is the patron saint of Scotland. His day is 30 November, and his cross (the saltire) is the flag of Scotland.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">18</span><span class="qc-ch">Modern society</span><span class="qc-tier t2">High</span></div>
+        <p class="qc-q">Who is the patron saint of Wales?</p>
+        <p class="qc-a">Answer: <b>St David</b></p>
+        <p class="qc-x">St David is the patron saint of Wales. St David's day is 1 March.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">19</span><span class="qc-ch">Modern society</span><span class="qc-tier t2">High</span></div>
+        <p class="qc-q">Who is the patron saint of Northern Ireland?</p>
+        <p class="qc-a">Answer: <b>St Patrick</b></p>
+        <p class="qc-x">St Patrick is the patron saint of Ireland, including Northern Ireland. St Patrick's day is 17 March.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">20</span><span class="qc-ch">What is the UK</span><span class="qc-tier t2">High</span></div>
+        <p class="qc-q">What is the capital of Wales?</p>
+        <p class="qc-a">Answer: <b>Cardiff</b></p>
+        <p class="qc-x">Cardiff is the capital of Wales. The Senedd (Welsh Parliament) meets there.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">21</span><span class="qc-ch">What is the UK</span><span class="qc-tier t2">High</span></div>
+        <p class="qc-q">What is the capital of Scotland?</p>
+        <p class="qc-a">Answer: <b>Edinburgh</b></p>
+        <p class="qc-x">Edinburgh is the capital of Scotland. The Scottish Parliament meets there.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">22</span><span class="qc-ch">What is the UK</span><span class="qc-tier t2">High</span></div>
+        <p class="qc-q">What is the capital of Northern Ireland?</p>
+        <p class="qc-a">Answer: <b>Belfast</b></p>
+        <p class="qc-x">Belfast is the capital of Northern Ireland. The Northern Ireland Assembly meets there.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">23</span><span class="qc-ch">Gov &amp; law</span><span class="qc-tier t2">High</span></div>
+        <p class="qc-q">Which court hears the most serious criminal cases in England and Wales?</p>
+        <p class="qc-a">Answer: <b>The Crown Court</b></p>
+        <p class="qc-x">The Crown Court hears serious cases such as murder, with a judge and a jury. Less serious cases go to Magistrates' Courts.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">24</span><span class="qc-ch">Gov &amp; law</span><span class="qc-tier t2">High</span></div>
+        <p class="qc-q">What is the largest political party that is not in government called?</p>
+        <p class="qc-a">Answer: <b>The Official Opposition</b></p>
+        <p class="qc-x">The second largest party in the House of Commons is the Official Opposition. Its leader faces the Prime Minister across the chamber.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">25</span><span class="qc-ch">Modern society</span><span class="qc-tier t2">High</span></div>
+        <p class="qc-q">Who is the head of the Church of England?</p>
+        <p class="qc-a">Answer: <b>The monarch</b></p>
+        <p class="qc-x">The monarch is the head (Supreme Governor) of the Church of England, which is also called the Anglican Church.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">26</span><span class="qc-ch">Gov &amp; law</span><span class="qc-tier t2">High</span></div>
+        <p class="qc-q">What kind of constitution does the UK have?</p>
+        <p class="qc-a">Answer: <b>One that is not written in a single document</b></p>
+        <p class="qc-x">The UK has an unwritten constitution. It is not set out in one document but built from laws, customs and conventions over centuries.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">27</span><span class="qc-ch">What is the UK</span><span class="qc-tier t2">High</span></div>
+        <p class="qc-q">Which flower is the national flower of England?</p>
+        <p class="qc-a">Answer: <b>The rose</b></p>
+        <p class="qc-x">The rose is the national flower of England. The Tudor rose is a common symbol of the country.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">28</span><span class="qc-ch">History</span><span class="qc-tier t2">High</span></div>
+        <p class="qc-q">In which year was the National Health Service (NHS) founded?</p>
+        <p class="qc-a">Answer: <b>1948</b></p>
+        <p class="qc-x">The NHS was founded in 1948 to provide free healthcare for everyone. It is one of the largest publicly funded health services in the world.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">29</span><span class="qc-ch">History</span><span class="qc-tier t2">High</span></div>
+        <p class="qc-q">In which year did the UK join the European Economic Community, later the European Union?</p>
+        <p class="qc-a">Answer: <b>1973</b></p>
+        <p class="qc-x">The UK joined the EEC in 1973. It later left the European Union, but the UK never adopted the euro currency.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">30</span><span class="qc-ch">History</span><span class="qc-tier t2">High</span></div>
+        <p class="qc-q">What is the name of the 18th century period when new ideas about science, reason and society spread across Europe?</p>
+        <p class="qc-a">Answer: <b>The Enlightenment</b></p>
+        <p class="qc-x">The Enlightenment in the 18th century brought new ideas about science, reason and society. It influenced politics and culture across Europe.</p>
+      </div>
+
+    </div>
+
+    <div class="group-head" id="tier3">
+      <h3>Tier 3: questions 31 to 42</h3>
+      <p class="g-x">Medium probability. Traditions, landmarks and key dates.</p>
+    </div>
+    <div class="qlist">
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">31</span><span class="qc-ch">Modern society</span><span class="qc-tier t3">Medium</span></div>
+        <p class="qc-q">On which date is Bonfire Night (Guy Fawkes Night) celebrated in the UK?</p>
+        <p class="qc-a">Answer: <b>5 November</b></p>
+        <p class="qc-x">On 5 November 1605, Guy Fawkes tried to blow up the Houses of Parliament. People mark Bonfire Night with bonfires and fireworks.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">32</span><span class="qc-ch">Modern society</span><span class="qc-tier t3">Medium</span></div>
+        <p class="qc-q">On which date is Remembrance Day held in the UK?</p>
+        <p class="qc-a">Answer: <b>11 November</b></p>
+        <p class="qc-x">Remembrance Day on 11 November remembers people who died in the two world wars and other conflicts. A two minute silence is held at 11am.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">33</span><span class="qc-ch">Modern society</span><span class="qc-tier t3">Medium</span></div>
+        <p class="qc-q">Which sport began in England in the 19th century and is now played around the world?</p>
+        <p class="qc-a">Answer: <b>Football (association football)</b></p>
+        <p class="qc-x">Modern football rules were written in England in the 19th century. Football is now the most popular sport in the world.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">34</span><span class="qc-ch">Modern society</span><span class="qc-tier t3">Medium</span></div>
+        <p class="qc-q">Where are the Crown Jewels kept?</p>
+        <p class="qc-a">Answer: <b>The Tower of London</b></p>
+        <p class="qc-x">The Crown Jewels are kept in the Tower of London, a castle built by William the Conqueror.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">35</span><span class="qc-ch">History</span><span class="qc-tier t3">Medium</span></div>
+        <p class="qc-q">Who is usually seen as the first Prime Minister of Britain?</p>
+        <p class="qc-a">Answer: <b>Sir Robert Walpole</b></p>
+        <p class="qc-x">Sir Robert Walpole (1721 to 1742) is usually seen as the first British Prime Minister. He made 10 Downing Street the home of the office.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">36</span><span class="qc-ch">History</span><span class="qc-tier t3">Medium</span></div>
+        <p class="qc-q">In which year did the Romans first invade Britain?</p>
+        <p class="qc-a">Answer: <b>43 AD</b></p>
+        <p class="qc-x">The Romans invaded Britain in 43 AD and ruled for almost 400 years. They built roads, towns and Hadrian's Wall.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">37</span><span class="qc-ch">History</span><span class="qc-tier t3">Medium</span></div>
+        <p class="qc-q">Which wall was built by the Romans as the northern frontier of their empire in Britain?</p>
+        <p class="qc-a">Answer: <b>Hadrian's Wall</b></p>
+        <p class="qc-x">Hadrian's Wall marked the northern edge of Roman Britain. Part of it still stands across the north of England.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">38</span><span class="qc-ch">What is the UK</span><span class="qc-tier t3">Medium</span></div>
+        <p class="qc-q">The Union Flag combines the flags of St George, St Andrew and St Patrick. Which part of the UK is not shown on it?</p>
+        <p class="qc-a">Answer: <b>Wales</b></p>
+        <p class="qc-x">The Union Flag combines the crosses of St George (England), St Andrew (Scotland) and St Patrick (Northern Ireland). Wales is not included.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">39</span><span class="qc-ch">What is the UK</span><span class="qc-tier t3">Medium</span></div>
+        <p class="qc-q">What is the currency of the UK?</p>
+        <p class="qc-a">Answer: <b>The pound sterling (£)</b></p>
+        <p class="qc-x">The currency of the UK is the pound sterling, written with the symbol £. The UK does not use the euro.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">40</span><span class="qc-ch">Everyday needs</span><span class="qc-tier t3">Medium</span></div>
+        <p class="qc-q">On which side of the road do drivers drive in the UK?</p>
+        <p class="qc-a">Answer: <b>The left</b></p>
+        <p class="qc-x">In the UK you drive on the left and overtake on the right. You need a driving licence, insurance and road tax.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">41</span><span class="qc-ch">Gov &amp; law</span><span class="qc-tier t3">Medium</span></div>
+        <p class="qc-q">Who can be asked to do jury service in England and Wales?</p>
+        <p class="qc-a">Answer: <b>Most people aged 18 to 70 who are on the electoral register</b></p>
+        <p class="qc-x">Anyone on the electoral register aged 18 to 70 can be called for jury service. A jury in England and Wales has 12 members, and a jury in Scotland has 15.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">42</span><span class="qc-ch">History</span><span class="qc-tier t3">Medium</span></div>
+        <p class="qc-q">In which year was the Habeas Corpus Act passed, protecting people from being held in prison without a fair trial?</p>
+        <p class="qc-a">Answer: <b>1679</b></p>
+        <p class="qc-x">The Habeas Corpus Act of 1679 protected people from being kept in prison without being brought to court. It is a key protection of individual freedom.</p>
+      </div>
+
+    </div>
+
+    <div class="group-head" id="tier4">
+      <h3>Tier 4: questions 43 to 50</h3>
+      <p class="g-x">Lower probability, but still worth learning. National symbols and values.</p>
+    </div>
+    <div class="qlist">
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">43</span><span class="qc-ch">Gov &amp; law</span><span class="qc-tier t4">Lower</span></div>
+        <p class="qc-q">What is the name of the official record of everything said in Parliament?</p>
+        <p class="qc-a">Answer: <b>Hansard</b></p>
+        <p class="qc-x">Hansard is the official record of debates in Parliament. The record of the Scottish Parliament is called the Official Report.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">44</span><span class="qc-ch">Gov &amp; law</span><span class="qc-tier t4">Lower</span></div>
+        <p class="qc-q">At what age can a person stand for election to be an MP or a local councillor?</p>
+        <p class="qc-a">Answer: <b>18</b></p>
+        <p class="qc-x">Anyone aged 18 or over can stand for election as an MP or a local councillor.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">45</span><span class="qc-ch">What is the UK</span><span class="qc-tier t4">Lower</span></div>
+        <p class="qc-q">What is the national flower of Scotland?</p>
+        <p class="qc-a">Answer: <b>The thistle</b></p>
+        <p class="qc-x">The thistle is the national flower of Scotland.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">46</span><span class="qc-ch">What is the UK</span><span class="qc-tier t4">Lower</span></div>
+        <p class="qc-q">What is the national flower of Wales?</p>
+        <p class="qc-a">Answer: <b>The daffodil</b></p>
+        <p class="qc-x">The daffodil is the national flower of Wales. The leek is another Welsh symbol.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">47</span><span class="qc-ch">What is the UK</span><span class="qc-tier t4">Lower</span></div>
+        <p class="qc-q">What is the national flower of Northern Ireland?</p>
+        <p class="qc-a">Answer: <b>The shamrock</b></p>
+        <p class="qc-x">The shamrock is the national flower of Northern Ireland.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">48</span><span class="qc-ch">What is the UK</span><span class="qc-tier t4">Lower</span></div>
+        <p class="qc-q">What is the Welsh name for the Welsh language?</p>
+        <p class="qc-a">Answer: <b>Cymraeg</b></p>
+        <p class="qc-x">In Wales the Welsh language is called Cymraeg. It is a living language taught in schools and used every day.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">49</span><span class="qc-ch">Values</span><span class="qc-tier t4">Lower</span></div>
+        <p class="qc-q">Which of these is a fundamental principle of British life?</p>
+        <p class="qc-a">Answer: <b>The rule of law</b></p>
+        <p class="qc-x">The rule of law means everyone, including the government, must obey the law. The other fundamental principles are democracy, individual liberty and tolerance of others.</p>
+      </div>
+
+      <div class="qcard">
+        <div class="qc-head"><span class="qc-rank">50</span><span class="qc-ch">Values</span><span class="qc-tier t4">Lower</span></div>
+        <p class="qc-q">Which of these is a responsibility of everyone living in the UK?</p>
+        <p class="qc-a">Answer: <b>To obey the law</b></p>
+        <p class="qc-x">Everyone in the UK should obey the law, respect the rights of others, treat others with fairness, and look after the area where they live.</p>
+      </div>
+
+    </div>
+
+    <h2 id="study"><span class="n">05</span>How to study<span class="lead">A plan for the days before 3 September</span></h2>
+    <p class="lede">You do not need to memorise the whole handbook. With 20 days left, a focused plan is enough.</p>
+
+    <ul>
+      <li><strong>First week: Tier 1 only.</strong> Learn questions 1 to 15 until you can answer all of them without looking.</li>
+      <li><strong>Second week: Tiers 2 and 3.</strong> Add questions 16 to 42. Read the explanations, not just the answers, because the real test often changes the wording.</li>
+      <li><strong>Final days: Tier 4 plus weak spots.</strong> Learn questions 43 to 50, then retest yourself on the ones you keep getting wrong.</li>
+      <li><strong>Read the handbook once.</strong> Even a quick read of the six chapters makes the answers stick, because the questions come from it directly.</li>
+      <li><strong>Do timed practice.</strong> Answer 24 questions in 45 minutes. It trains you to keep moving.</li>
+      <li><strong>The night before.</strong> Sleep. The pass mark is only 75%, and the top tiers cover most of what will appear.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Remember the rule of two.</strong> Every question here was cross-checked against at least two sources, and each answer is written in plain English so you can hold it in your head on the day. If you know the 50 questions, you are ready.</p>
+    </div>
+
+    <h2 id="sources"><span class="n">06</span>Sources<span class="lead">Where the facts come from</span></h2>
+    <p class="lede">Every answer was checked against the official handbook and at least one independent source. Questions are written in our own words.</p>
+
+    <ul class="sources">
+      <li><span class="s">Life in the United Kingdom: A Guide for New Residents</span>, 3rd edition, Home Office. The official handbook that all test questions are based on.</li>
+      <li><span class="s">GOV.UK: Life in the UK test</span> <a href="https://www.gov.uk/life-in-the-uk-test">gov.uk/life-in-the-uk-test</a>. Test format, pass mark, fees and retake rules.</li>
+      <li><span class="s">GOV.UK: Sir Robert Walpole</span> <a href="https://www.gov.uk/government/history/past-prime-ministers/robert-walpole">gov.uk/government/history/past-prime-ministers/robert-walpole</a>. Confirms Walpole as first PM (1721 to 1742).</li>
+      <li><span class="s">UK Parliament, House of Commons Library: Jury service</span> <a href="https://commonslibrary.parliament.uk/research-briefings/cbp-10807/">commonslibrary.parliament.uk</a>. Eligibility and process for juries.</li>
+      <li><span class="s">HistoryExtra</span> <a href="https://www.historyextra.com/period/20th-century/1973-uk-joined-european-economic-community-eec-when-why/">historyextra.com</a>. Context for the UK joining the EEC in 1973.</li>
+      <li><span class="s">Practice banks</span> (uacademy, Life in the UK Test App, Britizen, iasservices and others). Used to measure how often each topic appears in mock tests.</li>
+    </ul>
+  </article>
+</div>
+
+<footer class="foot">
+  <span>Prepared 2026-08-14 for the 3 Sep 2026 test</span>
+  <span>Not affiliated with the Home Office or GOV.UK</span>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = document.querySelectorAll('.stat .s-v[data-count]');
+  function fmt(v){ return String(Math.round(v)); }
+  function run(el){
+    var target = parseFloat(el.getAttribute('data-count'));
+    if(reduce || !('IntersectionObserver' in window)){
+      el.childNodes[0].nodeValue = fmt(target);
+      return;
+    }
+    var dur = 900, t0 = null;
+    function frame(t){
+      if(!t0) t0 = t;
+      var p = Math.min((t - t0) / dur, 1);
+      var e = 1 - Math.pow(1 - p, 3);
+      el.childNodes[0].nodeValue = fmt(target * e);
+      if(p < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          run(en.target);
+          io.unobserve(en.target);
+        }
+      });
+    }, {threshold: 0.4});
+    els.forEach(function(el){ io.observe(el); });
+  } else {
+    els.forEach(run);
+  }
+
+  var bars = document.querySelectorAll('.bar .b-fill');
+  function fillBar(b){
+    var w = parseFloat(b.getAttribute('data-w'));
+    b.style.width = w + '%';
+  }
+  if(reduce || !('IntersectionObserver' in window)){
+    bars.forEach(fillBar);
+  } else {
+    var io2 = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          fillBar(en.target);
+          io2.unobserve(en.target);
+        }
+      });
+    }, {threshold: 0.4});
+    bars.forEach(function(b){ io2.observe(b); });
+  }
+
+  var daysEl = document.getElementById('days-left');
+  if(daysEl){
+    var now = new Date();
+    var target = new Date('2026-09-03T00:00:00');
+    var diff = Math.max(0, Math.ceil((target - now) / 86400000));
+    daysEl.textContent = String(diff);
+  }
+})();
+</script>
+</body>
+</html>
