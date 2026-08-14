@@ -226,6 +226,40 @@ article li strong{font-weight:600}
   html{scroll-behavior:auto}
   .bar .b-fill{transition:none}
 }
+.qc-m{margin:0;font-size:13px;line-height:1.6;color:var(--ink-2);border-top:1px dashed var(--line);padding-top:10px;margin-top:4px}
+.qc-m .m-k{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);background:var(--accent-soft);border-radius:5px;padding:1px 7px;margin-right:8px}
+[hidden]{display:none!important}
+.quiz{margin:24px 0;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow)}
+.q-btn{display:block;width:100%;text-align:left;font:inherit;font-weight:600;font-size:15px;color:var(--bg);background:var(--accent);border:1px solid var(--accent);border-radius:10px;padding:14px 16px;cursor:pointer;margin:10px 0;transition:transform .15s ease,box-shadow .15s ease}
+.q-btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px -6px rgba(15,122,107,.5)}
+.q-btn.ghost{background:transparent;color:var(--ink);border-color:var(--line-2)}
+.q-btn .q-btn-sub{display:block;font-weight:400;font-size:12.5px;color:var(--ink-3);margin-top:3px;line-height:1.5}
+.quiz-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px;font-family:var(--mono);font-size:12.5px;color:var(--ink-3)}
+.quiz-prog{color:var(--accent-ink);font-weight:600}
+.quiz-timer{color:var(--ink-2);font-weight:600}
+.quiz-timer.low{color:#b3261e}
+.quiz-q{margin:0 0 16px;font-weight:600;font-size:16.5px;line-height:1.55;max-width:var(--content)}
+.quiz-opts{display:grid;gap:10px}
+.q-opt{display:block;width:100%;text-align:left;font:inherit;font-size:14.5px;line-height:1.5;color:var(--ink-2);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color .15s ease,background .15s ease}
+.q-opt:hover{border-color:var(--accent)}
+.q-opt.sel{border-color:var(--accent);background:var(--accent-soft);color:var(--ink)}
+.q-opt.correct{border-color:var(--accent);background:var(--accent-soft)}
+.q-opt.wrong{border-color:#b3261e;background:#b3261e1a}
+.result-banner{border-radius:12px;padding:18px 20px;font-weight:700;font-size:20px;margin-bottom:8px}
+.result-banner.pass{background:var(--accent);color:var(--bg)}
+.result-banner.fail{background:#b3261e;color:#fff}
+.result-score{margin:6px 0 18px;font-size:15px;color:var(--ink-2)}
+.result-review{display:grid;gap:12px}
+.result-item{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.result-item h4{margin:0 0 6px;font-size:13.5px;line-height:1.5}
+.result-item .r-row{font-size:13.5px;line-height:1.55;color:var(--ink-3);margin:3px 0}
+.result-item .r-row b{color:var(--ink)}
+.result-item .r-good b{color:var(--accent-ink)}
+.result-actions{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+.result-actions .q-btn{flex:1;min-width:180px;margin:0}
+.quiz-note{font-size:13px;color:var(--ink-3);margin:10px 0 0;line-height:1.5}
+@media print{.quiz{box-shadow:none}}
+@media (max-width:560px){.result-actions{flex-direction:column}}
 </style>
 </head>
 <body>
@@ -248,9 +282,10 @@ article li strong{font-weight:600}
         <li><a href="#split"><span class="n">02</span>How questions split</a></li>
         <li><a href="#method"><span class="n">03</span>Method and evidence</a></li>
         <li><a href="#questions"><span class="n">04</span>The 62 questions</a></li>
-        <li><a href="#bonus"><span class="n">05</span>Beyond the handbook</a></li>
-        <li><a href="#study"><span class="n">06</span>How to study</a></li>
-        <li><a href="#sources"><span class="n">07</span>Sources</a></li>
+        <li><a href="#test"><span class="n">05</span>Take a practice test</a></li>
+        <li><a href="#bonus"><span class="n">06</span>Beyond the handbook</a></li>
+        <li><a href="#study"><span class="n">07</span>How to study</a></li>
+        <li><a href="#sources"><span class="n">08</span>Sources</a></li>
       </ul>
     </nav>
   </aside>
@@ -882,7 +917,40 @@ article li strong{font-weight:600}
       </div>
 
     </div>
-    <h2 id="bonus"><span class="n">05</span>Beyond the handbook<span class="lead">Practice-bank staples you may still see</span></h2>
+    <h2 id="test"><span class="n">05</span>Take a practice test<span class="lead">Test yourself on the 62 questions</span></h2>
+    <p class="lede">Two modes. The simulation mirrors the real test; the full practice covers every question in this guide. Like the real test, you get no feedback until the end.</p>
+
+    <div class="quiz" id="quiz">
+      <div class="quiz-start" id="quiz-start">
+        <p class="quiz-note" id="quiz-note">Your last result will appear here after you finish a test.</p>
+        <button class="q-btn" id="mode-sim">Real test simulation <span class="q-btn-sub">24 random questions, 45 minute timer, pass mark 18 of 24</span></button>
+        <button class="q-btn" id="mode-full">Full 62 practice <span class="q-btn-sub">all 62 questions, pass mark 75%, no timer</span></button>
+      </div>
+
+      <div class="quiz-run" id="quiz-run" hidden>
+        <div class="quiz-top">
+          <span class="quiz-prog" id="quiz-prog"></span>
+          <span class="quiz-timer" id="quiz-timer" hidden></span>
+        </div>
+        <p class="quiz-q" id="quiz-q"></p>
+        <div class="quiz-opts" id="quiz-opts"></div>
+        <button class="q-btn" id="quiz-next">Next question</button>
+      </div>
+
+      <div class="quiz-result" id="quiz-result" hidden>
+        <div class="result-banner" id="result-banner"></div>
+        <p class="result-score" id="result-score"></p>
+        <p class="quiz-note">The questions you missed are listed below, with the correct answer and a short explanation.</p>
+        <div class="result-review" id="result-review"></div>
+        <div class="result-actions">
+          <button class="q-btn" id="quiz-copy">Copy my result</button>
+          <button class="q-btn ghost" id="quiz-again">Try again (reshuffle)</button>
+        </div>
+        <p class="quiz-note" id="copy-note"></p>
+      </div>
+    </div>
+
+    <h2 id="bonus"><span class="n">06</span>Beyond the handbook<span class="lead">Practice-bank staples you may still see</span></h2>
     <p class="lede">These facts are <strong>not in the handbook text</strong>, so the real test is unlikely to ask them. But they appear often in practice banks, so it costs little to know them.</p>
 
     <ul>
@@ -899,7 +967,7 @@ article li strong{font-weight:600}
       <p>Practice banks include these because older editions of the handbook mentioned them and they are common general knowledge. Since the current test draws only from the handbook, treat these as useful extras, not exam priorities.</p>
     </div>
 
-    <h2 id="study"><span class="n">06</span>How to study<span class="lead">A plan for the days before 3 September</span></h2>
+    <h2 id="study"><span class="n">07</span>How to study<span class="lead">A plan for the days before 3 September</span></h2>
     <p class="lede">You do not need to memorise the whole handbook. With 20 days left, a focused plan is enough.</p>
 
     <ul>
@@ -912,10 +980,14 @@ article li strong{font-weight:600}
     </ul>
 
     <div class="callout">
+      <p><strong>How to make facts stick.</strong> Every question card now has a <em>Remember</em> line with a short hook. Use spaced repetition: review a card today, again tomorrow, and again three days later. Self-test instead of re-reading, and say the answer out loud. The practice test above is the fastest way to find your weak spots.</p>
+    </div>
+
+    <div class="callout">
       <p><strong>Remember the rule of two.</strong> Every answer here was checked against the official handbook and at least one independent source. If you know the 62 facts, you are ready.</p>
     </div>
 
-    <h2 id="sources"><span class="n">07</span>Sources<span class="lead">Where the facts and the counts come from</span></h2>
+    <h2 id="sources"><span class="n">08</span>Sources<span class="lead">Where the facts and the counts come from</span></h2>
     <p class="lede">Every answer was verified against the official handbook and at least one independent source. The ranking was built from 4,700 practice questions read across the 11 banks below.</p>
 
     <ul class="sources">
@@ -931,6 +1003,593 @@ article li strong{font-weight:600}
   <span>Prepared 2026-08-14 for the 3 Sep 2026 test</span>
   <span>Not affiliated with the Home Office or GOV.UK</span>
 </footer>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+
+  var QUIZ = [
+    {id:"q01",t:"1",ch:"History",n:11,hb:"§3.4",
+     q:"In which years did the First World War take place?",
+     opt:["1914 to 1918","1914 to 1917","1918 to 1921","1939 to 1945"],a:0,
+     x:"The First World War started in 1914 and ended in 1918. Millions of people fought and died, and the war ended with victory for the Allies.",
+     mem:"The Great War ran from 19-14 to 19-18. It ended at 11am on the 11th day of the 11th month."},
+    {id:"q02",t:"1",ch:"History",n:10,hb:"§3.6",
+     q:"Which queen was on the throne when the Spanish Armada was defeated in 1588?",
+     opt:["Queen Elizabeth I","Queen Victoria","Queen Anne","Queen Mary II"],a:0,
+     x:"The English navy defeated the Spanish Armada in 1588 during the reign of Elizabeth I.",
+     mem:"Armada in 1588, Elizabeth I was the queen. V for Victory over the Armada, V for Victoria is wrong."},
+    {id:"q03",t:"1",ch:"History",n:9,hb:"§3.5",
+     q:"In which year did King John sign the Magna Carta?",
+     opt:["1215","1066","1154","1295"],a:0,
+     x:"The Magna Carta of 1215 said the king is subject to the law, not above it.",
+     mem:"Magna Carta = 1215. Count down: 1-2-15, King John had to bow to the law."},
+    {id:"q04",t:"1",ch:"History",n:9,hb:"§3.4",
+     q:"In which years did the Second World War take place?",
+     opt:["1939 to 1945","1914 to 1918","1939 to 1944","1940 to 1946"],a:0,
+     x:"The Second World War started in 1939 and ended in 1945.",
+     mem:"WWII = 1939 to 1945. Nine and forty-five, the world fought to stay alive."},
+    {id:"q05",t:"1",ch:"What is the UK",n:9,hb:"§2.2",
+     q:"Which places are the Crown Dependencies?",
+     opt:["The Isle of Man and the Channel Islands","Scotland and Wales","The Isle of Wight and Jersey","The Falkland Islands and Gibraltar"],a:0,
+     x:"The Crown Dependencies are the Isle of Man and the Channel Islands. They are not part of the UK.",
+     mem:"Crown Dependencies = islands near but not in the UK: the Isle of Man and the Channel Islands."},
+    {id:"q06",t:"2",ch:"History",n:8,hb:"§3.7",
+     q:"In which year was the Battle of Hastings?",
+     opt:["1066","1016","1154","1485"],a:0,
+     x:"The Battle of Hastings in 1066 changed the history of England. William of Normandy defeated King Harold.",
+     mem:"1066: the year England got its Will(iam). Ten sixty-six, Harold got the fix."},
+    {id:"q07",t:"2",ch:"History",n:8,hb:"§3.2",
+     q:"In which year was the National Health Service (NHS) founded?",
+     opt:["1948","1939","1945","1952"],a:0,
+     x:"The NHS was founded in 1948 to provide free healthcare for everyone.",
+     mem:"NHS born in 1948. Health came after the war, 1948."},
+    {id:"q08",t:"2",ch:"History",n:8,hb:"§3.7",
+     q:"When did the Romans invade Britain, and who led a famous revolt against them?",
+     opt:["The Romans invaded in 43 AD, and Boudicca led a famous revolt","The Romans invaded in 55 BC, and Boudicca led a famous revolt","The Romans invaded in 43 AD, and Queen Victoria led a famous revolt","The Romans invaded in 55 BC, and Alfred the Great led a famous revolt"],a:0,
+     x:"The Romans invaded Britain in 43 AD and ruled for almost 400 years. Boudicca, queen of the Iceni, led a famous revolt.",
+     mem:"Romans came in 43 AD. Boudicca fought back. 55 BC was only a first visit, so reject it."},
+    {id:"q09",t:"2",ch:"Modern society",n:8,hb:"§4.6",
+     q:"Who is the patron saint of England?",
+     opt:["St George","St Andrew","St David","St Patrick"],a:0,
+     x:"St George is the patron saint of England. His day is 23 April.",
+     mem:"England's red cross on white is St George. George keeps England's flag."},
+    {id:"q10",t:"2",ch:"History",n:7,hb:"§3.4",
+     q:"Who was Prime Minister for most of the Second World War?",
+     opt:["Winston Churchill","Neville Chamberlain","Clement Attlee","David Lloyd George"],a:0,
+     x:"Winston Churchill became Prime Minister in May 1940 and led Britain through most of the Second World War.",
+     mem:"Churchill led the war. He was PM for most of WWII."},
+    {id:"q11",t:"2",ch:"History",n:7,hb:"§3.2",
+     q:"Who was the first woman to become Prime Minister of the UK?",
+     opt:["Margaret Thatcher","Theresa May","Barbara Castle","Queen Elizabeth II"],a:0,
+     x:"Margaret Thatcher became the first woman Prime Minister in 1979, in office until 1990.",
+     mem:"Thatcher was the first woman PM, from 1979."},
+    {id:"q12",t:"2",ch:"Gov & law",n:7,hb:"§5.6",
+     q:"At what age can most people in the UK vote in a general election?",
+     opt:["18","16","21","25"],a:0,
+     x:"The voting age is 18. You also need to be on the electoral register and be a British, Irish or Commonwealth citizen.",
+     mem:"Vote at 18. One-eight, time to be great."},
+    {id:"q13",t:"2",ch:"Values",n:7,hb:"§5.4",
+     q:"Which of these is a fundamental principle of British life?",
+     opt:["The rule of law","The right to bear arms","Compulsory voting","Absolute monarchy"],a:0,
+     x:"The fundamental principles of British life include democracy, the rule of law, individual liberty and tolerance of others.",
+     mem:"Rule of law = nobody is above the law, not even the Prime Minister."},
+    {id:"q14",t:"2",ch:"Modern society",n:7,hb:"§4.6",
+     q:"Who is the head of the Church of England?",
+     opt:["The monarch","The Archbishop of Canterbury","The Prime Minister","The Pope"],a:0,
+     x:"The monarch is the head of the Church of England, which was set up by Henry VIII.",
+     mem:"The monarch heads the Church of England since Henry VIII."},
+    {id:"q15",t:"2",ch:"Gov & law",n:7,hb:"§5.3",
+     q:"What kind of constitution does the UK have?",
+     opt:["One that is not written in a single document","One written in a single document like the USA","One that can never be changed","One that was created in 1950"],a:0,
+     x:"The UK has an unwritten constitution, built from laws, customs and conventions over centuries.",
+     mem:"UK constitution = unwritten, built up over centuries, not one document."},
+    {id:"q16",t:"2",ch:"History",n:7,hb:"§3.6",
+     q:"In which years did the English Civil War take place, and which king fought against Parliament?",
+     opt:["1642 to 1651, fought between King Charles I and Parliament","1642 to 1651, fought between King Charles II and Parliament","1688 to 1689, fought between King Charles I and Parliament","1215 to 1217, fought between King John and the barons"],a:0,
+     x:"The English Civil War ran from 1642 to 1651. King Charles I fought Parliament, lost, and was executed in 1649.",
+     mem:"Civil War 1642 to 1651: Charles I lost his head. The second Charles came after."},
+    {id:"q17",t:"2",ch:"History",n:7,hb:"§3.7",
+     q:"Who fought the Vikings in England and is seen as the first king of England?",
+     opt:["Alfred the Great","King Arthur","Edward the Confessor","William the Conqueror"],a:0,
+     x:"Vikings invaded from Scandinavia. Alfred the Great, king of Wessex, fought them and is seen as the first king of England.",
+     mem:"Alfred the Great beat the Vikings and united England."},
+    {id:"q18",t:"2",ch:"History",n:7,hb:"§3.3",
+     q:"What is the name for the period when factories, machines and railways transformed Britain?",
+     opt:["The Industrial Revolution","The Enlightenment","The Reformation","The Agricultural Revolution"],a:0,
+     x:"The Industrial Revolution changed Britain from a farming country to an industrial one with factories, canals and railways.",
+     mem:"Factories, machines, railways = the Industrial Revolution."},
+    {id:"q19",t:"2",ch:"History",n:7,hb:"§3.3",
+     q:"What is the name of the 18th century period when new ideas about science and reason spread across Europe?",
+     opt:["The Enlightenment","The Renaissance","The Industrial Revolution","The Glorious Revolution"],a:0,
+     x:"During the 18th century, new ideas about politics, philosophy and science developed across Europe. This period is called the Enlightenment.",
+     mem:"Bright ideas in the 1700s = the Enlightenment."},
+    {id:"q20",t:"2",ch:"Modern society",n:7,hb:"§4.4",
+     q:"Who is the most famous playwright in English history?",
+     opt:["William Shakespeare","Charles Dickens","Jane Austen","Geoffrey Chaucer"],a:0,
+     x:"William Shakespeare (1564 to 1616) is England's most famous playwright and poet.",
+     mem:"Shakespeare wrote Hamlet, Romeo and Juliet and Macbeth."},
+    {id:"q21",t:"2",ch:"Gov & law",n:7,hb:"§5.7",
+     q:"What is devolution?",
+     opt:["Power given by the UK Parliament to parliaments and assemblies in Scotland, Wales and Northern Ireland","Power given by local councils to the UK Parliament","The power to leave the European Union","The transfer of the monarchy to Scotland"],a:0,
+     x:"Some powers have been transferred to the Scottish Parliament, the Senedd in Wales, and the Northern Ireland Assembly. The UK Parliament keeps defence and foreign policy.",
+     mem:"Devolution = Westminster gives power down to Edinburgh, Cardiff and Belfast."},
+    {id:"q22",t:"2",ch:"Gov & law",n:7,hb:"§5.6",
+     q:"Who runs the UK government and usually lives at 10 Downing Street?",
+     opt:["The Prime Minister","The Speaker","The Chancellor of the Exchequer","The Lord Chief Justice"],a:0,
+     x:"The Prime Minister leads the government, chooses the Cabinet, and usually lives at 10 Downing Street.",
+     mem:"The PM runs the government and lives at number 10."},
+    {id:"q23",t:"2",ch:"Gov & law",n:7,hb:"§5.6",
+     q:"What are the two main political parties in the UK?",
+     opt:["The Conservative Party and the Labour Party","The Conservative Party and the Liberal Democrats","The Labour Party and the Green Party","The SNP and Plaid Cymru"],a:0,
+     x:"The two main parties are the Conservative Party and the Labour Party.",
+     mem:"The two big parties are Conservative and Labour."},
+    {id:"q24",t:"2",ch:"Gov & law",n:7,hb:"§5.6",
+     q:"What is the largest political party that is not in government called?",
+     opt:["The Official Opposition","The Backbenchers","The Shadow Cabinet","The Whips"],a:0,
+     x:"The second largest party in the House of Commons is the opposition. Its leader faces the Prime Minister in debates.",
+     mem:"The biggest party not in government = the Official Opposition."},
+    {id:"q25",t:"2",ch:"Modern society",n:7,hb:"§4.6",
+     q:"Who is the patron saint of Scotland?",
+     opt:["St Andrew","St George","St David","St Patrick"],a:0,
+     x:"St Andrew is the patron saint of Scotland. His day is 30 November.",
+     mem:"Scotland's white saltire cross = St Andrew."},
+    {id:"q26",t:"2",ch:"Gov & law",n:7,hb:"§5.3",
+     q:"What are the two Houses of Parliament called?",
+     opt:["The House of Commons and the House of Lords","The Senate and the House of Commons","The House of Lords and the Supreme Court","The Commons and the Monarchy"],a:0,
+     x:"Parliament has the elected House of Commons and the unelected House of Lords.",
+     mem:"Parliament = Commons plus Lords."},
+    {id:"q27",t:"2",ch:"Gov & law",n:7,hb:"§5.6",
+     q:"Is the House of Lords elected by voters?",
+     opt:["No","Yes, by all UK voters","Yes, by peers only","Yes, by local councillors"],a:0,
+     x:"The House of Lords is not elected. Its members, called peers, are appointed.",
+     mem:"Lords are appointed, not elected. No vote needed."},
+    {id:"q28",t:"2",ch:"What is the UK",n:7,hb:"§2.2",
+     q:"Which countries make up the United Kingdom?",
+     opt:["England, Scotland, Wales and Northern Ireland","England, Scotland and Wales","England, Scotland, Wales, Northern Ireland and the Republic of Ireland","Great Britain and the Isle of Man"],a:0,
+     x:"The United Kingdom is made up of four countries: England, Scotland, Wales and Northern Ireland.",
+     mem:"UK = 4 countries. Great Britain = 3, without Northern Ireland."},
+    {id:"q29",t:"2",ch:"Modern society",n:7,hb:"§4.5",
+     q:"Which prehistoric monument in England draws visitors from around the world?",
+     opt:["Stonehenge","Hadrian's Wall","The White Cliffs of Dover","Buckingham Palace"],a:0,
+     x:"Stonehenge in Wiltshire was built thousands of years ago, before written history.",
+     mem:"Stonehenge = the ancient stone circle in Wiltshire."},
+    {id:"q30",t:"3",ch:"What is the UK",n:6,hb:"§2.2",
+     q:"Which countries make up Great Britain?",
+     opt:["England, Scotland and Wales","England, Scotland and Northern Ireland","England, Wales and Northern Ireland","England, Scotland, Wales and Northern Ireland"],a:0,
+     x:"Great Britain is the island that holds England, Scotland and Wales. Northern Ireland is not part of it.",
+     mem:"Great Britain = the big island, 3 countries. Northern Ireland is separate."},
+    {id:"q31",t:"3",ch:"History",n:6,hb:"§3.2",
+     q:"In which year did the UK join the European Economic Community, later the European Union?",
+     opt:["1973","1957","1966","1992"],a:0,
+     x:"The UK joined the EEC in 1973. It later left the EU, but never adopted the euro.",
+     mem:"UK joined the EEC in 1973. Seven three, Europe came to be."},
+    {id:"q32",t:"3",ch:"Modern society",n:6,hb:"§4.3",
+     q:"On which date is Remembrance Day held in the UK?",
+     opt:["11 November","5 November","6 June","17 March"],a:0,
+     x:"Remembrance Day on 11 November remembers people who died in the two world wars and other conflicts.",
+     mem:"Remembrance = 11 November, the 11th hour of the 11th day of the 11th month."},
+    {id:"q33",t:"3",ch:"Modern society",n:6,hb:"§4.7",
+     q:"Which sport began in Britain in the 19th century and is now played around the world?",
+     opt:["Football (association football)","Cricket","Baseball","American football"],a:0,
+     x:"Football is the most popular sport in the world. Many famous sports began in Britain, including cricket, tennis, golf and rugby.",
+     mem:"Football is the world's game and it began in Britain in the 19th century."},
+    {id:"q34",t:"3",ch:"Modern society",n:6,hb:"§4.5",
+     q:"Where are the Crown Jewels kept?",
+     opt:["The Tower of London","Buckingham Palace","Westminster Abbey","The British Museum"],a:0,
+     x:"The Crown Jewels are kept in the Tower of London, a castle built by William the Conqueror.",
+     mem:"Crown Jewels live in the Tower of London."},
+    {id:"q35",t:"3",ch:"Gov & law",n:6,hb:"§5.8",
+     q:"Who can be asked to do jury service in England and Wales?",
+     opt:["Most people aged 18 to 70 who are on the electoral register","Anyone aged over 65","Only people who volunteer","Only British citizens over 21"],a:0,
+     x:"Anyone on the electoral register aged 18 to 70 can be called for jury service.",
+     mem:"Jury = 18 to 70 and on the electoral register. 12 jurors in England and Wales, 15 in Scotland."},
+    {id:"q36",t:"3",ch:"Values",n:6,hb:"§5.5",
+     q:"Which of these is a responsibility of everyone living in the UK?",
+     opt:["To obey the law","To pay no taxes","To own property","To vote for the government"],a:0,
+     x:"Everyone in the UK should obey the law, respect the rights of others, treat others with fairness and look after the area where they live.",
+     mem:"Your first duty: obey the law."},
+    {id:"q37",t:"3",ch:"History",n:6,hb:"§3.6",
+     q:"Which king set up the Church of England in the 16th century?",
+     opt:["Henry VIII","Henry VII","Edward VI","Henry V"],a:0,
+     x:"Henry VIII broke away from the Catholic Church and made himself head of the Church of England in the 1530s.",
+     mem:"Henry VIII set up the Church of England to break from Rome."},
+    {id:"q38",t:"3",ch:"What is the UK",n:6,hb:"§4.8",
+     q:"What is the currency of the UK?",
+     opt:["The pound sterling (£)","The euro (€)","The dollar ($)","The franc"],a:0,
+     x:"The currency of the UK is the pound sterling, written with the symbol £.",
+     mem:"The UK kept the pound, not the euro."},
+    {id:"q39",t:"3",ch:"Gov & law",n:6,hb:"§5.8",
+     q:"Who runs local services like schools and roads in your area?",
+     opt:["Local councils, led by elected councillors","The UK Parliament","The local police","The monarch"],a:0,
+     x:"Local councils provide services such as housing, schools, roads and rubbish collection. Councillors are elected by local voters.",
+     mem:"Local services = local councils, run by elected councillors."},
+    {id:"q40",t:"3",ch:"Modern society",n:6,hb:"§4.6",
+     q:"Which religion is the main one in the UK, and what other faiths are common?",
+     opt:["Christianity is the main religion; Islam, Hinduism, Sikhism, Judaism and Buddhism are also present","Islam is the main religion; Christianity is also present","Christianity is the only religion allowed","There is no religion in the UK"],a:0,
+     x:"Christianity is the main religion in the UK. People of other faiths, including Islam, Hinduism, Sikhism, Judaism and Buddhism, also live there.",
+     mem:"Christianity first, then many faiths freely practised."},
+    {id:"q41",t:"3",ch:"Gov & law",n:5,hb:"§5.6",
+     q:"How often must a general election be held, at most?",
+     opt:["At least every 5 years","Every 4 years exactly","Every 7 years","Only when the monarch decides"],a:0,
+     x:"The law says a general election must be held at least every 5 years. The Prime Minister can call one earlier.",
+     mem:"A general election at least every 5 years."},
+    {id:"q42",t:"3",ch:"Modern society",n:5,hb:"§4.6",
+     q:"Who is the patron saint of Northern Ireland?",
+     opt:["St Patrick","St George","St Andrew","St David"],a:0,
+     x:"St Patrick is the patron saint of Ireland, including Northern Ireland. St Patrick's day is 17 March.",
+     mem:"Northern Ireland = St Patrick, 17 March."},
+    {id:"q43",t:"3",ch:"What is the UK",n:5,hb:"§4.8",
+     q:"What is the capital of Scotland?",
+     opt:["Edinburgh","Glasgow","Cardiff","Belfast"],a:0,
+     x:"Edinburgh is the capital of Scotland. The Scottish Parliament meets there.",
+     mem:"Scotland's capital is Edinburgh, even though Glasgow is bigger."},
+    {id:"q44",t:"3",ch:"Gov & law",n:5,hb:"§5.5",
+     q:"Which court hears the most serious criminal cases in England and Wales?",
+     opt:["The Crown Court","Magistrates' Courts","The Court of Appeal","The High Court"],a:0,
+     x:"The Crown Court hears serious cases such as murder, with a judge and a jury.",
+     mem:"Serious crime = Crown Court with a judge and jury."},
+    {id:"q45",t:"3",ch:"Modern society",n:5,hb:"§4.3",
+     q:"On which date is Bonfire Night (Guy Fawkes Night) celebrated in the UK?",
+     opt:["5 November","1 November","31 October","11 November"],a:0,
+     x:"On 5 November 1605, Guy Fawkes tried to blow up the Houses of Parliament. Bonfire Night marks this.",
+     mem:"Bonfire Night = 5 November, when Guy Fawkes tried to blow up Parliament."},
+    {id:"q46",t:"3",ch:"History",n:5,hb:"§3.7",
+     q:"Which wall was built by the Romans as the northern frontier of their empire in Britain?",
+     opt:["Hadrian's Wall","The Antonine Wall","Offa's Dyke","The Great Wall of China"],a:0,
+     x:"Hadrian's Wall marked the northern edge of Roman Britain.",
+     mem:"Hadrian's Wall = the Roman border wall in the north."},
+    {id:"q47",t:"3",ch:"What is the UK",n:5,hb:"§3.3",
+     q:"The Union Flag combines the flags of St George, St Andrew and St Patrick. Which part of the UK is not shown on it?",
+     opt:["Wales","Scotland","England","Northern Ireland"],a:0,
+     x:"The Union Flag combines the crosses of St George, St Andrew and St Patrick. The Welsh dragon does not appear on it.",
+     mem:"The Union Flag has no Welsh dragon."},
+    {id:"q48",t:"3",ch:"History",n:5,hb:"§3.6",
+     q:"In which year was the Habeas Corpus Act passed, protecting people from being held in prison without a fair trial?",
+     opt:["1679","1689","1215","1776"],a:0,
+     x:"The Habeas Corpus Act of 1679 protected people from being kept in prison without being brought to court.",
+     mem:"Habeas Corpus Act 1679: no prison without a trial."},
+    {id:"q49",t:"3",ch:"History",n:5,hb:"§3.6",
+     q:"Which events in 1688 and 1689 gave Parliament more power over the monarch?",
+     opt:["The Glorious Revolution (1688) and the Bill of Rights (1689)","The Glorious Revolution (1689) and the Bill of Rights (1688)","The Civil War (1642) and the Habeas Corpus Act (1679)","The French Revolution (1789) and the Restoration (1660)"],a:0,
+     x:"In 1688, James II was replaced by William and Mary. The Bill of Rights of 1689 gave Parliament more power.",
+     mem:"1688 Glorious Revolution, 1689 Bill of Rights: Parliament wins."},
+    {id:"q50",t:"4",ch:"History",n:5,hb:"§3.4",
+     q:"What was the Blitz?",
+     opt:["The German bombing of British cities during the Second World War, mainly in 1940 and 1941","The German invasion of Britain in 1944","A British bombing campaign over Germany","A famous sea battle in 1916"],a:0,
+     x:"During the Blitz, German planes bombed British cities, including London. People took shelter and children were often evacuated.",
+     mem:"Blitz = bombs on British cities in 1940 and 1941."},
+    {id:"q51",t:"4",ch:"Modern society",n:5,hb:"§4.4",
+     q:"What is the BBC?",
+     opt:["The British Broadcasting Corporation, the UK's main public broadcaster","A government department that prints money","A private advertising company","The national newspaper of the UK"],a:0,
+     x:"The BBC is the UK's public broadcasting service, paid for by the television licence.",
+     mem:"BBC = British Broadcasting Corporation, paid for by the TV licence."},
+    {id:"q52",t:"4",ch:"Everyday needs",n:5,hb:"§6.6",
+     q:"At what age can you buy alcohol in a shop or pub in the UK?",
+     opt:["18","16","17","21"],a:0,
+     x:"You must be 18 to buy alcohol.",
+     mem:"Alcohol at 18, same as voting."},
+    {id:"q53",t:"4",ch:"Everyday needs",n:5,hb:"§6.6",
+     q:"At what age can you buy cigarettes in the UK?",
+     opt:["18","16","17","21"],a:0,
+     x:"You must be 18 to buy tobacco products. Smoking is banned in enclosed public places.",
+     mem:"Tobacco at 18, and smoking is banned indoors in public places."},
+    {id:"q54",t:"4",ch:"Gov & law",n:5,hb:"§5.6",
+     q:"Who are the people elected to sit in the House of Commons?",
+     opt:["Members of Parliament (MPs)","Peers","Councillors","Commissioners"],a:0,
+     x:"MPs are elected by voters in constituencies, one MP per area. There are about 650 MPs.",
+     mem:"MPs sit in the Commons, about 650 of them."},
+    {id:"q55",t:"4",ch:"What is the UK",n:5,hb:"§4.8",
+     q:"About how many people live in the UK?",
+     opt:["About 67 million","About 45 million","About 110 million","About 30 million"],a:0,
+     x:"The UK has a population of about 67 million people.",
+     mem:"UK population about 67 million."},
+    {id:"q56",t:"4",ch:"History",n:5,hb:"§3.7",
+     q:"After the Battle of Hastings, who became king of England and ordered a great record of the country?",
+     opt:["William the Conqueror, who ordered the Domesday Book","King Harold, who ordered the Magna Carta","Alfred the Great, who ordered the Bayeux Tapestry","Henry VIII, who ordered the Domesday Book"],a:0,
+     x:"William of Normandy, called William the Conqueror, became the first Norman king in 1066. He ordered the Domesday Book.",
+     mem:"After 1066: William the Conqueror and the Domesday Book."},
+    {id:"q57",t:"4",ch:"History",n:4,hb:"§3.3",
+     q:"Which queen ruled Britain for most of the 19th century, from 1837 to 1901?",
+     opt:["Queen Victoria","Queen Elizabeth I","Queen Anne","Queen Elizabeth II"],a:0,
+     x:"Queen Victoria reigned from 1837 to 1901, a long period called the Victorian era.",
+     mem:"Victoria reigned 1837 to 1901, the 19th century queen."},
+    {id:"q58",t:"4",ch:"History",n:5,hb:"§3.3",
+     q:"Who is usually seen as the first Prime Minister of Britain?",
+     opt:["Sir Robert Walpole","Sir Winston Churchill","Lord Palmerston","Benjamin Disraeli"],a:0,
+     x:"Sir Robert Walpole (1721 to 1742) is usually seen as the first British Prime Minister.",
+     mem:"Walpole, from 1721, is seen as the first PM."},
+    {id:"q59",t:"4",ch:"What is the UK",n:4,hb:"§4.8",
+     q:"What is the capital of Wales?",
+     opt:["Cardiff","Swansea","Newport","Belfast"],a:0,
+     x:"Cardiff is the capital of Wales. The Senedd (Welsh Parliament) meets there.",
+     mem:"Wales = Cardiff. Think of the Senedd building there."},
+    {id:"q60",t:"4",ch:"What is the UK",n:4,hb:"§4.8",
+     q:"What is the capital of Northern Ireland?",
+     opt:["Belfast","Dublin","Londonderry","Cardiff"],a:0,
+     x:"Belfast is the capital of Northern Ireland. The Northern Ireland Assembly meets there.",
+     mem:"Northern Ireland = Belfast. Not Dublin, that is the Republic of Ireland."},
+    {id:"q61",t:"4",ch:"Modern society",n:4,hb:"§4.6",
+     q:"Who is the patron saint of Wales?",
+     opt:["St David","St George","St Andrew","St Patrick"],a:0,
+     x:"St David is the patron saint of Wales. St David's day is 1 March.",
+     mem:"Wales = St David, 1 March. David kept the Welsh safe."},
+    {id:"q62",t:"4",ch:"Everyday needs",n:4,hb:"§6.2",
+     q:"What is the tax year in the UK?",
+     opt:["6 April to 5 April the following year","1 January to 31 December","1 April to 31 March","6 July to 5 July the following year"],a:0,
+     x:"The UK tax year runs from 6 April to 5 April the next year.",
+     mem:"Tax year: 6 April to 5 April, starting in spring not January."}
+  ];
+
+  var byId = {};
+  QUIZ.forEach(function(e){ byId[e.id] = e; });
+
+  document.querySelectorAll('.qcard').forEach(function(c){
+    var rank = c.querySelector('.qc-rank');
+    if(!rank) return;
+    var e = byId['q' + rank.textContent.trim()];
+    if(e && e.mem){
+      var m = document.createElement('p');
+      m.className = 'qc-m';
+      m.innerHTML = '<span class="m-k">Remember</span>' + e.mem;
+      var ev = c.querySelector('.qc-ev');
+      if(ev){ ev.parentNode.insertBefore(m, ev.nextSibling); }
+      else { c.appendChild(m); }
+    }
+  });
+
+  function mulberry32(a){
+    return function(){
+      a |= 0; a = a + 0x6D2B79F5 | 0;
+      var t = Math.imul(a ^ a >>> 15, 1 | a);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+  function shuffle(arr, seed){
+    var rnd = mulberry32(seed);
+    for(var i = arr.length - 1; i > 0; i--){
+      var j = Math.floor(rnd() * (i + 1));
+      var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
+    }
+    return arr;
+  }
+
+  var LS = 'lituk_quiz_v1';
+  function readStore(){
+    try { return JSON.parse(localStorage.getItem(LS) || 'null'); }
+    catch(e){ return null; }
+  }
+  function saveRunning(){
+    var d = readStore() || {};
+    if(state && !state.finished){
+      d.running = {mode:state.mode, order:state.order, answers:state.answers, cur:state.cur, seconds:state.seconds, total:state.total};
+    } else {
+      d.running = null;
+    }
+    try { localStorage.setItem(LS, JSON.stringify(d)); } catch(e){}
+  }
+  function saveLast(correct, total, mode){
+    var d = readStore() || {};
+    d.last = {correct:correct, total:total, mode:mode, date:new Date().toISOString().slice(0,10)};
+    try { localStorage.setItem(LS, JSON.stringify(d)); } catch(e){}
+  }
+
+  var state = null;
+  var timerId = null;
+
+  function startQuiz(mode){
+    var ids = QUIZ.map(function(e){ return e.id; });
+    var order = shuffle(ids, Date.now());
+    var total = mode === 'sim' ? 24 : order.length;
+    state = {mode:mode, order:order.slice(0, total), answers:new Array(total).fill(null), cur:0, total:total, seconds:mode === 'sim' ? 2700 : 0, finished:false};
+    $('quiz-start').hidden = true;
+    $('quiz-result').hidden = true;
+    $('quiz-run').hidden = false;
+    var t = $('quiz-timer');
+    if(mode === 'sim'){
+      t.hidden = false;
+      updateTimer();
+      stopTimer();
+      timerId = setInterval(function(){
+        state.seconds--;
+        if(state.seconds <= 0){ state.seconds = 0; updateTimer(); submit(); }
+        else { updateTimer(); }
+      }, 1000);
+    } else {
+      t.hidden = true;
+    }
+    saveRunning();
+    renderQ();
+    window.scrollTo({top: $('quiz').getBoundingClientRect().top + window.pageYOffset - 90, behavior:'smooth'});
+  }
+
+  function resume(r){
+    state = {mode:r.mode, order:r.order, answers:r.answers, cur:r.cur, total:r.total, seconds:r.seconds || 0, finished:false};
+    $('quiz-start').hidden = true;
+    $('quiz-result').hidden = true;
+    $('quiz-run').hidden = false;
+    var t = $('quiz-timer');
+    if(state.mode === 'sim'){
+      t.hidden = false;
+      updateTimer();
+      stopTimer();
+      timerId = setInterval(function(){
+        state.seconds--;
+        if(state.seconds <= 0){ state.seconds = 0; updateTimer(); submit(); }
+        else { updateTimer(); }
+      }, 1000);
+    } else {
+      t.hidden = true;
+    }
+    renderQ();
+    window.scrollTo({top: $('quiz').getBoundingClientRect().top + window.pageYOffset - 90, behavior:'smooth'});
+  }
+
+  function stopTimer(){
+    if(timerId){ clearInterval(timerId); timerId = null; }
+  }
+
+  function updateTimer(){
+    var s = state.seconds;
+    var mm = String(Math.floor(s / 60)).padStart(2, '0');
+    var ss = String(s % 60).padStart(2, '0');
+    var el = $('quiz-timer');
+    el.textContent = 'Time left: ' + mm + ':' + ss;
+    el.classList.toggle('low', s <= 300);
+  }
+
+  function renderQ(){
+    var e = byId[state.order[state.cur]];
+    $('quiz-prog').textContent = 'Question ' + (state.cur + 1) + ' of ' + state.total;
+    $('quiz-q').textContent = e.q;
+    var box = $('quiz-opts');
+    box.innerHTML = '';
+    var saved = state.answers[state.cur];
+    e.opt.forEach(function(o, i){
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'q-opt' + (saved === i ? ' sel' : '');
+      b.textContent = o;
+      b.addEventListener('click', function(){ choose(i); });
+      box.appendChild(b);
+    });
+    var nxt = $('quiz-next');
+    nxt.textContent = state.cur === state.total - 1 ? 'Finish and see my result' : 'Next question';
+    nxt.disabled = saved === null;
+    nxt.onclick = function(){
+      if(state.answers[state.cur] === null) return;
+      state.cur++;
+      if(state.cur >= state.total){ submit(); }
+      else { renderQ(); saveRunning(); }
+    };
+  }
+
+  function choose(i){
+    state.answers[state.cur] = i;
+    saveRunning();
+    var bs = $('quiz-opts').children;
+    for(var k = 0; k < bs.length; k++){ bs[k].classList.toggle('sel', k === i); }
+    $('quiz-next').disabled = false;
+  }
+
+  function submit(){
+    stopTimer();
+    state.finished = true;
+    var correct = 0;
+    state.order.forEach(function(id, i){
+      if(state.answers[i] === byId[id].a) correct++;
+    });
+    var pct = correct / state.total;
+    var pass = pct >= 0.75;
+    var banner = $('result-banner');
+    banner.textContent = pass ? 'PASS' : 'FAIL';
+    banner.className = 'result-banner ' + (pass ? 'pass' : 'fail');
+    var need = Math.ceil(state.total * 0.75);
+    $('result-score').innerHTML = '<strong>' + correct + ' of ' + state.total + ' correct (' + Math.round(pct * 100) + '%)</strong>. Pass mark: ' + need + ' of ' + state.total + '.';
+    var review = $('result-review');
+    review.innerHTML = '';
+    var missed = 0;
+    state.order.forEach(function(id, i){
+      var e = byId[id];
+      var ans = state.answers[i];
+      if(ans === e.a) return;
+      missed++;
+      var num = parseInt(id.slice(1), 10);
+      var div = document.createElement('div');
+      div.className = 'result-item';
+      var h = document.createElement('h4');
+      h.textContent = 'Q' + num + ' (' + e.ch + '): ' + e.q;
+      div.appendChild(h);
+      var r1 = document.createElement('p');
+      r1.className = 'r-row';
+      r1.innerHTML = 'Your answer: <b>' + (ans === null ? 'not answered' : e.opt[ans]) + '</b>';
+      var r2 = document.createElement('p');
+      r2.className = 'r-row r-good';
+      r2.innerHTML = 'Correct answer: <b>' + e.opt[e.a] + '</b>';
+      var r3 = document.createElement('p');
+      r3.className = 'r-row';
+      r3.innerHTML = e.x + ' <span style="font-family:var(--mono);font-size:12px;color:var(--accent-ink)">Handbook ' + e.hb + '</span>';
+      div.appendChild(r1); div.appendChild(r2); div.appendChild(r3);
+      review.appendChild(div);
+    });
+    if(missed === 0){
+      var none = document.createElement('p');
+      none.className = 'quiz-note';
+      none.textContent = 'Perfect score. Nothing to review.';
+      review.appendChild(none);
+    }
+    $('quiz-run').hidden = true;
+    $('quiz-result').hidden = false;
+    saveLast(correct, state.total, state.mode);
+    saveRunning();
+    $('copy-note').textContent = '';
+    state = null;
+    window.scrollTo({top: $('quiz').getBoundingClientRect().top + window.pageYOffset - 90, behavior:'smooth'});
+  }
+
+  function copyResult(){
+    if(!state){
+      var d = readStore();
+      if(!d || !d.last){ return; }
+      state = {mode:d.last.mode, order:[], answers:[], cur:0, total:d.last.total};
+      d.running = null;
+      state = null;
+    }
+    var d = readStore();
+    if(!d || !d.last){ $('copy-note').textContent = 'Finish a test first, then copy your result.'; return; }
+    var correct = d.last.correct;
+    var total = d.last.total;
+    var pass = correct / total >= 0.75;
+    var lines = [];
+    lines.push('Life in the UK practice test result (' + (d.last.mode === 'sim' ? 'real test simulation' : 'full 62 practice') + ')');
+    lines.push('Date: ' + d.last.date);
+    lines.push('Score: ' + correct + '/' + total + ' (' + Math.round(correct / total * 100) + '%)');
+    lines.push('Result: ' + (pass ? 'PASS' : 'FAIL'));
+    var txt = lines.join('\n');
+    var note = function(){ $('copy-note').textContent = 'Result copied. Paste it back to share your score.'; };
+    var fb = function(){
+      var ta = document.createElement('textarea');
+      ta.value = txt;
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); note(); } catch(e){ $('copy-note').textContent = 'Copy failed. Use the result on screen instead.'; }
+      document.body.removeChild(ta);
+    };
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(note, fb);
+    } else {
+      fb();
+    }
+  }
+
+  $('mode-sim').addEventListener('click', function(){ startQuiz('sim'); });
+  $('mode-full').addEventListener('click', function(){ startQuiz('full'); });
+  $('quiz-again').addEventListener('click', function(){
+    var d = readStore();
+    startQuiz(d && d.last && d.last.mode ? d.last.mode : 'full');
+  });
+  $('quiz-copy').addEventListener('click', copyResult);
+  window.addEventListener('beforeunload', saveRunning);
+
+  (function setupStart(){
+    var d = readStore();
+    if(d && d.last){
+      $('quiz-note').textContent = 'Last result: ' + d.last.correct + '/' + d.last.total + ' (' + Math.round(d.last.correct / d.last.total * 100) + '%) ' + (d.last.correct / d.last.total >= 0.75 ? 'PASS' : 'FAIL') + ' on ' + d.last.date + '.';
+    }
+    if(d && d.running){
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'q-btn ghost';
+      b.textContent = 'Resume your test';
+      b.addEventListener('click', function(){ resume(d.running); });
+      $('quiz-start').insertBefore(b, $('mode-sim'));
+    }
+  })();
+})();
+</script>
 
 <script>
 (function(){
