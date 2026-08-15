@@ -3,170 +3,340 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consent Order - Irfan & Zile</title>
+    <title>Consent Order - Muhammad Irfan &amp; Zile Huma Atta</title>
     <style>
         /* =========================================================
-           SCREEN PREVIEW STYLES
+           DESIGN TOKENS
            ========================================================= */
-        body {
-            font-family: "Times New Roman", Times, serif;
-            font-size: 11pt;
-            line-height: 1.45;
-            color: #000000;
-            background-color: #ecefe6;
-            margin: 0;
-            padding: 20px 0;
-        }
+        :root {
+            --paper: #ffffff;
+            --ink: #1a1a1a;
+            --ink-soft: #44403c;
+            --screen-bg: #eef0f4;
+            --navy: #1a365d;
+            --navy-deep: #122033;
+            --screen-placeholder: #fff8e1;
+            --screen-placeholder-edge: #b45309;
+            --screen-shadow: 0 12px 32px rgba(26, 30, 42, 0.22);
+            --rule: #1a1a1a;
 
-        .no-print-banner {
-            background-color: #1a365d;
-            color: #ffffff;
-            padding: 15px 20px;
-            text-align: center;
-            max-width: 210mm;
-            margin: 0 auto 20px auto;
-            border-radius: 6px;
-            font-family: Arial, sans-serif;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+            --font-body: "Liberation Serif", "Times New Roman", Times, Georgia, serif;
 
-        .no-print-banner button {
-            background-color: #38a169;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 14px;
-            font-weight: bold;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-top: 8px;
-            transition: background 0.2s;
-        }
-
-        .no-print-banner button:hover {
-            background-color: #2f855a;
-        }
-
-        /* A4 Page Container */
-        .a4-page {
-            background: #ffffff;
-            width: 210mm;
-            min-height: 297mm;
-            padding: 20mm 20mm 20mm 25mm; /* Left margin wider for legal binding/stamping */
-            margin: 0 auto 20px auto;
-            box-sizing: border-box;
-            box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
-            position: relative;
+            --s1: 4pt;
+            --s2: 8pt;
+            --s3: 12pt;
+            --s4: 16pt;
+            --s5: 24pt;
+            --s6: 34pt;
         }
 
         /* =========================================================
-           LEGAL DOCUMENT FORMATTING
+           SCREEN PREVIEW
+           ========================================================= */
+        html {
+            background-color: var(--screen-bg);
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 11pt;
+            line-height: 1.5;
+            color: var(--ink);
+            background-color: var(--screen-bg);
+            margin: 0;
+            padding: 24pt 16pt 48pt 16pt;
+        }
+
+        ::selection {
+            background: var(--navy);
+            color: #ffffff;
+        }
+
+        /* --- Preview toolbar (never prints) --- */
+        .preview-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16pt;
+            flex-wrap: wrap;
+            max-width: 210mm;
+            margin: 0 auto 18pt auto;
+            padding: 12pt 16pt;
+            background: var(--navy);
+            color: #ffffff;
+            border-radius: 8pt;
+            box-shadow: var(--screen-shadow);
+            font-family: Arial, Helvetica, sans-serif;
+            box-sizing: border-box;
+        }
+
+        .preview-toolbar .toolbar-title {
+            font-size: 12pt;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+            margin: 0;
+        }
+
+        .preview-toolbar .toolbar-sub {
+            font-size: 9.5pt;
+            opacity: 0.78;
+            margin: 2pt 0 0 0;
+            font-weight: 400;
+        }
+
+        .preview-toolbar .toolbar-right {
+            display: flex;
+            align-items: center;
+            gap: 10pt;
+            flex-wrap: wrap;
+        }
+
+        .status-chip {
+            display: inline-block;
+            padding: 5pt 10pt;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 999pt;
+            font-size: 9pt;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #ffffff;
+            white-space: nowrap;
+        }
+
+        .preview-toolbar button {
+            background-color: #ffffff;
+            color: var(--navy-deep);
+            border: none;
+            padding: 8pt 16pt;
+            font-size: 10.5pt;
+            font-weight: 700;
+            border-radius: 6pt;
+            cursor: pointer;
+            transition: transform 0.12s ease, box-shadow 0.12s ease;
+            white-space: nowrap;
+        }
+
+        .preview-toolbar button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+        }
+
+        .preview-toolbar button:focus-visible {
+            outline: 2px solid #ffffff;
+            outline-offset: 2px;
+        }
+
+        /* --- A4 page container --- */
+        .a4-page {
+            background: var(--paper);
+            width: 210mm;
+            min-height: 297mm;
+            padding: 20mm 20mm 24mm 25mm; /* wide left margin: binding / stamping */
+            margin: 0 auto 20pt auto;
+            box-sizing: border-box;
+            box-shadow: var(--screen-shadow);
+            border-radius: 2pt;
+            position: relative;
+            color: var(--ink);
+        }
+
+        /* =========================================================
+           LEGAL DOCUMENT TYPOGRAPHY
            ========================================================= */
         .court-header {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 15px;
+            margin-bottom: var(--s4);
+            border-bottom: 1.5pt solid var(--rule);
+            padding-bottom: var(--s3);
         }
 
         .court-header td {
             vertical-align: top;
-            font-weight: bold;
             font-size: 11pt;
+            line-height: 1.45;
+        }
+
+        .court-name {
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .court-case {
+            font-weight: 400;
+            text-align: right;
+        }
+
+        .court-case .case-label {
+            font-weight: 700;
+            letter-spacing: 0.03em;
         }
 
         .statute-title {
             text-align: center;
-            font-weight: bold;
-            font-size: 10.5pt;
+            font-weight: 700;
+            font-size: 10pt;
             text-transform: uppercase;
-            margin: 15px 0;
-            line-height: 1.3;
+            letter-spacing: 0.05em;
+            margin: var(--s3) 0 var(--s5) 0;
+            line-height: 1.5;
+            border-bottom: 0.75pt solid var(--rule);
+            padding-bottom: var(--s3);
         }
 
+        /* --- Parties block --- */
         .parties-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 15px 0 20px 0;
+            margin: var(--s3) 0 var(--s4) 0;
         }
 
         .parties-table td {
-            padding: 4px 0;
+            padding: 5pt 0;
             vertical-align: middle;
         }
 
+        .party-between {
+            font-size: 10pt;
+            text-align: left;
+        }
+
+        .party-and {
+            text-align: center;
+            font-style: italic;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            padding: 6pt 0;
+            color: var(--ink-soft);
+        }
+
         .party-name {
-            font-weight: bold;
+            font-weight: 700;
             text-transform: uppercase;
+            letter-spacing: 0.04em;
+            font-size: 11.5pt;
         }
 
         .party-role {
             text-align: right;
             font-style: italic;
-            text-decoration: underline;
+            font-weight: 400;
+            color: var(--ink-soft);
         }
 
+        /* --- Document title --- */
         .document-title {
             text-align: center;
-            font-weight: bold;
-            font-size: 13pt;
+            font-weight: 700;
+            font-size: 14pt;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 20px 0;
-            padding: 8px 0;
-            border-top: 2px solid #000000;
-            border-bottom: 2px solid #000000;
+            letter-spacing: 0.14em;
+            margin: var(--s5) 0 var(--s4) 0;
+            padding: 7pt 0;
+            border-top: 2.25pt solid var(--rule);
+            border-bottom: 2.25pt solid var(--rule);
         }
 
+        /* --- Preamble --- */
         .preamble {
-            margin-bottom: 15px;
+            margin: 0 0 var(--s4) 0;
             text-align: justify;
         }
 
         .preamble p {
-            margin: 6px 0;
+            margin: 7pt 0;
+            text-indent: 0;
         }
 
+        /* --- Section headings --- */
         .section-heading {
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 11pt;
-            margin-top: 20px;
-            margin-bottom: 10px;
-            border-bottom: 1px solid #000000;
-            padding-bottom: 2px;
+            margin: var(--s6) 0 var(--s3) 0;
+            display: table;
+            width: 100%;
+            border-collapse: collapse;
+            page-break-after: avoid;
         }
 
+        .section-heading .section-label {
+            display: table-cell;
+            white-space: nowrap;
+            font-variant: small-caps;
+            font-size: 11pt;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--ink);
+            padding-right: 10pt;
+        }
+
+        .section-heading .section-rule {
+            display: table-cell;
+            width: 100%;
+            border-bottom: 0.75pt solid var(--rule);
+            vertical-align: middle;
+        }
+
+        /* --- Clause lists: hanging indent, clean alignment --- */
         ol.legal-clauses {
+            list-style: none;
             margin: 0;
-            padding-left: 30px;
+            padding: 0;
+            counter-reset: clause;
         }
 
         ol.legal-clauses > li {
-            margin-bottom: 12px;
+            counter-increment: clause;
+            position: relative;
+            padding-left: 26pt;
+            margin-bottom: 13pt;
             text-align: justify;
-            padding-left: 5px;
+            page-break-inside: avoid;
+        }
+
+        ol.legal-clauses > li::before {
+            content: counter(clause) ".";
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+            font-size: 10.5pt;
+        }
+
+        ol.legal-clauses > li > strong:first-child {
+            font-weight: 700;
         }
 
         ol.legal-subclauses {
             list-style-type: lower-alpha;
-            padding-left: 20px;
-            margin-top: 5px;
+            margin: 6pt 0 2pt 0;
+            padding-left: 20pt;
         }
 
         ol.legal-subclauses li {
-            margin-bottom: 4px;
+            margin-bottom: 4pt;
+            text-align: justify;
         }
 
-        /* Placeholders highlighting for visual editing */
+        /* Operative orders intro line */
+        .operative-intro {
+            margin: 0 0 10pt 0;
+            text-align: justify;
+        }
+
+        /* --- Placeholders (screen highlight, cleared on print) --- */
         .editable-placeholder {
-            background-color: #fffde7;
-            border-bottom: 1px dashed #d69e2e;
+            background-color: var(--screen-placeholder);
+            border-bottom: 1px dashed var(--screen-placeholder-edge);
             padding: 0 2px;
+            font-style: italic;
         }
 
-        /* Signatures Layout */
+        /* =========================================================
+           SIGNATURES
+           ========================================================= */
         .signature-section {
-            margin-top: 30px;
+            margin-top: var(--s6);
             page-break-inside: avoid;
         }
 
@@ -174,44 +344,116 @@
             display: table;
             width: 100%;
             table-layout: fixed;
-            margin-top: 15px;
+            border-spacing: 12pt 0;
+            margin-left: -12pt;
+            margin-right: -12pt;
         }
 
         .signature-col {
             display: table-cell;
-            width: 48%;
+            width: 50%;
             vertical-align: top;
-            padding-right: 4%;
-        }
-
-        .signature-col:last-child {
-            padding-right: 0;
-            padding-left: 4%;
         }
 
         .sig-box {
-            border: 1px solid #cbd5e0;
-            padding: 15px;
-            min-height: 220px;
+            border: 1pt solid var(--rule);
+            padding: 14pt;
+            min-height: 250pt;
             box-sizing: border-box;
-            background: #ffffff;
+            background: var(--paper);
+        }
+
+        .sig-role {
+            display: block;
+            font-size: 9.5pt;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+            margin-bottom: 3pt;
+        }
+
+        .sig-name {
+            display: block;
+            font-size: 12pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 18pt;
         }
 
         .sig-line {
-            border-bottom: 1px solid #000000;
-            margin-top: 50px;
-            margin-bottom: 8px;
+            border-bottom: 1pt solid var(--rule);
+            height: 22pt;
+            margin-bottom: 2pt;
         }
 
+        .sig-caption {
+            font-size: 9.5pt;
+            font-style: italic;
+            letter-spacing: 0.04em;
+            color: var(--ink-soft);
+            margin-bottom: 16pt;
+        }
+
+        .sig-field {
+            margin-bottom: 12pt;
+        }
+
+        .sig-field .sig-label {
+            display: block;
+            font-size: 9pt;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+            margin-bottom: 3pt;
+        }
+
+        .sig-field .sig-value {
+            display: block;
+            padding-top: 4pt;
+            border-bottom: 0.75pt solid var(--rule);
+            min-height: 18pt;
+            font-size: 10pt;
+        }
+
+        /* --- Judicial endorsement --- */
         .judicial-box {
-            margin-top: 40px;
-            border: 2px solid #000000;
-            padding: 15px;
+            margin-top: var(--s6);
+            border: 1.5pt solid var(--rule);
+            padding: 16pt;
             page-break-inside: avoid;
         }
 
+        .judicial-box .judge-date {
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            margin-bottom: 34pt;
+        }
+
+        .judicial-box .by-court {
+            font-weight: 700;
+            font-size: 10pt;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 6pt;
+        }
+
+        .judicial-box .judge-signature {
+            border-bottom: 1pt solid var(--rule);
+            height: 30pt;
+            margin-bottom: 4pt;
+        }
+
+        .judicial-box .judge-caption {
+            font-size: 10pt;
+            font-style: italic;
+            color: var(--ink-soft);
+        }
+
         /* =========================================================
-           PRINT STYLESHEET (A4 STRICT PRINTING)
+           PRINT (A4 STRICT)
            ========================================================= */
         @media print {
             @page {
@@ -225,7 +467,7 @@
                 font-size: 11pt;
             }
 
-            .no-print-banner {
+            .preview-toolbar {
                 display: none !important;
             }
 
@@ -235,70 +477,85 @@
                 padding: 0;
                 margin: 0;
                 box-shadow: none;
+                border-radius: 0;
                 background: none;
             }
 
             .editable-placeholder {
                 background-color: transparent;
                 border-bottom: none;
+                font-style: normal;
             }
 
-            .sig-box {
-                border: 1px solid #000000;
+            p, li {
+                widows: 2;
+                orphans: 2;
+            }
+
+            ol.legal-clauses > li,
+            .sig-box,
+            .judicial-box,
+            .signature-section {
+                page-break-inside: avoid;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Instruction Banner for Previewing -->
-    <div class="no-print-banner">
-        <strong>HMCTS Ready Consent Order Draft (Corrected)</strong><br>
-        Review the document below. When ready, click the button to print or save as a clean PDF.
-        <br>
-        <button onclick="window.print()">Print Order / Save as PDF</button>
+    <!-- Preview toolbar (never printed) -->
+    <div class="preview-toolbar">
+        <div>
+            <p class="toolbar-title">Consent Order</p>
+            <p class="toolbar-sub">Muhammad Irfan &amp; Zile Huma Atta &middot; Draft for HMCTS review</p>
+        </div>
+        <div class="toolbar-right">
+            <span class="status-chip">HMCTS-ready draft</span>
+            <button onclick="window.print()" type="button">Print Order / Save as PDF</button>
+        </div>
     </div>
 
-    <!-- Main A4 Printable Document Container -->
+    <!-- Main A4 printable document -->
     <div class="a4-page">
 
         <!-- Court Header -->
         <table class="court-header">
             <tr>
-                <td style="text-align: left; width: 60%;">
-                    IN THE FAMILY COURT SITTING AT<br>
+                <td class="court-name" style="width: 62%;">
+                    In the Family Court sitting at<br>
                     <span class="editable-placeholder">[INSERT COURT NAME, E.G., CENTRAL FAMILY COURT]</span>
                 </td>
-                <td style="text-align: right; width: 40%;">
-                    CASE NO: <span class="editable-placeholder">[INSERT CASE NO]</span>
+                <td class="court-case" style="width: 38%;">
+                    <span class="case-label">Case No:</span>
+                    <span class="editable-placeholder">[INSERT CASE NO]</span>
                 </td>
             </tr>
         </table>
 
         <!-- Statutory Jurisdiction -->
         <div class="statute-title">
-            IN THE MATTER OF THE MATRIMONIAL CAUSES ACT 1973<br>
-            AND IN THE MATTER OF THE DIVORCE, DISSOLUTION AND SEPARATION ACT 2020
+            In the Matter of the Matrimonial Causes Act 1973<br>
+            and in the Matter of the Divorce, Dissolution and Separation Act 2020
         </div>
 
         <!-- Parties Block -->
         <table class="parties-table">
             <tr>
-                <td style="width: 12%;"><strong>BETWEEN:</strong></td>
-                <td style="width: 63%;" class="party-name">
-                    MUHAMMAD IRFAN
+                <td class="party-between" style="width: 16%;">Between:</td>
+                <td class="party-name" style="width: 59%;">
+                    Muhammad Irfan
                 </td>
-                <td style="width: 25%;" class="party-role">Applicant 1</td>
+                <td class="party-role" style="width: 25%;">Applicant 1</td>
             </tr>
             <tr>
                 <td></td>
-                <td style="text-align: center; font-style: italic; padding: 4px 0;">- and -</td>
+                <td class="party-and">- and -</td>
                 <td></td>
             </tr>
             <tr>
                 <td></td>
                 <td class="party-name">
-                    ZILE HUMA ATTA
+                    Zile Huma Atta
                 </td>
                 <td class="party-role">Applicant 2</td>
             </tr>
@@ -306,10 +563,10 @@
 
         <!-- Document Title -->
         <div class="document-title">
-            CONSENT ORDER
+            Consent Order
         </div>
 
-        <!-- Order Preamble -->
+        <!-- Preamble -->
         <div class="preamble">
             <p><strong>UPON</strong> the Joint Application for a Matrimonial Order dated <span class="editable-placeholder">[INSERT DATE]</span>;</p>
             <p><strong>AND UPON</strong> reading the Statement of Information for a Consent Order (Form D81) signed by Applicant 1 on <span class="editable-placeholder">[INSERT DATE]</span> and Applicant 2 on <span class="editable-placeholder">[INSERT DATE]</span>;</p>
@@ -320,8 +577,11 @@
         </div>
 
         <!-- RECITALS -->
-        <div class="section-heading">Recitals</div>
-        <ol class="legal-clauses" start="1">
+        <div class="section-heading">
+            <span class="section-label">Recitals</span>
+            <span class="section-rule"></span>
+        </div>
+        <ol class="legal-clauses">
             <li>
                 <strong>Order to Take Effect:</strong> This order shall take effect upon the grant of the Final Order of Divorce in these proceedings.
             </li>
@@ -334,8 +594,11 @@
         </ol>
 
         <!-- DECLARATIONS AND AGREEMENTS ON ASSETS -->
-        <div class="section-heading">Declarations and Agreements on Assets</div>
-        <ol class="legal-clauses" start="4">
+        <div class="section-heading">
+            <span class="section-label">Declarations and Agreements on Assets</span>
+            <span class="section-rule"></span>
+        </div>
+        <ol class="legal-clauses" style="counter-reset: clause 3;">
             <li>
                 <strong>Retained Cash and Savings (Applicant 1):</strong> It is declared and agreed that the Applicant 1 shall retain 100% sole legal and beneficial ownership of all cash, bank accounts, investments, and savings held in his sole name (specifically including, but not limited to, liquid funds and savings of £50,000), free from any claim, right, or beneficial interest whatsoever by the Applicant 2.
             </li>
@@ -353,10 +616,13 @@
         </ol>
 
         <!-- OPERATIVE ORDERS -->
-        <div class="section-heading">Operative Orders</div>
-        <p style="margin-bottom: 8px;"><strong>IT IS ORDERED BY CONSENT (with effect from the grant of the Final Order):</strong></p>
+        <div class="section-heading">
+            <span class="section-label">Operative Orders</span>
+            <span class="section-rule"></span>
+        </div>
+        <p class="operative-intro"><strong>IT IS ORDERED BY CONSENT (with effect from the grant of the Final Order):</strong></p>
 
-        <ol class="legal-clauses" start="7">
+        <ol class="legal-clauses" style="counter-reset: clause 6;">
             <li>
                 <strong>Dismissal of Capital Claims:</strong> All claims by the Applicant 1 against the Applicant 2, and all claims by the Applicant 2 against the Applicant 1, for lump sum payments under section 23(1)(c) of the Matrimonial Causes Act 1973, and for property adjustment orders, and for settlement or transfer of property orders, under section 24 of the Matrimonial Causes Act 1973, and all other claims for periodical payments, secured periodical payments, lump sums and property adjustment orders under sections 23 and 24 of the Matrimonial Causes Act 1973 are dismissed.
             </li>
@@ -379,57 +645,62 @@
 
         <!-- SIGNATURES -->
         <div class="signature-section">
-            <div class="section-heading">Signatures</div>
+            <div class="section-heading">
+                <span class="section-label">Signatures</span>
+                <span class="section-rule"></span>
+            </div>
 
             <div class="signature-grid">
                 <!-- Applicant 1 Signature Box -->
                 <div class="signature-col">
                     <div class="sig-box">
-                        <strong>APPLICANT 1:</strong><br>
-                        MUHAMMAD IRFAN
+                        <span class="sig-role">Applicant 1</span>
+                        <span class="sig-name">Muhammad Irfan</span>
 
                         <div class="sig-line"></div>
-                        Signed
-                        <br><br>
-                        <strong>Date:</strong> <span class="editable-placeholder">[DD / MM / YYYY]</span>
-                        <br><br>
-                        <strong>Address for Service:</strong><br>
-                        <span class="editable-placeholder">[INSERT FULL ADDRESS OF APPLICANT 1]</span>
+                        <div class="sig-caption">Signed</div>
+
+                        <div class="sig-field">
+                            <span class="sig-label">Date</span>
+                            <span class="sig-value"><span class="editable-placeholder">[DD / MM / YYYY]</span></span>
+                        </div>
+
+                        <div class="sig-field">
+                            <span class="sig-label">Address for Service</span>
+                            <span class="sig-value"><span class="editable-placeholder">[INSERT FULL ADDRESS OF APPLICANT 1]</span></span>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Applicant 2 Signature Box -->
                 <div class="signature-col">
                     <div class="sig-box">
-                        <strong>APPLICANT 2:</strong><br>
-                        ZILE HUMA ATTA
+                        <span class="sig-role">Applicant 2</span>
+                        <span class="sig-name">Zile Huma Atta</span>
 
                         <div class="sig-line"></div>
-                        Signed
-                        <br><br>
-                        <strong>Date:</strong> <span class="editable-placeholder">[DD / MM / YYYY]</span>
-                        <br><br>
-                        <strong>Address for Service:</strong><br>
-                        <span class="editable-placeholder">[INSERT FULL ADDRESS OF APPLICANT 2]</span>
+                        <div class="sig-caption">Signed</div>
+
+                        <div class="sig-field">
+                            <span class="sig-label">Date</span>
+                            <span class="sig-value"><span class="editable-placeholder">[DD / MM / YYYY]</span></span>
+                        </div>
+
+                        <div class="sig-field">
+                            <span class="sig-label">Address for Service</span>
+                            <span class="sig-value"><span class="editable-placeholder">[INSERT FULL ADDRESS OF APPLICANT 2]</span></span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- JUDICIAL ENDORSEMENT BOX -->
+        <!-- JUDICIAL ENDORSEMENT -->
         <div class="judicial-box">
-            <table style="width: 100%;">
-                <tr>
-                    <td style="font-weight: bold;">DATED THIS ________ DAY OF ________________________ 20____</td>
-                </tr>
-                <tr>
-                    <td style="padding-top: 40px; font-weight: bold;">
-                        BY THE COURT<br><br>
-                        ____________________________________________<br>
-                        [District Judge / Deputy District Judge]
-                    </td>
-                </tr>
-            </table>
+            <div class="judge-date">DATED THIS ________ DAY OF ________________________ 20____</div>
+            <div class="by-court">By the Court</div>
+            <div class="judge-signature"></div>
+            <div class="judge-caption">[District Judge / Deputy District Judge]</div>
         </div>
 
     </div>
