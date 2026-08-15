@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="The One Book That Targets Your Root Weakness — deep research report">
+<title>The One Book That Targets Your Root Weakness</title>
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --bg-soft: #f6f7f9;
+  --fg: #1a1d23;
+  --fg-soft: #5b6472;
+  --accent: #2563eb;
+  --accent-soft: #eff4ff;
+  --border: #e4e7ec;
+  --code-bg: #f2f4f8;
+  --shadow: 0 1px 2px rgba(16, 24, 40, .06), 0 1px 3px rgba(16, 24, 40, .1);
+  --radius: 12px;
+  --maxw: 720px;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1116;
+    --bg-soft: #161b22;
+    --fg: #e6e9ee;
+    --fg-soft: #9aa4b2;
+    --accent: #60a5fa;
+    --accent-soft: #17233a;
+    --border: #2a3240;
+    --code-bg: #161b22;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 1px 3px rgba(0, 0, 0, .5);
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font);
+  line-height: 1.7;
+  font-size: 17px;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Header */
+header.site {
+  position: sticky; top: 0; z-index: 10;
+  background: color-mix(in srgb, var(--bg) 86%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+header.site .inner {
+  max-width: 960px; margin: 0 auto; padding: 12px 20px;
+  display: flex; align-items: center; gap: 12px; justify-content: space-between;
+}
+.brand { font-weight: 700; font-size: 15px; letter-spacing: .02em; }
+.brand a { color: var(--fg); }
+.brand a:hover { text-decoration: none; }
+.brand .dot { color: var(--accent); }
+nav.actions { display: flex; gap: 8px; align-items: center; font-size: 14px; }
+
+/* Layout */
+.wrap { max-width: 960px; margin: 0 auto; padding: 32px 20px 64px; display: grid; grid-template-columns: 1fr; gap: 32px; }
+@media (min-width: 900px) {
+  .wrap { grid-template-columns: 220px minmax(0, var(--maxw)); justify-content: center; }
+}
+article { min-width: 0; }
+
+/* Report header */
+.report-head { padding: 8px 0 24px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.kicker { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--accent); margin: 0 0 8px; }
+h1.report-title { font-size: 34px; line-height: 1.2; margin: 0 0 12px; letter-spacing: -.02em; }
+.meta { font-size: 14px; color: var(--fg-soft); display: flex; flex-wrap: wrap; gap: 14px; }
+.meta span { display: inline-flex; align-items: center; gap: 6px; }
+.summary {
+  margin-top: 20px; padding: 16px 20px; border-radius: var(--radius);
+  background: var(--accent-soft); border: 1px solid var(--border); font-size: 16px;
+}
+
+/* TOC */
+.toc { font-size: 14px; }
+.toc nav {
+  position: sticky; top: 72px; padding: 16px 18px; border-radius: var(--radius);
+  background: var(--bg-soft); border: 1px solid var(--border);
+}
+.toc h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--fg-soft); margin: 0 0 10px; }
+.toc ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.toc li a { display: block; padding: 4px 8px; border-radius: 6px; color: var(--fg-soft); }
+.toc li a:hover { background: var(--accent-soft); color: var(--accent); text-decoration: none; }
+
+/* Body typography */
+article h2 { font-size: 24px; margin: 40px 0 12px; padding-top: 8px; letter-spacing: -.01em; scroll-margin-top: 80px; }
+article h3 { font-size: 19px; margin: 28px 0 10px; scroll-margin-top: 80px; }
+article h4 { font-size: 17px; margin: 22px 0 8px; }
+article p { margin: 0 0 16px; }
+article ul, article ol { margin: 0 0 16px; padding-left: 26px; }
+article li { margin-bottom: 6px; }
+article blockquote {
+  margin: 20px 0; padding: 12px 18px; border-left: 3px solid var(--accent);
+  background: var(--bg-soft); border-radius: 0 var(--radius) var(--radius) 0;
+  color: var(--fg-soft);
+}
+article code {
+  font-family: var(--mono); font-size: .88em; background: var(--code-bg);
+  padding: 2px 6px; border-radius: 5px;
+}
+article pre {
+  background: var(--code-bg); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.6;
+}
+article pre code { background: none; padding: 0; }
+article table {
+  width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 15px;
+}
+article th, article td {
+  text-align: left; padding: 10px 14px; border: 1px solid var(--border);
+}
+article th { background: var(--bg-soft); font-weight: 600; }
+article tr:nth-child(even) td { background: color-mix(in srgb, var(--bg-soft) 50%, transparent); }
+article img { max-width: 100%; border-radius: var(--radius); }
+hr { border: none; border-top: 1px solid var(--border); margin: 36px 0; }
+
+/* Footnotes / sources */
+.sources { font-size: 14px; color: var(--fg-soft); }
+
+/* Footer */
+footer {
+  max-width: 960px; margin: 0 auto; padding: 24px 20px 48px;
+  border-top: 1px solid var(--border); font-size: 13px; color: var(--fg-soft);
+  display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+}
+
+/* Print */
+@media print {
+  body { font-size: 12pt; }
+  header.site, .toc, .no-print { display: none; }
+  .wrap { display: block; max-width: 100%; padding: 0; }
+  a { color: var(--fg); }
+  article h2 { page-break-before: always; }
+}
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="inner">
+    <div class="brand"><a href="https://ubuntu.github.io/research-reports/">Research<span class="dot">·</span>Reports</a></div>
+    <nav class="actions">
+      <a href="https://ubuntu.github.io/research-reports/" class="no-print">All reports</a>
+      <a href="#" onclick="window.print();return false;" class="no-print">Print / PDF</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <aside class="toc no-print">
+    <nav>
+      <h2>Contents</h2>
+      <ul>
+<li><a href="#key-findings">Key findings</a></li>
+<li><a href="#the-root-cause-contingent-self-worth">The root cause: contingent self-worth</a></li>
+<li><a href="#the-recommendation-no-more-mr-nice-guy-dr-robert-glover">The recommendation: No More Mr. Nice Guy, Dr. Robert Glover</a></li>
+<li style="padding-left:14px"><a href="#why-this-book-wins-for-you">Why this book wins for you</a></li>
+<li style="padding-left:14px"><a href="#the-verdicts-it-earns">The verdicts it earns</a></li>
+<li><a href="#mapping-the-book-to-each-of-your-weaknesses">Mapping the book to each of your weaknesses</a></li>
+<li><a href="#how-to-read-it-so-it-actually-works">How to read it (so it actually works)</a></li>
+<li><a href="#why-not-the-other-candidates-briefly">Why not the other candidates (briefly)</a></li>
+<li><a href="#gaps-and-limitations">Gaps and limitations</a></li>
+<li><a href="#sources">Sources</a></li>
+</ul>
+    </nav>
+  </aside>
+
+  <article>
+    <header class="report-head">
+      <p class="kicker">Deep Research Report</p>
+      <h1 class="report-title">The One Book That Targets Your Root Weakness</h1>
+      <div class="meta">
+        <span>🗓 2026-08-15</span>
+        <span>opencode deep research</span>
+      </div>
+      <div class="summary"><strong>Summary.</strong> A deep, cross-verified analysis of your self-assessment shows a single root cause — contingent self-worth, the habit of staking your value on other people's approval, especially women's. One book, written by a psychotherapist who treated thousands of men with this exact cluster, addresses every section of your assessment at once: No More Mr. Nice Guy by Dr. Robert Glover. This report shows how it maps to each of your weaknesses, the evidence for and against it, and exactly how to use it.</div>
+    </header>
+
+    <h1 id="the-one-book-that-targets-your-root-weakness">The One Book That Targets Your Root Weakness</h1>
+<h2 id="key-findings">Key findings</h2>
+<ol>
+<li>
+<p>Your self-assessment is not a list of separate flaws — it is one coherent pattern. Every section (low self-worth, weak boundaries, inauthenticity, defensiveness, emotional reactivity, lack of purpose, "nice guy" behaviors with women) traces back to a single root: <strong>you experience your worth as contingent on other people's approval, especially women's.</strong> [1][2][3][18]</p>
+</li>
+<li>
+<p>This is not just pop-psychology. The scientific literature on <strong>contingencies of self-worth</strong> (Crocker &amp; Wolfe, 2001; Park et al., 2008; Lemay &amp; Clark, 2008) shows that people who stake self-esteem on external approval suffer more mood collapse after negative feedback, behave submissively to earn acceptance, distrust praise they actually receive, and feel worse about themselves overall. [18][20][21][22][23]</p>
+</li>
+<li>
+<p>Because the root is one mechanism, the right fix is a single, targeted book rather than a stack of niche ones (one for boundaries, one for self-worth, one for dating…). The book that maps 1:1 onto your exact profile — and that working therapists give to this exact population — is <strong>No More Mr. Nice Guy by Dr. Robert Glover (2003).</strong> [1][4][6][12]</p>
+</li>
+<li>
+<p>The recommendation is cross-verified: rated ~4.04/5 from ~25,000 Goodreads ratings, recommended by multiple independent licensed therapists, and covered by Men's Health and Psychology Today as a recognized clinical pattern. [2][3][4][5][12]</p>
+</li>
+<li>
+<p>Honesty requires noting its flaws too: it cites almost no research, has dated gender-essentialist sections, and has been co-opted by some online communities. Read it with discernment — the mechanism it diagnoses is sound; a few of its prescriptions are not. [8][9][6]</p>
+</li>
+</ol>
+<h2 id="the-root-cause-contingent-self-worth">The root cause: contingent self-worth</h2>
+<p>Read your own assessment again, but as one sentence:</p>
+<blockquote>
+<p>"My value as a man depends on whether the people around me — especially women — approve of me."</p>
+</blockquote>
+<p>Every single section is a downstream symptom of that sentence:</p>
+<table>
+<thead>
+<tr>
+<th>Your self-assessment item</th>
+<th>The mechanism</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Self-worth rated 4-5/10, swings with attention</td>
+<td>Worth is borrowed from outside, so it fluctuates with outside events</td>
+</tr>
+<tr>
+<td>Can't say "no", agrees to avoid conflict</td>
+<td>Saying "no" risks disapproval → feels like losing your worth</td>
+</tr>
+<tr>
+<td>Presents modified self, agrees with opinions you don't hold</td>
+<td>Inauthenticity is the price of buying approval</td>
+</tr>
+<tr>
+<td>Defensive when criticized, especially by women</td>
+<td>Criticism = proof you failed the approval test</td>
+</tr>
+<tr>
+<td>Negative self-talk, reactive to setbacks</td>
+<td>The inner judge mimics the external judge you fear</td>
+</tr>
+<tr>
+<td>No passions, directionless, standard goals</td>
+<td>When worth comes from others, you never learn what <em>you</em> want</td>
+</tr>
+<tr>
+<td>Shy with women, "nice guy" behaviors</td>
+<td>Women are treated as the scoreboard, not as people</td>
+</tr>
+</tbody>
+</table>
+<p>The research corroborates each link. Crocker &amp; Wolfe (2001) call these <strong>contingencies of self-worth</strong> — "areas of psychological vulnerability" where people chase validation at a cost to autonomy, relationships, self-regulation, and mental health. [18] Park et al. (2008) found that people who base self-worth on others' approval experience the biggest drops in state self-esteem and positive affect after negative interpersonal feedback — exactly your mood swings. [20] And a 2006 study in Personality and Individual Differences found the "others' approval" contingency correlates with a <em>nurturant-and-submissive</em> interpersonal style — the interpersonal posture of someone who gets walked over. [21] Even the partner's side suffers: Lemay &amp; Clark (2008) found people with contingent self-worth communicate anxiety in the contingent domain, making partners "walk on eggshells" and deliver less authentic feedback. [22]</p>
+<p>So the "fundamental weakness" you asked about is real, specific, and well-documented: <strong>an approval-contingent sense of self.</strong> The fix is to move self-worth from external approval to internal standards — what Glover calls becoming an "Integrated Male," what Branden calls "self-assertiveness and self-acceptance," what Manson calls "non-neediness." [1][14][16]</p>
+<h2 id="the-recommendation-no-more-mr-nice-guy-dr-robert-glover">The recommendation: <em>No More Mr. Nice Guy</em>, Dr. Robert Glover</h2>
+<p><strong>Publisher:</strong> Running Press, 2003 · 208 pages · Also e-book/audiobook [5]</p>
+<p>This is the book to read first and read actively. Here is the evidence for why it — and not the other strong candidates — is the single best fit for <em>your</em> profile.</p>
+<h3 id="why-this-book-wins-for-you">Why this book wins for you</h3>
+<p><strong>1. It diagnoses exactly your pattern, by name.</strong> Glover, a licensed marriage and family therapist, spent the early 1990s running men's groups and treating thousands of men with precisely your cluster: men who "find it very hard to say no," who feel walked over, who seek approval from women, who avoid conflict, who are inauthentic, who feel directionless, and who can't identify their own needs. [1][4][12] The term of art he created — the "Nice Guy Syndrome" — is now the standard shorthand for this pattern, written up in Men's Health with licensed psychologists and framed clinically in Psychology Today. [2][3]</p>
+<p><strong>2. It is behavioral, not just conceptual.</strong> Each chapter ends with "Breaking Free Activities" — concrete exercises, not vibes. This matters because every reviewer (friendly and critical alike) agrees the book only works if you <em>do</em> the activities, ideally with a men's group or therapist. [6][10]</p>
+<p><strong>3. It covers all seven of your sections, not just the dating ones.</strong> Most men-focused books stop at attraction. Glover deliberately includes purpose, shame, anxiety, boundaries, conflict, and male friendship — the exact scope of your assessment. [1][7]</p>
+<p><strong>4. Independent therapists hand it to patients like you.</strong> Multiple licensed therapists who specialize in this population — Jesse King (LMFT), Michael Pariser, Alister Gates, Peter Hannah (LMHC), and men's counseling practices in Phoenix and Orange County — explicitly ground their work in this book. [12] A therapist's decision to build a practice on a book is stronger independent validation than a blog endorsement.</p>
+<p><strong>5. The "covert contract" concept will reframe your life.</strong> Glover's core mechanism — <em>"I'll be nice, hide my flaws, and give you what you want, so that you'll approve of me and meet my needs without me having to ask"</em> — is the exact engine behind your people-pleasing, your "nice guy" behaviors with women, and your resentment when giving isn't reciprocated. [3][6]</p>
+<h3 id="the-verdicts-it-earns">The verdicts it earns</h3>
+<ul>
+<li>Goodreads: ~4.04/5 from ~25,000 ratings [4]</li>
+<li>Amazon: 76% of reviews are five-star [6]</li>
+<li>The Good Men Project: "a how-to guide for any male on how to get their needs met, be more personally assertive, gain more confidence and self-esteem" [10]</li>
+<li>Psychotherapist review (2026): "The value of the book is in how clearly it describes these patterns" — while noting understanding is only part of change, which is why it pairs with therapy [7]</li>
+<li>AudioFile (critical): "tired generalizations and over-the-top client vignettes that oversimplify" [9]</li>
+<li>Richard Carrier (critical): "a pop-market advice-manual" with "a complete absence of any science," citing zero studies [8]</li>
+</ul>
+<h2 id="mapping-the-book-to-each-of-your-weaknesses">Mapping the book to each of your weaknesses</h2>
+<table>
+<thead>
+<tr>
+<th>Section in your assessment</th>
+<th>What Glover's book gives you</th>
+<th>Key idea</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Self-worth</strong> (4-5/10, validation-dependent)</td>
+<td>A reframe of where worth comes from</td>
+<td>The "covert contract": you are negotiating for worth instead of having it. Recovery = worth from within, "perfectly imperfect" acceptance. [1][3][6]</td>
+</tr>
+<tr>
+<td><strong>Boundaries</strong> (can't say no)</td>
+<td>Explicit boundary work</td>
+<td>Glover's floor-demonstration: watch how far a Nice Guy backs up before saying "stop." Learning to say no without apology. [6][12]</td>
+</tr>
+<tr>
+<td><strong>Authenticity</strong> (presents modified self)</td>
+<td>Permission to be the "rough edges" version</td>
+<td>The "Integrated Male" — power, assertiveness, AND imperfections. "It is a person's rough edges and human imperfections that give others something to connect with." [1][10]</td>
+</tr>
+<tr>
+<td><strong>Communication / defensiveness</strong></td>
+<td>Expressing feelings instead of defending</td>
+<td>Being direct and honest rather than gauging reactions; apologizing for real mistakes without performing heroics. [2][6]</td>
+</tr>
+<tr>
+<td><strong>Emotional regulation</strong> (reactive, negative self-talk)</td>
+<td>Releasing toxic shame, soothing anxiety</td>
+<td>Understanding shame as the engine of the pattern, so reactivity loses its fuel. [1][2]</td>
+</tr>
+<tr>
+<td><strong>Purpose &amp; passion</strong> (directionless)</td>
+<td>Explicit chapter on purpose</td>
+<td>"Learn to please yourself." Finding what you actually want, so goals stop being borrowed. [1][7][10]</td>
+</tr>
+<tr>
+<td><strong>Interactions with women</strong> (validation-seeking, "nice guy")</td>
+<td>The difference between caring and caretaking</td>
+<td>Caring gives what the other person needs, no strings; caretaking gives what the giver needs to give — and always has strings. Women feel the strings and pull away. [6][2]</td>
+</tr>
+</tbody>
+</table>
+<h2 id="how-to-read-it-so-it-actually-works">How to read it (so it actually works)</h2>
+<ol>
+<li><strong>Read with a pen, and do the "Breaking Free Activities" at the end of every chapter.</strong> The book's mechanism is diagnostic; the exercises are the change. Skipping them = reading a map and never driving. [6][10]</li>
+<li><strong>Filter the gender-essentialism.</strong> Skip or mentally edit the parts about "innate" masculinity, the fatherhood/feminism blame chapter, and anything that reads like "get what you want in sex" entitlement. Take the mechanism (covert contracts, boundaries, caretaking, shame) and leave the dated sociology. Reviewers from both camps recommend exactly this. [6][8][9]</li>
+<li><strong>Do it with other men if at all possible.</strong> Glover himself writes: "Since Nice Guys tend to seek out the approval of women, I strongly encourage them to begin this process with men." A men's group, or just 2-3 honest male friends reading alongside you, multiplies the effect. [6][10]</li>
+<li><strong>Pair it with therapy.</strong> Every therapist who recommends this book says the same thing: the book creates insight; therapy integrates it emotionally. If a single book can do the diagnosis, a therapist or men's group does the rewiring. [7][12]</li>
+<li><strong>Expect discomfort.</strong> The most common reason men quit this book is that recognizing "nice guy" behaviors in yourself is uncomfortable. That discomfort is the work.</li>
+</ol>
+<h2 id="why-not-the-other-candidates-briefly">Why not the other candidates (briefly)</h2>
+<ul>
+<li><strong><em>Models: Attract Women Through Honesty</em> (Mark Manson, 2011):</strong> An excellent book — possibly the best on neediness and vulnerability with women — and its "non-neediness" concept overlaps heavily with your root cause. But it is a dating-focused book: it does not give you the boundaries work, the purpose chapter, the emotional-regulation material, or the male-friendship scaffolding that your assessment explicitly needs. Read it second, if at all. [13][14][15]</li>
+<li><strong><em>The Six Pillars of Self-Esteem</em> (Nathaniel Branden, 1994):</strong> The most rigorous general book on self-esteem, and its pillar of "self-assertiveness" is directly relevant. But it is broad theory, dense and repetitious (Kirkus: "inflated and repetitious"), and does not speak to the <em>male approval-seeking from women</em> dynamic that is the center of gravity in your assessment. [16][17]</li>
+</ul>
+<h2 id="gaps-and-limitations">Gaps and limitations</h2>
+<ul>
+<li><strong>The book is not scientifically validated.</strong> Its central mechanism is consistent with the peer-reviewed contingent-self-worth literature, but the book itself cites no studies and reports no outcome data. Its treatment claims rest on one therapist's clinical observations. Treat it as a well-observed framework, not a clinical trial. [8][9]</li>
+<li><strong>Overlapping-cohort risk:</strong> "Nice Guy Syndrome" is not a formal DSM diagnosis; it is a clinical construct. Estimates of its prevalence are anecdotal. [3][8]</li>
+<li><strong>Selection bias in endorsements:</strong> therapists who dislike the book simply don't write "I don't use this book" pages, so positive therapist endorsements over-represent. Balanced by the two strong critical reviews cited. [8][9]</li>
+<li><strong>Self-reports:</strong> your assessment, and the book's anecdotal cases, are self-report data. Mood, boundaries, and authenticity are hard to measure objectively. [8]</li>
+<li><strong>One book cannot do everything.</strong> The single strongest gap in the research: no book replaces therapy, medication if indicated, or a real support structure. The book is the highest-leverage single input; it is not the whole program.</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<ol>
+<li><a href="https://nomoremrniceguy.com/the-nice-guy-syndrome/">The Nice Guy Syndrome — official book site</a></li>
+<li><a href="https://www.psychologytoday.com/us/blog/hidden-wounds/202405/the-mr-nice-guy-syndrome-and-adverse-childhood-experiences">The Mr. Nice Guy Syndrome and ACEs — Psychology Today, 2024</a></li>
+<li><a href="https://www.menshealth.com/health/a43216627/6-definitive-signs-of-nice-guy-syndrome/">6 Signs of Nice Guy Syndrome — Men's Health, 2023</a></li>
+<li><a href="https://www.goodreads.com/en/book/show/97642.No_More_Mr_Nice_Guy">No More Mr. Nice Guy — Goodreads (~25k ratings)</a></li>
+<li><a href="https://www.google.com/books/edition/No_More_Mr_Nice_Guy/qWkHAAAACAAJ?hl=en">No More Mr. Nice Guy — publisher record (Running Press, 2003)</a></li>
+<li><a href="https://www.shortform.com/blog/no-more-mr-nice-guy-review/">Review, Context, and Reception — Shortform, 2021</a></li>
+<li><a href="https://drarigraff.com/reclaim-your-life-how-to-break-free-from-people-pleasing/">No More Mr. Nice Guy review — Dr. A. R. Graff, 2026</a></li>
+<li><a href="https://www.richardcarrier.info/archives/18508">A Psychology of Men? Critical review — Richard Carrier, 2021</a></li>
+<li><a href="https://www.audiofilemagazine.com/reviews/read/18003/no-more-mr-nice-guy-by-robert-a-glover-read-by-robert-okeefe/">No More Mr. Nice Guy — AudioFile review, 2005</a></li>
+<li><a href="https://goodmenproject.com/featured-content/no-more-mr-nice-guy-a-book-review-jgc/">No More Mr. Nice Guy: A Book Review — The Good Men Project, 2016</a></li>
+<li><a href="https://mensgroup.com/no-more-mr-nice-guy-book-summary/">No More Mr. Nice Guy — MensGroup summary, 2020</a></li>
+<li><a href="https://www.jesseking.com/specialties/no-more-mr-nice-guy-therapist/">Therapists working with NMMNG: Jesse King LMFT</a> · <a href="https://drpariser.com/for-men">Michael Pariser</a> · <a href="https://alistergates.com/no-more-mr-nice-guy-2/">Alister Gates</a> · <a href="https://www.doctornikolaidis.com/no-more-mr-nice-guy">Dr. Nikolaidis</a> · <a href="https://www.changingforgood.com/counseling-for-nice-guys-and-people-pleasers/">Peter Hannah LMHC</a> · <a href="https://www.phoenixmenscounseling.com/blog/2011/11/10/dealing-with-the-nice-guy-syndrome">Phoenix Men's Counseling</a></li>
+<li><a href="https://markmanson.net/books/models">Models — Mark Manson</a></li>
+<li><a href="https://dansilvestre.com/models-mark-manson/">Models summary — Dan Silvestre, 2019</a></li>
+<li><a href="https://holdyourframe.substack.com/p/book-review-models-attract-women">Models book review — holdyourframe</a></li>
+<li><a href="https://psycnet.apa.org/record/1994-97739-000">The Six Pillars of Self-Esteem — APA PsycNet record</a></li>
+<li><a href="https://www.kirkusreviews.com/book-reviews/nathaniel-branden/the-six-pillars-of-self-esteem/">Six Pillars reviews — Kirkus</a> · <a href="https://reason.com/1994/11/01/a-call-to-consciousness/">Reason, 1994</a></li>
+<li><a href="https://journals.sagepub.com/doi/10.1111/j.0963-7214.2005.00364.x">Contingencies of Self-Worth — Crocker &amp; Wolfe, Psychological Review, 2001</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/8979382/">Self-esteem and "if…then" contingencies of acceptance — PubMed, 1997</a></li>
+<li><a href="https://www.tandfonline.com/doi/abs/10.1080/15298860701398808">Contingencies of self-worth and negative feedback — Park et al., 2008</a></li>
+<li><a href="https://www.sciencedirect.com/science/article/abs/pii/S0191886905002898">Contingent self-esteem and the interpersonal circumplex — 2006</a></li>
+<li><a href="https://clarkrelationshiplab.yale.edu/sites/default/files/files/You%27re%20just%20saying%20that_%20Contingencies%20of%20self-worth%2C%20suspicion%2C%20and%20authenticity%20in%20the%20interpersonal%20affirmation%20process.pdf">Contingencies of self-worth, suspicion, and authenticity — Lemay &amp; Clark, 2008</a></li>
+<li><a href="https://www.sciencedirect.com/science/article/abs/pii/S0092656605000024">Social approval contingency and trait self-esteem — 2005</a></li>
+</ol>
+
+    <p class="sources no-print">
+      Generated by opencode deep research · <a href="https://ubuntu.github.io/research-reports/">index</a> ·
+      <a href="#" onclick="window.print();return false;">Export PDF</a>
+    </p>
+  </article>
+</div>
+
+<footer>
+  <span>Research Reports — opencode deep research</span>
+  <span>2026-08-15</span>
+</footer>
+</body>
+</html>
