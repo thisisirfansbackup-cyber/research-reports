@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consent Order - Irfan & Zile</title>
+    <style>
+        /* =========================================================
+           SCREEN PREVIEW STYLES
+           ========================================================= */
+        body {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 11pt;
+            line-height: 1.45;
+            color: #000000;
+            background-color: #ecefe6;
+            margin: 0;
+            padding: 20px 0;
+        }
+
+        .no-print-banner {
+            background-color: #1a365d;
+            color: #ffffff;
+            padding: 15px 20px;
+            text-align: center;
+            max-width: 210mm;
+            margin: 0 auto 20px auto;
+            border-radius: 6px;
+            font-family: Arial, sans-serif;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .no-print-banner button {
+            background-color: #38a169;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: background 0.2s;
+        }
+
+        .no-print-banner button:hover {
+            background-color: #2f855a;
+        }
+
+        /* A4 Page Container */
+        .a4-page {
+            background: #ffffff;
+            width: 210mm;
+            min-height: 297mm;
+            padding: 20mm 20mm 20mm 25mm; /* Left margin wider for legal binding/stamping */
+            margin: 0 auto 20px auto;
+            box-sizing: border-box;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        /* =========================================================
+           LEGAL DOCUMENT FORMATTING
+           ========================================================= */
+        .court-header {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+
+        .court-header td {
+            vertical-align: top;
+            font-weight: bold;
+            font-size: 11pt;
+        }
+
+        .statute-title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 10.5pt;
+            text-transform: uppercase;
+            margin: 15px 0;
+            line-height: 1.3;
+        }
+
+        .parties-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0 20px 0;
+        }
+
+        .parties-table td {
+            padding: 4px 0;
+            vertical-align: middle;
+        }
+
+        .party-name {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .party-role {
+            text-align: right;
+            font-style: italic;
+            text-decoration: underline;
+        }
+
+        .document-title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 13pt;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 20px 0;
+            padding: 8px 0;
+            border-top: 2px solid #000000;
+            border-bottom: 2px solid #000000;
+        }
+
+        .preamble {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .preamble p {
+            margin: 6px 0;
+        }
+
+        .section-heading {
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 11pt;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #000000;
+            padding-bottom: 2px;
+        }
+
+        ol.legal-clauses {
+            margin: 0;
+            padding-left: 30px;
+        }
+
+        ol.legal-clauses > li {
+            margin-bottom: 12px;
+            text-align: justify;
+            padding-left: 5px;
+        }
+
+        ol.legal-subclauses {
+            list-style-type: lower-alpha;
+            padding-left: 20px;
+            margin-top: 5px;
+        }
+
+        ol.legal-subclauses li {
+            margin-bottom: 4px;
+        }
+
+        /* Placeholders highlighting for visual editing */
+        .editable-placeholder {
+            background-color: #fffde7;
+            border-bottom: 1px dashed #d69e2e;
+            padding: 0 2px;
+        }
+
+        /* Signatures Layout */
+        .signature-section {
+            margin-top: 30px;
+            page-break-inside: avoid;
+        }
+
+        .signature-grid {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+            margin-top: 15px;
+        }
+
+        .signature-col {
+            display: table-cell;
+            width: 48%;
+            vertical-align: top;
+            padding-right: 4%;
+        }
+
+        .signature-col:last-child {
+            padding-right: 0;
+            padding-left: 4%;
+        }
+
+        .sig-box {
+            border: 1px solid #cbd5e0;
+            padding: 15px;
+            min-height: 220px;
+            box-sizing: border-box;
+            background: #ffffff;
+        }
+
+        .sig-line {
+            border-bottom: 1px solid #000000;
+            margin-top: 50px;
+            margin-bottom: 8px;
+        }
+
+        .judicial-box {
+            margin-top: 40px;
+            border: 2px solid #000000;
+            padding: 15px;
+            page-break-inside: avoid;
+        }
+
+        /* =========================================================
+           PRINT STYLESHEET (A4 STRICT PRINTING)
+           ========================================================= */
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 20mm 20mm 20mm 25mm;
+            }
+
+            body {
+                background: none;
+                padding: 0;
+                font-size: 11pt;
+            }
+
+            .no-print-banner {
+                display: none !important;
+            }
+
+            .a4-page {
+                width: 100%;
+                min-height: auto;
+                padding: 0;
+                margin: 0;
+                box-shadow: none;
+                background: none;
+            }
+
+            .editable-placeholder {
+                background-color: transparent;
+                border-bottom: none;
+            }
+
+            .sig-box {
+                border: 1px solid #000000;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Instruction Banner for Previewing -->
+    <div class="no-print-banner">
+        <strong>HMCTS Ready Consent Order Draft (Corrected)</strong><br>
+        Review the document below. When ready, click the button to print or save as a clean PDF.
+        <br>
+        <button onclick="window.print()">Print Order / Save as PDF</button>
+    </div>
+
+    <!-- Main A4 Printable Document Container -->
+    <div class="a4-page">
+
+        <!-- Court Header -->
+        <table class="court-header">
+            <tr>
+                <td style="text-align: left; width: 60%;">
+                    IN THE FAMILY COURT SITTING AT<br>
+                    <span class="editable-placeholder">[INSERT COURT NAME, E.G., CENTRAL FAMILY COURT]</span>
+                </td>
+                <td style="text-align: right; width: 40%;">
+                    CASE NO: <span class="editable-placeholder">[INSERT CASE NO]</span>
+                </td>
+            </tr>
+        </table>
+
+        <!-- Statutory Jurisdiction -->
+        <div class="statute-title">
+            IN THE MATTER OF THE MATRIMONIAL CAUSES ACT 1973<br>
+            AND IN THE MATTER OF THE DIVORCE, DISSOLUTION AND SEPARATION ACT 2020
+        </div>
+
+        <!-- Parties Block -->
+        <table class="parties-table">
+            <tr>
+                <td style="width: 12%;"><strong>BETWEEN:</strong></td>
+                <td style="width: 63%;" class="party-name">
+                    IRFAN <span class="editable-placeholder">[INSERT SURNAME]</span>
+                </td>
+                <td style="width: 25%;" class="party-role">Applicant 1</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td style="text-align: center; font-style: italic; padding: 4px 0;">- and -</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="party-name">
+                    ZILE <span class="editable-placeholder">[INSERT SURNAME]</span>
+                </td>
+                <td class="party-role">Applicant 2</td>
+            </tr>
+        </table>
+
+        <!-- Document Title -->
+        <div class="document-title">
+            CONSENT ORDER
+        </div>
+
+        <!-- Order Preamble -->
+        <div class="preamble">
+            <p><strong>UPON</strong> the Joint Application for a Matrimonial Order dated <span class="editable-placeholder">[INSERT DATE]</span>;</p>
+            <p><strong>AND UPON</strong> reading the Statement of Information for a Consent Order (Form D81) signed by Applicant 1 on <span class="editable-placeholder">[INSERT DATE]</span> and Applicant 2 on <span class="editable-placeholder">[INSERT DATE]</span>;</p>
+            <p><strong>AND UPON</strong> the Court noting that the marriage lasted approximately six years and that there are no minor children of the family;</p>
+            <p><strong>AND UPON</strong> the parties agreeing that the terms set out in this Order are in full and final settlement of all financial claims arising out of their marriage;</p>
+            <p><strong>AND UPON</strong> each party having had the opportunity to take independent legal advice;</p>
+            <p><strong>AND UPON</strong> the parties consenting to the terms of this Order pursuant to section 33A of the Matrimonial Causes Act 1973.</p>
+        </div>
+
+        <!-- RECITALS -->
+        <div class="section-heading">Recitals</div>
+        <ol class="legal-clauses" start="1">
+            <li>
+                <strong>Order to Take Effect:</strong> This order shall take effect upon the grant of the Final Order of Divorce in these proceedings.
+            </li>
+            <li>
+                <strong>Full and Final Settlement:</strong> The Applicant 1 and the Applicant 2 accept the terms set out in this order in full and final satisfaction of all claims for capital, income, property, pensions, and estate provision of whatever nature, which either party has or may have against the other under the law of England and Wales or any other jurisdiction, arising from or in connection with their marriage.
+            </li>
+            <li>
+                <strong>Financial Disclosure:</strong> The Applicant 1 and the Applicant 2 acknowledge and agree that they have each provided full and frank disclosure of their respective financial positions by way of the Statement of Information for a Consent Order (Form D81) and confirm that such disclosure is sufficient to enable them to give informed consent to the terms of this Order.
+            </li>
+        </ol>
+
+        <!-- DECLARATIONS AND AGREEMENTS ON ASSETS -->
+        <div class="section-heading">Declarations and Agreements on Assets</div>
+        <ol class="legal-clauses" start="4">
+            <li>
+                <strong>Retained Cash, Savings, and Future Property (Applicant 1):</strong> It is declared and agreed that the Applicant 1 shall retain 100% sole legal and beneficial ownership of all cash, bank accounts, investments, and savings held in his sole name (specifically including, but not limited to, liquid funds and savings of approximately £50,000 intended for real estate acquisition), together with any real estate property subsequently acquired by him, free from any claim, right, or beneficial interest whatsoever by the Applicant 2.
+            </li>
+            <li>
+                <strong>Retained Real Estate Property (Applicant 2):</strong> It is declared and agreed that the Applicant 2 shall retain 100% sole legal and beneficial ownership of the real estate property currently registered in her sole name located at <span class="editable-placeholder">[INSERT PROPERTY ADDRESS]</span>, free from any claim, right, or beneficial interest whatsoever by the Applicant 1.
+            </li>
+            <li>
+                <strong>Personal Possessions, Vehicles, and Individual Pensions:</strong> It is declared and agreed that each party shall retain sole legal and beneficial ownership of:
+                <ol class="legal-subclauses">
+                    <li>All personal belongings, chattels, and contents currently in their respective possession;</li>
+                    <li>Any motor vehicles held in their respective names or currently in their possession; and</li>
+                    <li>Any individual pension entitlements, rights, or policy benefits held in their respective names.</li>
+                </ol>
+            </li>
+        </ol>
+
+        <!-- OPERATIVE ORDERS -->
+        <div class="section-heading">Operative Orders</div>
+        <p style="margin-bottom: 8px;"><strong>IT IS ORDERED BY CONSENT (with effect from the grant of the Final Order):</strong></p>
+
+        <ol class="legal-clauses" start="7">
+            <li>
+                <strong>Dismissal of Capital Claims:</strong> All claims by the Applicant 1 against the Applicant 2, and all claims by the Applicant 2 against the Applicant 1, for lump sum payments under section 23(1)(c) of the Matrimonial Causes Act 1973, and for property adjustment orders, and for settlement or transfer of property orders, under section 24 of the Matrimonial Causes Act 1973 are dismissed.
+            </li>
+            <li>
+                <strong>Dismissal of Spousal Maintenance and Income Claims:</strong> All claims by the Applicant 1 against the Applicant 2, and all claims by the Applicant 2 against the Applicant 1, for periodical payments and secured periodical payments under section 23(1)(a) and (b) of the Matrimonial Causes Act 1973 are dismissed.
+            </li>
+            <li>
+                <strong>Direction Under Section 28(1A) Matrimonial Causes Act 1973:</strong> Pursuant to section 28(1A) of the Matrimonial Causes Act 1973, neither the Applicant 1 nor the Applicant 2 shall be entitled to make any application for an order for periodical payments or secured periodical payments under section 23(1)(a) or (b) of the Matrimonial Causes Act 1973, or for maintenance pending suit, in these or any future proceedings.
+            </li>
+            <li>
+                <strong>Dismissal of Pension Claims:</strong> All claims by the Applicant 1 against the Applicant 2, and all claims by the Applicant 2 against the Applicant 1, for pension sharing orders under section 24B and pension attachment orders under sections 25B and 25C of the Matrimonial Causes Act 1973 are dismissed.
+            </li>
+            <li>
+                <strong>Dismissal of Inheritance and Estate Claims:</strong> Pursuant to section 15 of the Inheritance (Provision for Family and Dependants) Act 1975, neither the Applicant 1 nor the Applicant 2 shall be entitled, on the death of the other, to apply for an order under section 2 of that Act against the estate of the deceased party.
+            </li>
+            <li>
+                <strong>Costs:</strong> There shall be no order as to costs, to the intent that each party shall pay their own legal costs in connection with these proceedings and the preparation, negotiation, and implementation of this Order.
+            </li>
+        </ol>
+
+        <!-- SIGNATURES -->
+        <div class="signature-section">
+            <div class="section-heading">Signatures</div>
+
+            <div class="signature-grid">
+                <!-- Applicant 1 Signature Box -->
+                <div class="signature-col">
+                    <div class="sig-box">
+                        <strong>APPLICANT 1:</strong><br>
+                        IRFAN <span class="editable-placeholder">[INSERT SURNAME]</span>
+
+                        <div class="sig-line"></div>
+                        Signed
+                        <br><br>
+                        <strong>Date:</strong> <span class="editable-placeholder">[DD / MM / YYYY]</span>
+                        <br><br>
+                        <strong>Address for Service:</strong><br>
+                        <span class="editable-placeholder">[INSERT FULL ADDRESS OF APPLICANT 1]</span>
+                    </div>
+                </div>
+
+                <!-- Applicant 2 Signature Box -->
+                <div class="signature-col">
+                    <div class="sig-box">
+                        <strong>APPLICANT 2:</strong><br>
+                        ZILE <span class="editable-placeholder">[INSERT SURNAME]</span>
+
+                        <div class="sig-line"></div>
+                        Signed
+                        <br><br>
+                        <strong>Date:</strong> <span class="editable-placeholder">[DD / MM / YYYY]</span>
+                        <br><br>
+                        <strong>Address for Service:</strong><br>
+                        <span class="editable-placeholder">[INSERT FULL ADDRESS OF APPLICANT 2]</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- JUDICIAL ENDORSEMENT BOX -->
+        <div class="judicial-box">
+            <table style="width: 100%;">
+                <tr>
+                    <td style="font-weight: bold;">DATED THIS ________ DAY OF ________________________ 20____</td>
+                </tr>
+                <tr>
+                    <td style="padding-top: 40px; font-weight: bold;">
+                        BY THE COURT<br><br>
+                        ____________________________________________<br>
+                        [District Judge / Deputy District Judge]
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+</body>
+</html>
