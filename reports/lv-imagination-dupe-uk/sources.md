@@ -57,3 +57,30 @@ All sources accessed 2026-08-17.
 40. Emirates Oud UK — Art of Arabia I £34.99 + £3.99 delivery — https://emiratesoud.co.uk/pages/faqs
 41. Zara UK — Sunrise on the Red Sand Dunes (currently "coming soon", not orderable) — https://www.zara.com/uk/
 42. Notino UK shipping (£2.49–£3.49) — https://www.notino.co.uk/shipping-info/
+---
+
+# Revision 2 additions (accessed 2026-08-17)
+
+## Tier A — primary / loaded live
+43. Notino UK — Al Haramain Amber Oud Aqua Dubai **75ml £33.50** (30-day min £36.10), in stock, 4.3/5 from 40 ratings, longevity 4.5/5; delivery £2.49 collection / £3.49 DPD → **£35.99 delivered** — https://www.notino.co.uk/al-haramain/amber-oud-aqua-dubai-perfume-extract-unisex/p-16277431/ (Playwright)
+44. PriceSpy UK — Aqua Dubai 75ml, from £33.50, 4 shops — https://pricespy.co.uk/product.php?p=14588193
+45. Fragrantica note lists extracted with `fragrantica.py` (curl_cffi) — Imagination 4.54/5 (13,288 votes); Hawas Kobra 4.33/5 (2,057); Marwa 4.35/5 (2,809); Aqua Dubai 4.28/5 (3,561)
+46. Fragrantica — Arabiyat Prestige Marwa note list: Calabrian bergamot, Lemon, Sicilian Orange / Nigerian Ginger, Ceylon Cinnamon, Tunisian Neroli / Ambroxan, Chinese Black Tea, Olibanum, Guaiac Wood — https://www.fragrantica.com/perfume/Arabiyat-Prestige/Marwa-107084.html
+47. Fragrantica — Hawas Kobra note list: Ginger, Bergamot, Tangerine / Green Tea, Cinnamon, Neroli / Musk, Woodsy Notes, Amber — https://www.fragrantica.com/perfume/Rasasi/Hawas-Kobra-112706.html
+48. Fragrantica — Aqua Dubai note list: Green Notes, Bergamot, Mandarin Orange / Melon, Amber, Black Currant, Pineapple / Musk, Petitgrain, Galbanum, Vanilla — https://www.fragrantica.com/perfume/Al-Haramain-Perfumes/Amber-Oud-Aqua-Dubai-96482.html
+
+## Tier B — independent community
+49. Scent Saga, "Arabiyat Prestige Marwa vs Hawas Kobra vs 7 More" (Clone Wars Pt 2), published 2026-05-11 — **full transcript retrieved via Exa**. Verified quotes: "Rasasi Hawas Cobra, by far I felt is the closest to Imagination"; "when you smell them up close, Hawas Cobra may seem a bit closer to the OG"; Marwa "good in the dry down but not so good in the opening"; longevity for both "around 6 to 6.5 hours **when applied on the clothes**" — https://www.youtube.com/watch?v=Eb0re_JyJMk
+50. Scent Saga Clone Wars Pt 1 (7-clone blind test) — all longevity figures stated on clothes; winner "Mind's Eye" (India-only) — https://www.youtube.com/watch?v=l7s7Lmmokt4
+51. Fragrantica user skin-longevity claims, Hawas Kobra — "hiked for 8 hours continuously… still on my skin at the 8th hour"; "8-9 hours as skin scent"; "8+ hours even on my pretty dry skin"; "12 hours on my skin"; dissent "5-6 hours on skin", "max 2 hours" at 35 °C
+52. Fragrantica user skin-longevity claims, Marwa — "After 2 hrs there is almost no trace left"; "3 hours on skin. Weak performance"; "around 6 hours on skin (skin scent after 4 hours)"; outlier "even 10 hours after applying I can still detect this on my skin"
+53. Fragrantica user skin-longevity claims, Aqua Dubai — "Lasts easily 9-10 hours on skin"; "lasts 8+ hours on skin"; "in my skin 12+ hours"; "over 24 hours on my skin even through a shower"; dissent "it doesn't last very long at all"
+54. Notino verified-buyer reviews, Aqua Dubai — "85% - 90% close to LV imagination… beast mode… It lasts a whole day and more" (75ml, posted within hours of access); "After 1 month maceration the fragrance is great. Opening is synthetic"
+55. Notino verified-buyer reviews, Hawas Kobra — "Very strong long lasting soap scent!"; "++projection"; "Great imagination inspired fragrance! Beast mode as well"; "Fresher take on Imagination"; "not the most accurate to Imagination but still really nice & lasts & projects well off of my skin"
+
+## Tier C — discovery only (labelled, never sole support)
+56. SARA SAKINA — Marwa and Hawas Kobra reviews (affiliate-style blog) — https://sarasakina.com/blogs/fragrance-journal/
+57. Scento, ScentClones dupe rankings — commercial ranking sites
+
+## User-supplied, unverified
+58. Reddit consensus per the user: Al Haramain Aqua Dubai is the top pick; Hawas Kobra has zero mentions; Aqua Dubai longevity 8–9h on skin with 3–4h projection, "lasts forever" on clothes. **Reddit is inaccessible from this host — not independently verified.**
