@@ -82,5 +82,13 @@ All sources accessed 2026-08-17.
 56. SARA SAKINA — Marwa and Hawas Kobra reviews (affiliate-style blog) — https://sarasakina.com/blogs/fragrance-journal/
 57. Scento, ScentClones dupe rankings — commercial ranking sites
 
-## User-supplied, unverified
-58. Reddit consensus per the user: Al Haramain Aqua Dubai is the top pick; Hawas Kobra has zero mentions; Aqua Dubai longevity 8–9h on skin with 3–4h projection, "lasts forever" on clothes. **Reddit is inaccessible from this host — not independently verified.**
+## User-supplied — now independently verified via the Wayback Machine (see #59)
+58. Reddit consensus per the user: Al Haramain Aqua Dubai is the top pick; Hawas Kobra has zero mentions; Aqua Dubai longevity 8–9h on skin with 3–4h projection, "lasts forever" on clothes. **Live Reddit remains blocked from this host, but this consensus has since been verified against an archived copy of the actual thread (#59).**
+
+## Tier B — independent community (verified via Wayback Machine archive)
+59. **r/fragranceclones — "Best LV imagination dupe?"** — full snapshot of the thread retrieved via the Wayback Machine on 2026-08-17 and preserved locally at `reddit-fragranceclones-best-lv-imagination-dupe-archive.html` (3.2 MB, ~185 comments, 181 unique). Thread posted ~7 Mar 2025; 186 post upvotes. All comments carry author + upvote metadata. Verified claims:
+    - **Aqua Dubai is the dominant recommendation** — 77 thread mentions; top comment (83 upvotes): "Al Haramain Aqua Dubai. It is very close to the OG and has fantastic performance and longevity. Source: I own both"; "Best overall" (22 upvotes); performance reply (7 upvotes): "I get 8-9 hours min with 3-4 hours of projection, bit more on clothes"; dissent (6 upvotes): "Every dupe is the same chemical aroma… it almost smells like a cleaning solution based off the original fragrance, and that's exactly what Aqua Dubai is like."
+    - **Hawas Kobra: 0 mentions** — confirms the user-supplied claim of no Reddit footprint.
+    - **Marwa: 0 mentions.**
+    - Other candidates named: Montagne Imaginary (21 + 13 upvotes, "close in scent and performance"), Essence de Blanc (16 upvotes "closest in my opinion"; "takes a week or two to mature… performance becomes so much better"), Full House (38 mentions; "Aqua Dubai and Full House are the top two options"), Bharara Rohit Azure ("superior performance"), Volare Arctic Breeze ($11; "Lasts 6-8 hours on skin"), Zara Sunrise on Red Sand Dunes Intense ("way longer lasting and projects better").
+    - Caveats: single thread, posted ~17 months before retrieval; archived copy is a snapshot, not a live crawl. Cite as: web.archive.org captures of `reddit.com/r/fragranceclones/comments/1j5enve/best_lv_imagination_dupe/` (Mar–Jun 2025).
