@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="OpenCode Go vs GitHub Copilot: Cost Efficiency for Vibe Coders on £10/Month — deep research report">
+<title>OpenCode Go vs GitHub Copilot: Cost Efficiency for Vibe Coders on £10/Month</title>
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --bg-soft: #f6f7f9;
+  --fg: #1a1d23;
+  --fg-soft: #5b6472;
+  --accent: #2563eb;
+  --accent-soft: #eff4ff;
+  --border: #e4e7ec;
+  --code-bg: #f2f4f8;
+  --shadow: 0 1px 2px rgba(16, 24, 40, .06), 0 1px 3px rgba(16, 24, 40, .1);
+  --radius: 12px;
+  --maxw: 720px;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1116;
+    --bg-soft: #161b22;
+    --fg: #e6e9ee;
+    --fg-soft: #9aa4b2;
+    --accent: #60a5fa;
+    --accent-soft: #17233a;
+    --border: #2a3240;
+    --code-bg: #161b22;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 1px 3px rgba(0, 0, 0, .5);
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font);
+  line-height: 1.7;
+  font-size: 17px;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Header */
+header.site {
+  position: sticky; top: 0; z-index: 10;
+  background: color-mix(in srgb, var(--bg) 86%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+header.site .inner {
+  max-width: 960px; margin: 0 auto; padding: 12px 20px;
+  display: flex; align-items: center; gap: 12px; justify-content: space-between;
+}
+.brand { font-weight: 700; font-size: 15px; letter-spacing: .02em; }
+.brand a { color: var(--fg); }
+.brand a:hover { text-decoration: none; }
+.brand .dot { color: var(--accent); }
+nav.actions { display: flex; gap: 8px; align-items: center; font-size: 14px; }
+
+/* Layout */
+.wrap { max-width: 960px; margin: 0 auto; padding: 32px 20px 64px; display: grid; grid-template-columns: 1fr; gap: 32px; }
+@media (min-width: 900px) {
+  .wrap { grid-template-columns: 220px minmax(0, var(--maxw)); justify-content: center; }
+}
+article { min-width: 0; }
+
+/* Report header */
+.report-head { padding: 8px 0 24px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.kicker { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--accent); margin: 0 0 8px; }
+h1.report-title { font-size: 34px; line-height: 1.2; margin: 0 0 12px; letter-spacing: -.02em; }
+.meta { font-size: 14px; color: var(--fg-soft); display: flex; flex-wrap: wrap; gap: 14px; }
+.meta span { display: inline-flex; align-items: center; gap: 6px; }
+.summary {
+  margin-top: 20px; padding: 16px 20px; border-radius: var(--radius);
+  background: var(--accent-soft); border: 1px solid var(--border); font-size: 16px;
+}
+
+/* TOC */
+.toc { font-size: 14px; }
+.toc nav {
+  position: sticky; top: 72px; padding: 16px 18px; border-radius: var(--radius);
+  background: var(--bg-soft); border: 1px solid var(--border);
+}
+.toc h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--fg-soft); margin: 0 0 10px; }
+.toc ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.toc li a { display: block; padding: 4px 8px; border-radius: 6px; color: var(--fg-soft); }
+.toc li a:hover { background: var(--accent-soft); color: var(--accent); text-decoration: none; }
+
+/* Body typography */
+article h2 { font-size: 24px; margin: 40px 0 12px; padding-top: 8px; letter-spacing: -.01em; scroll-margin-top: 80px; }
+article h3 { font-size: 19px; margin: 28px 0 10px; scroll-margin-top: 80px; }
+article h4 { font-size: 17px; margin: 22px 0 8px; }
+article p { margin: 0 0 16px; }
+article ul, article ol { margin: 0 0 16px; padding-left: 26px; }
+article li { margin-bottom: 6px; }
+article blockquote {
+  margin: 20px 0; padding: 12px 18px; border-left: 3px solid var(--accent);
+  background: var(--bg-soft); border-radius: 0 var(--radius) var(--radius) 0;
+  color: var(--fg-soft);
+}
+article code {
+  font-family: var(--mono); font-size: .88em; background: var(--code-bg);
+  padding: 2px 6px; border-radius: 5px;
+}
+article pre {
+  background: var(--code-bg); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.6;
+}
+article pre code { background: none; padding: 0; }
+article table {
+  width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 15px;
+}
+article th, article td {
+  text-align: left; padding: 10px 14px; border: 1px solid var(--border);
+}
+article th { background: var(--bg-soft); font-weight: 600; }
+article tr:nth-child(even) td { background: color-mix(in srgb, var(--bg-soft) 50%, transparent); }
+article img { max-width: 100%; border-radius: var(--radius); }
+hr { border: none; border-top: 1px solid var(--border); margin: 36px 0; }
+
+/* Footnotes / sources */
+.sources { font-size: 14px; color: var(--fg-soft); }
+
+/* Footer */
+footer {
+  max-width: 960px; margin: 0 auto; padding: 24px 20px 48px;
+  border-top: 1px solid var(--border); font-size: 13px; color: var(--fg-soft);
+  display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+}
+
+/* Print */
+@media print {
+  body { font-size: 12pt; }
+  header.site, .toc, .no-print { display: none; }
+  .wrap { display: block; max-width: 100%; padding: 0; }
+  a { color: var(--fg); }
+  article h2 { page-break-before: always; }
+}
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="inner">
+    <div class="brand"><a href="https://thisisirfansbackup-cyber.github.io/research-reports/">Research<span class="dot">·</span>Reports</a></div>
+    <nav class="actions">
+      <a href="https://thisisirfansbackup-cyber.github.io/research-reports/" class="no-print">All reports</a>
+      <a href="#" onclick="window.print();return false;" class="no-print">Print / PDF</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <aside class="toc no-print">
+    <nav>
+      <h2>Contents</h2>
+      <ul>
+<li><a href="#executive-summary">Executive Summary</a></li>
+<li><a href="#1-pricing-limits-what-10month-actually-buys">1. Pricing &amp; Limits: What £10/Month Actually Buys</a></li>
+<li style="padding-left:14px"><a href="#opencode-go">OpenCode Go</a></li>
+<li style="padding-left:14px"><a href="#github-copilot">GitHub Copilot</a></li>
+<li style="padding-left:14px"><a href="#head-to-head-the-10-math">Head-to-Head: The £10 Math</a></li>
+<li><a href="#2-beginner-usability-setup">2. Beginner Usability &amp; Setup</a></li>
+<li style="padding-left:14px"><a href="#opencode-go_1">OpenCode Go</a></li>
+<li style="padding-left:14px"><a href="#github-copilot_1">GitHub Copilot</a></li>
+<li style="padding-left:14px"><a href="#verdict-on-usability">Verdict on Usability</a></li>
+<li><a href="#3-multi-language-feature-performance">3. Multi-Language &amp; Feature Performance</a></li>
+<li style="padding-left:14px"><a href="#language-support">Language Support</a></li>
+<li style="padding-left:14px"><a href="#feature-comparison-for-vibe-coders">Feature Comparison for Vibe Coders</a></li>
+<li style="padding-left:14px"><a href="#the-autocomplete-question">The Autocomplete Question</a></li>
+<li><a href="#4-community-consensus-last-612-months">4. Community Consensus (Last 6–12 Months)</a></li>
+<li style="padding-left:14px"><a href="#opencode-go-sentiment-marchaugust-2026">OpenCode Go Sentiment (March–August 2026)</a></li>
+<li style="padding-left:14px"><a href="#github-copilot-sentiment-aprilaugust-2026">GitHub Copilot Sentiment (April–August 2026)</a></li>
+<li style="padding-left:14px"><a href="#head-to-head-community-verdict">Head-to-Head Community Verdict</a></li>
+<li><a href="#5-the-verdict">5. The Verdict</a></li>
+<li style="padding-left:14px"><a href="#for-a-multi-language-vibe-coder-on-10month-opencode-go-wins-decisively">For a multi-language "vibe coder" on £10/month: OpenCode Go wins decisively.</a></li>
+<li><a href="#6-the-trade-offs">6. The Trade-offs</a></li>
+<li><a href="#7-transparency-limitations">7. Transparency &amp; Limitations</a></li>
+<li style="padding-left:14px"><a href="#what-i-cannot-verify-or-flag-as-uncertain">What I cannot verify or flag as uncertain:</a></li>
+<li style="padding-left:14px"><a href="#source-recency">Source Recency</a></li>
+<li><a href="#sources">Sources</a></li>
+</ul>
+    </nav>
+  </aside>
+
+  <article>
+    <header class="report-head">
+      <p class="kicker">Deep Research Report</p>
+      <h1 class="report-title">OpenCode Go vs GitHub Copilot: Cost Efficiency for Vibe Coders on £10/Month</h1>
+      <div class="meta">
+        <span>🗓 2026-08-28</span>
+        <span>opencode deep research</span>
+      </div>
+      <div class="summary"><strong>Summary.</strong> A beginner 'vibe coder' on a strict £10/month budget gets dramatically more usable output from OpenCode Go than GitHub Copilot. OpenCode Go provides $60/month in model usage for $10, with near-unlimited requests on cheap models — while Copilot's June 2026 usage-based billing switch means $15 in credits can evaporate in hours of agentic use.</div>
+    </header>
+
+    <h1 id="opencode-go-vs-github-copilot-which-delivers-more-per-pound-for-a-vibe-coder">OpenCode Go vs GitHub Copilot: Which Delivers More Per Pound for a Vibe Coder?</h1>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>For a multi-language beginner "vibe coder" on a strict £10/month budget, <strong>OpenCode Go is the clear winner</strong> on cost efficiency. It provides 4× the usable monthly value ($60 vs $15), near-unlimited requests on its cheapest models, and a billing model that a beginner can actually understand. GitHub Copilot Pro matches the price point at $10/month but delivers a credit pool that heavy agentic users routinely exhaust within days — and since its June 2026 switch to token-based billing, the backlash from the developer community has been severe.</p>
+<p>The catch: OpenCode Go runs in a terminal, which requires slightly more setup than Copilot's VS Code extension. But for someone already exploring coding (the user self-identifies as a "vibe coder"), this is a manageable learning curve — and the payoff is enormous.</p>
+<hr />
+<h2 id="1-pricing-limits-what-10month-actually-buys">1. Pricing &amp; Limits: What £10/Month Actually Buys</h2>
+<p>Both tools price in US dollars. At current rates (~£1 = $1.33), £10 ≈ $13.30 — comfortably enough for either subscription.</p>
+<h3 id="opencode-go">OpenCode Go</h3>
+<table>
+<thead>
+<tr>
+<th>Detail</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Monthly price</strong></td>
+<td>$5 first month, then $10/month</td>
+</tr>
+<tr>
+<td><strong>Included usage</strong></td>
+<td>$60/month in dollar-equivalent model usage (6× the subscription price)</td>
+</tr>
+<tr>
+<td><strong>5-hour rolling cap</strong></td>
+<td>$12 of usage per 5-hour window</td>
+</tr>
+<tr>
+<td><strong>Weekly cap</strong></td>
+<td>$30 of usage per week</td>
+</tr>
+<tr>
+<td><strong>Monthly cap</strong></td>
+<td>$60 of usage per month</td>
+</tr>
+<tr>
+<td><strong>Models included</strong></td>
+<td>19+ curated open models (DeepSeek V4 Flash, GLM-5.3, Kimi K3, Qwen3.7 Plus/Max, MiMo-V2.5, MiniMax M3, GPT 5.6 Luna, Grok 4.6, etc.)</td>
+</tr>
+<tr>
+<td><strong>Hidden costs</strong></td>
+<td>Optional Zen balance top-up ($20 minimum) if you exhaust monthly caps on expensive models</td>
+</tr>
+</tbody>
+</table>
+<p><strong>What this means in practice:</strong> The usage cap is defined in dollar value, so your actual request count depends on which model you use. For a vibe coder using the default workhorse model (DeepSeek V4 Flash), OpenCode's own estimates show <strong>~37,800 requests per month</strong> — effectively unlimited. Even using Mid-tier models like Qwen3.7 Plus, you get <strong>~21,600 requests/month</strong>.</p>
+<p>Only if you exclusively use premium reasoning models (Kimi K3 at ~490 requests/month, Grok 4.6 at ~845/month) would you feel the cap — and a beginner wouldn't need these for most tasks.</p>
+<h3 id="github-copilot">GitHub Copilot</h3>
+<table>
+<thead>
+<tr>
+<th>Detail</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Free tier</strong></td>
+<td>$0 — 2,000 completions + limited chat (50 requests equivalent)</td>
+</tr>
+<tr>
+<td><strong>Pro</strong></td>
+<td>$10/month — unlimited completions + $15 in AI credits (1,000 base + 500 flex)</td>
+</tr>
+<tr>
+<td><strong>Pro+</strong></td>
+<td>$39/month — unlimited completions + $70 in AI credits</td>
+</tr>
+<tr>
+<td><strong>Max</strong></td>
+<td>$100/month — unlimited completions + $200 in AI credits</td>
+</tr>
+<tr>
+<td><strong>Credit value</strong></td>
+<td>1 AI credit = $0.01 USD</td>
+</tr>
+<tr>
+<td><strong>What consumes credits</strong></td>
+<td>Chat, agent mode, code review, Copilot CLI, Copilot cloud agent</td>
+</tr>
+<tr>
+<td><strong>What doesn't consume credits</strong></td>
+<td>Code completions and next edit suggestions (unlimited on paid plans)</td>
+</tr>
+<tr>
+<td><strong>Hidden costs</strong></td>
+<td>Overage billing when credits exhaust; code review also consumes GitHub Actions minutes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>What this means in practice:</strong> The $15 credit pool on Pro sounds decent until you understand that agentic sessions burn credits fast. A single complex agent request can cost 200–400 credits ($2–$4). Community reports from June–August 2026 show developers routinely exhausting $70 Pro+ allowances in a week of agentic use, and one user burned 1,180 credits (16% of Pro+ monthly allowance) on a single mediocre fix request [The Register, June 2, 2026].</p>
+<p>For a vibe coder doing chat-heavy work (describing intent, debugging errors, iterating on outputs), the $15 Pro allowance could last anywhere from a few days to a week depending on model choice and codebase size. There is no fallback — when credits run out, Copilot simply stops responding until the next month.</p>
+<h3 id="head-to-head-the-10-math">Head-to-Head: The £10 Math</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>OpenCode Go</th>
+<th>GitHub Copilot Pro</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Subscription cost</strong></td>
+<td>$10/month (£7.50)</td>
+<td>$10/month (£7.50)</td>
+</tr>
+<tr>
+<td><strong>Monthly usage included</strong></td>
+<td>$60 of model usage</td>
+<td>$15 of AI credits</td>
+</tr>
+<tr>
+<td><strong>Cheapest model requests/month</strong></td>
+<td>~37,800 (DeepSeek V4 Flash)</td>
+<td>Unlimited completions; chat burns from $15 pool</td>
+</tr>
+<tr>
+<td><strong>Heavy agentic use</strong></td>
+<td>$60 cap = many sessions</td>
+<td>$15 = 15–30 agent sessions before exhaustion</td>
+</tr>
+<tr>
+<td><strong>Can you run out mid-month?</strong></td>
+<td>Only on premium models or very heavy use</td>
+<td>Yes, easily with agentic workflows</td>
+</tr>
+<tr>
+<td><strong>When you run out</strong></td>
+<td>Can top up Zen balance ($20 min)</td>
+<td>Tool stops; must upgrade or wait</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Confidence: High (A)</strong> — Pricing data sourced from official opencode.ai/docs/go (updated Aug 2026) and docs.github.com/en/copilot (updated Aug 2026).</p>
+<hr />
+<h2 id="2-beginner-usability-setup">2. Beginner Usability &amp; Setup</h2>
+<h3 id="opencode-go_1">OpenCode Go</h3>
+<p><strong>Setup:</strong> Install via <code>curl -fsSL https://opencode.ai/install | bash</code> or <code>npm install -g opencode-ai</code>. Then run <code>/connect</code> inside the TUI to authenticate with Go, or point it at any provider. Takes 3–5 minutes.</p>
+<p><strong>Daily workflow:</strong> Terminal-based (TUI). You open a terminal, navigate to your project, run <code>opencode</code>, and type natural language requests. Press <code>Tab</code> to toggle between Plan mode (read-only, safe) and Build mode (agent edits files). No IDE required, but a VS Code extension also exists.</p>
+<p><strong>Beginner friction points:</strong>
+- Terminal comfort required. If you've never used a terminal before, there's a learning curve.
+- No inline autocomplete — everything goes through the chat/agent interface.
+- Model selection can feel overwhelming with 19+ options (though auto-selection exists).</p>
+<p><strong>Beginner strengths:</strong>
+- Plan mode is excellent for learning: the agent explains what it would do <em>before</em> touching anything.
+- <code>/init</code> auto-analyzes your project and creates an AGENTS.md file — very helpful for ongoing context.
+- 40+ languages supported via LSP integration (Python, JavaScript, Go, Rust, Java, C++, etc.).
+- Supports asking "explain this code" naturally and getting working explanations.</p>
+<h3 id="github-copilot_1">GitHub Copilot</h3>
+<p><strong>Setup:</strong> Install the VS Code extension, sign in with GitHub. Done in 2 minutes. Zero configuration.</p>
+<p><strong>Daily workflow:</strong> Works inside VS Code or JetBrains. You type code and see ghost-text suggestions. Ask questions in the sidebar chat. Press Tab to accept suggestions. Completely invisible until you need it.</p>
+<p><strong>Beginner friction points:</strong>
+- Credit anxiety — every chat message and agent session costs credits, so beginners may hesitate to ask "dumb questions."
+- When credits run out, Copilot goes silent with no graceful fallback. You don't know you've hit the wall until you hit it.
+- The 50-chat-request free tier (or limited credit pool on Pro) punishes the "ask repeatedly until you understand" pattern that vibe coding relies on.</p>
+<p><strong>Beginner strengths:</strong>
+- Inline autocomplete is genuinely the best in class — sub-100ms, context-aware, works while you type.
+- Zero terminal knowledge needed. The VS Code extension is dead simple.
+- Rich IDE integration: cursor context, open files, project indexing all happen automatically.
+- Copilot Chat in the sidebar feels natural — like asking a friend next to you.</p>
+<h3 id="verdict-on-usability">Verdict on Usability</h3>
+<p><strong>For a total beginner who has never used a terminal:</strong> Copilot wins on setup simplicity. VS Code extension → instant productivity.</p>
+<p><strong>For a beginner who is willing to learn (even basic) terminal use:</strong> OpenCode Go wins on <em>value per interaction</em>. You can ask unlimited questions on cheap models without worrying about credit depletion.</p>
+<p><strong>Key insight:</strong> Vibe coding is inherently <em>chat-heavy</em> — you describe intent, get output, ask follow-ups, debug errors, iterate. This pattern burns Copilot credits very fast. On OpenCode Go, the same pattern costs fractions of a cent with DeepSeek V4 Flash. The tool that lets you ask more questions without anxiety is the better vibe coding tool.</p>
+<p><strong>Confidence: High (A/B)</strong> — Setup descriptions verified against official docs (opencode.ai/docs, docs.github.com/copilot) and independent reviews (Ivern AI, July 2026; TeachMeIDEA, April 2026).</p>
+<hr />
+<h2 id="3-multi-language-feature-performance">3. Multi-Language &amp; Feature Performance</h2>
+<h3 id="language-support">Language Support</h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>OpenCode Go</th>
+<th>GitHub Copilot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Languages supported</strong></td>
+<td>Any (language-agnostic via LSP)</td>
+<td>Any (model-dependent)</td>
+</tr>
+<tr>
+<td><strong>Python</strong></td>
+<td>Excellent (pyright/pylsp LSP integration)</td>
+<td>Excellent</td>
+</tr>
+<tr>
+<td><strong>JavaScript/TypeScript</strong></td>
+<td>Excellent (ts-language-server)</td>
+<td>Excellent</td>
+</tr>
+<tr>
+<td><strong>Go, Rust, Java, C++</strong></td>
+<td>Strong (gopls, rust-analyzer, clangd, jdtls)</td>
+<td>Strong</td>
+</tr>
+<tr>
+<td><strong>HTML/CSS</strong></td>
+<td>Good</td>
+<td>Good</td>
+</tr>
+<tr>
+<td><strong>Obscure/niche languages</strong></td>
+<td>Works (LSP may not be available)</td>
+<td>Works</td>
+</tr>
+<tr>
+<td><strong>Multi-language projects</strong></td>
+<td>Handles well (reads file extensions)</td>
+<td>Handles well</td>
+</tr>
+</tbody>
+</table>
+<p>Both tools work across essentially all programming languages. OpenCode's LSP integration gives it a slight edge for type-aware assistance in complex projects, but for a beginner working in mainstream languages, there's no meaningful difference.</p>
+<h3 id="feature-comparison-for-vibe-coders">Feature Comparison for Vibe Coders</h3>
+<table>
+<thead>
+<tr>
+<th>Vibe Coding Need</th>
+<th>OpenCode Go</th>
+<th>GitHub Copilot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>"Build me a [thing] from scratch"</strong></td>
+<td>Excellent — full agentic mode, multi-file edits, runs commands</td>
+<td>Good — agent mode exists but credit-limited</td>
+</tr>
+<tr>
+<td><strong>"Explain this code to me"</strong></td>
+<td>Excellent — unlimited chat on cheap models</td>
+<td>Good — but costs credits per message</td>
+</tr>
+<tr>
+<td><strong>"Debug this error"</strong></td>
+<td>Excellent — can read error output, test fixes automatically</td>
+<td>Good — but complex debugging sessions burn credits</td>
+</tr>
+<tr>
+<td><strong>Inline autocomplete while typing</strong></td>
+<td>Not available (terminal tool)</td>
+<td>Excellent — best-in-class</td>
+</tr>
+<tr>
+<td><strong>"Refactor this into 3 files"</strong></td>
+<td>Excellent — multi-file edits are core strength</td>
+<td>Good (Copilot Edits), but less autonomous</td>
+</tr>
+<tr>
+<td><strong>"Write tests for this"</strong></td>
+<td>Excellent — can write and run tests</td>
+<td>Good — can write, test running is limited</td>
+</tr>
+<tr>
+<td><strong>Code review of PRs</strong></td>
+<td>Available via MCP integration</td>
+<td>Built-in (consumes credits + Actions minutes)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="the-autocomplete-question">The Autocomplete Question</h3>
+<p>The biggest gap between the tools is inline autocomplete. If you're the kind of coder who types code line-by-line and wants AI ghost-text suggestions to appear as you type, Copilot is unmatched. OpenCode has no equivalent.</p>
+<p>However, for a <em>vibe coder</em> — someone who describes what they want in English and gets working code — the autocomplete gap matters less. Vibe coding is primarily about "here's what I want, make it happen," which is exactly what OpenCode's agentic mode does best.</p>
+<p><strong>Confidence: Medium (B)</strong> — Performance comparisons based on Ivern AI's 40-task benchmark (July 2026: Copilot 93% task completion, OpenCode 88%; but OpenCode scored 92% on multi-file tasks vs Copilot's 80%). Community reports and official feature lists supplement.</p>
+<hr />
+<h2 id="4-community-consensus-last-612-months">4. Community Consensus (Last 6–12 Months)</h2>
+<h3 id="opencode-go-sentiment-marchaugust-2026">OpenCode Go Sentiment (March–August 2026)</h3>
+<p>The consensus is strongly positive on value, with some caveats:</p>
+<p><strong>Positive:</strong>
+- XDA Developers (Aug 2026): "One of the best deals in AI right now… paying $10 a month and using maybe a dollar's worth of it" with DeepSeek V4 Flash. Rating: highly recommended.
+- Tony Reviews Things (Jun 2026): 4.5/5 — "Cheapest multi-model AI coding subscription in 2026. An easy recommendation."
+- Julien.cloud (May 2026): "The models in this lineup are now good enough that the question is no longer 'Can open models match frontier?'"
+- Community pattern: most users cluster around DeepSeek V4 Flash (80% of tasks) + premium model (20% for hard problems).</p>
+<p><strong>Negative/Caveats:</strong>
+- Hacker News (Mar 2026): Some users note rapid release cadence means occasional bugs, and the large TypeScript codebase uses significant RAM.
+- Privacy note: 17 of 19 standard models have zero-day retention, but Grok 4.6 and GPT 5.6 Luna have 30-day retention. Muse Contributor allows training on prompts. [Tony Reviews Things, Aug 2026]
+- The model roster is dominated by Chinese AI labs (17 of 19 models), though Grok 4.6 and GPT 5.6 Luna are now included.</p>
+<h3 id="github-copilot-sentiment-aprilaugust-2026">GitHub Copilot Sentiment (April–August 2026)</h3>
+<p>The sentiment shifted sharply negative with the June 1, 2026 billing change:</p>
+<p><strong>Negative:</strong>
+- The Register (Jun 2026): "Developers seem to hate Microsoft's new usage-based billing policy… burning through a month's worth of credits in hours."
+- GitHub Community Discussion #197782 (Jun 2026): 8,685+ stars — titled "The new GitHub Copilot plans are an absolute disaster."
+- Reddit r/GithubCopilot (Jun 2026): "Woke up to the new billing UI… 1,180 credits used. 16% of my monthly Pro+ allowance. Gone. For basically nothing."
+- Data Today (Aug 2026): "Copilot credit costs keep burning budgets. Two months after the token-based billing switch, credits vanish fast."
+- Multiple users reported switching to OpenRouter, OpenCode, or Claude Code as alternatives.</p>
+<p><strong>Positive (with caveats):</strong>
+- Code completions remain genuinely excellent and free on all paid plans — the autocomplete experience hasn't changed.
+- For completion-heavy, light-chat workflows, the billing change barely matters.
+- The integration with GitHub PRs and VS Code remains best-in-class.</p>
+<p><strong>The pattern:</strong> Developers who use Copilot primarily for inline autocomplete barely noticed the change. Developers who use it for agentic workflows (the vibe coding pattern) found their budgets destroyed overnight.</p>
+<h3 id="head-to-head-community-verdict">Head-to-Head Community Verdict</h3>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>OpenCode Go</th>
+<th>GitHub Copilot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Value for money</strong></td>
+<td>Overwhelmingly positive</td>
+<td>Strongly negative (post-June 2026)</td>
+</tr>
+<tr>
+<td><strong>Reliability</strong></td>
+<td>Generally stable (some rapid-release bugs)</td>
+<td>Stable service, but credit anxiety</td>
+</tr>
+<tr>
+<td><strong>Model quality</strong></td>
+<td>Good-to-excellent (open models closing gap)</td>
+<td>Excellent (access to frontier models on Pro+)</td>
+</tr>
+<tr>
+<td><strong>Community momentum</strong></td>
+<td>Growing rapidly (120K+ GitHub stars)</td>
+<td>Established but users fleeing</td>
+</tr>
+<tr>
+<td><strong>Trust</strong></td>
+<td>Positive (transparent pricing, open source)</td>
+<td>Damaged by billing surprise</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Confidence: Medium-High (B+)</strong> — Community sentiment gathered from Hacker News (Mar 2026), Reddit r/GithubCopilot and r/vibecoding (Feb–Mar 2026), GitHub Community forums (Jun 2026), The Register (Jun 2026), XDA Developers (Aug 2026), and multiple tech blogs (Jun–Aug 2026). Reddit data is single-source via search excerpts; full threads were inaccessible due to Reddit's bot-blocking policy.</p>
+<hr />
+<h2 id="5-the-verdict">5. The Verdict</h2>
+<h3 id="for-a-multi-language-vibe-coder-on-10month-opencode-go-wins-decisively">For a multi-language "vibe coder" on £10/month: <strong>OpenCode Go wins decisively.</strong></h3>
+<p><strong>Why:</strong></p>
+<ol>
+<li>
+<p><strong>4× the value.</strong> $60/month in model usage vs $15 in Copilot credits. A vibe coder using DeepSeek V4 Flash will burn maybe $1–3/month of actual value — leaving enormous headroom to experiment freely.</p>
+</li>
+<li>
+<p><strong>No credit anxiety.</strong> Vibe coding is inherently iterative: describe → get output → ask follow-up → debug → refine. This pattern burns Copilot credits at a punishing rate. On OpenCode Go, the same workflow costs fractions of a cent per interaction. You can ask "dumb questions" without guilt.</p>
+</li>
+<li>
+<p><strong>Multi-language flexibility.</strong> OpenCode works with any language via LSP integration — Python, JavaScript, Go, Rust, Java, C++, and more. The /init command analyzes your project and adapts. No lock-in to any single ecosystem.</p>
+</li>
+<li>
+<p><strong>Growth path.</strong> As you become more comfortable, OpenCode's terminal workflow teaches you real developer skills. The same tool scales from "explain this code" to "refactor this entire module" without changing your setup.</p>
+</li>
+<li>
+<p><strong>Transparent billing.</strong> You know exactly what you're getting: $60 of usage, three clear caps (5-hour, weekly, monthly). No surprise credit depletion. No "the tool just stopped working."</p>
+</li>
+</ol>
+<p><strong>The first month is $5</strong> — practically free to try.</p>
+<hr />
+<h2 id="6-the-trade-offs">6. The Trade-offs</h2>
+<p>By choosing OpenCode Go over GitHub Copilot Pro, you give up:</p>
+<table>
+<thead>
+<tr>
+<th>What You Lose</th>
+<th>How Much It Matters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Inline autocomplete (ghost-text while typing)</strong></td>
+<td>Medium. If you learn to code by accepting AI suggestions line-by-line, this is a genuine loss. Vibe coders who describe intent in English are less affected.</td>
+</tr>
+<tr>
+<td><strong>VS Code / JetBrains native integration</strong></td>
+<td>Low-Medium. OpenCode has a VS Code extension and desktop app (beta), but the terminal TUI is the primary interface. If you live in VS Code, this feels like a step away from comfort.</td>
+</tr>
+<tr>
+<td><strong>Access to Claude Opus and Gemini models</strong></td>
+<td>Low for a beginner. OpenCode Go includes GPT 5.6 Luna and Grok 4.6 (frontier-grade models), plus 17 excellent open models. You won't miss Claude/Gemini for everyday vibe coding.</td>
+</tr>
+<tr>
+<td><strong>GitHub ecosystem integration (PRs, Issues, Actions)</strong></td>
+<td>Low for a beginner. If you're not yet working with pull requests or CI/CD, this doesn't affect you.</td>
+</tr>
+<tr>
+<td><strong>The "it just works" setup</strong></td>
+<td>Low. OpenCode requires 3–5 minutes of setup vs 2 minutes for Copilot. Both are straightforward.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Bottom line of trade-offs:</strong> The biggest sacrifice is inline autocomplete and the polished VS Code experience. If you value those enough to trade away 4× the usage capacity and 6× the monthly budget headroom, Copilot Pro is the right choice. For most vibe coders — especially those on a tight budget — the trade isn't worth it.</p>
+<hr />
+<h2 id="7-transparency-limitations">7. Transparency &amp; Limitations</h2>
+<h3 id="what-i-cannot-verify-or-flag-as-uncertain">What I cannot verify or flag as uncertain:</h3>
+<ol>
+<li>
+<p><strong>GBP pricing.</strong> Both tools price in USD. I've used approximate exchange rates (~$1 = £0.75). The actual GBP amount may vary slightly depending on your bank/card provider's exchange rate. Both tools' $10 USD price point is comfortably within a £10 budget.</p>
+</li>
+<li>
+<p><strong>Copilot Free tier post-June 2026.</strong> The free tier credits-based system replaced the old 50-request cap on June 1, 2026. The exact number of chat interactions the free tier now buys is unclear — GitHub's docs reference an "allowance of AI Credits" without publishing a precise number for Free. The pre-transition figure of 50 chat requests may no longer apply exactly.</p>
+</li>
+<li>
+<p><strong>OpenCode Go model roster changes.</strong> OpenCode regularly adds and removes models from Go. The current list (23 models as of August 2026) may differ by the time you read this. Check opencode.ai/docs/go for the latest.</p>
+</li>
+<li>
+<p><strong>Long-term pricing stability.</strong> OpenCode Go explicitly states usage limits "may change as the team learns from early usage." GitHub Copilot's billing model has already changed once dramatically (June 2026). Both could change again.</p>
+</li>
+<li>
+<p><strong>Reddit community data.</strong> Reddit threads are behind bot-walls and inaccessible via standard fetching. Community sentiment from Reddit was gathered via search result excerpts and may be truncated or decontextualized.</p>
+</li>
+</ol>
+<h3 id="source-recency">Source Recency</h3>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Date</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>opencode.ai/docs/go</td>
+<td>August 27, 2026</td>
+<td>Primary (official docs)</td>
+</tr>
+<tr>
+<td>docs.github.com/copilot</td>
+<td>August 2026</td>
+<td>Primary (official docs)</td>
+</tr>
+<tr>
+<td>XDA Developers OpenCode Go review</td>
+<td>August 11, 2026</td>
+<td>Independent review (B)</td>
+</tr>
+<tr>
+<td>Tony Reviews Things OpenCode Go review</td>
+<td>June 27, 2026 (updated Aug 21, 2026)</td>
+<td>Independent review (B)</td>
+</tr>
+<tr>
+<td>Ivern AI comparison benchmark</td>
+<td>July 2, 2026</td>
+<td>Independent benchmark (B)</td>
+</tr>
+<tr>
+<td>The Register — Copilot billing backlash</td>
+<td>June 2, 2026</td>
+<td>Tech journalism (B)</td>
+</tr>
+<tr>
+<td>GitHub Community Discussion #197782</td>
+<td>June 2, 2026</td>
+<td>Community forum (B)</td>
+</tr>
+<tr>
+<td>Data Today — Copilot credit costs</td>
+<td>August 8, 2026</td>
+<td>Tech analysis (B)</td>
+</tr>
+<tr>
+<td>NeuralWired — Copilot pricing guide</td>
+<td>August 20, 2026</td>
+<td>Tech analysis (B)</td>
+</tr>
+<tr>
+<td>GitHub Blog — usage-based billing</td>
+<td>April 27, 2026 + May 12, 2026</td>
+<td>Primary (official blog)</td>
+</tr>
+<tr>
+<td>Hacker News — OpenCode discussion</td>
+<td>March 6, 2026</td>
+<td>Community forum (B)</td>
+</tr>
+<tr>
+<td>Julien.cloud — OpenCode Go models</td>
+<td>May 30, 2026</td>
+<td>Independent analysis (B)</td>
+</tr>
+</tbody>
+</table>
+<p>All data is from 2026. No sources older than 12 months were used.</p>
+<hr />
+<h2 id="sources">Sources</h2>
+<ol>
+<li>OpenCode Go documentation — https://opencode.ai/docs/go/</li>
+<li>GitHub Copilot plans and pricing — https://github.com/features/copilot/plans</li>
+<li>GitHub Copilot usage-based billing docs — https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-individuals</li>
+<li>GitHub Blog: Copilot usage-based billing announcement — https://github.blog/news-insights/company-news/github-copilot-is-moving-to-usage-based-billing/</li>
+<li>GitHub Blog: Flex allotments announcement — https://github.blog/news-insights/company-news/github-copilot-individual-plans-introducing-flex-allotments-in-pro-and-pro-and-a-new-max-plan/</li>
+<li>XDA Developers: OpenCode Go review — https://www.xda-developers.com/most-people-pay-claude-code-but-opencode-go-codebase-analysis/</li>
+<li>Tony Reviews Things: OpenCode Go review — https://www.tonyreviewsthings.com/opencode-go-review/</li>
+<li>Ivern AI: Copilot vs OpenCode comparison — https://ivern.ai/blog/github-copilot-vs-opencode-comparison</li>
+<li>The Register: Copilot billing backlash — https://www.theregister.com/ai-and-ml/2026/06/02/github-copilot-users-threaten-exit-as-metered-billing-kicks-in/</li>
+<li>GitHub Community Discussion #197782 — https://github.com/orgs/community/discussions/197782</li>
+<li>Data Today: Copilot credit costs — https://data-today.net/copilot-credit-costs-still-sting/</li>
+<li>NeuralWired: Copilot pricing guide — https://neuralwired.com/2026/08/20/github-copilot-pricing-2026-free-tier/</li>
+<li>Julien.cloud: OpenCode Go models — https://julien.cloud/blog/opencode-go-models-2026/</li>
+<li>Hacker News: OpenCode discussion — https://news.ycombinator.com/item?id=47460525</li>
+<li>Logic &amp; Layers: Copilot pricing beginner guide — https://logicandlayers.com/2026/05/30/github-copilot-pricing-beginner-cost-guide/</li>
+<li>StackBrief: Copilot Free tier review — https://stackbrief.dev/article/github-copilot-free-tier-review</li>
+<li>OpenCode setup guide (Ivern AI) — https://ivern.ai/blog/opencode-ai-coding-agent-setup-guide-2026</li>
+<li>AIToolGrade: Copilot token billing breakdown — https://aitoolgrade.com/blog/github-copilot-token-billing-2026.html</li>
+</ol>
+
+    <p class="sources no-print">
+      Generated by opencode deep research · <a href="https://thisisirfansbackup-cyber.github.io/research-reports/">index</a> ·
+      <a href="#" onclick="window.print();return false;">Export PDF</a>
+    </p>
+  </article>
+</div>
+
+<footer>
+  <span>Research Reports — opencode deep research</span>
+  <span>2026-08-28</span>
+</footer>
+</body>
+</html>
