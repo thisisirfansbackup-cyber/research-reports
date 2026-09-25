@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="One Book for Endurance — deep research report">
+<title>One Book for Endurance</title>
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --bg-soft: #f6f7f9;
+  --fg: #1a1d23;
+  --fg-soft: #5b6472;
+  --accent: #2563eb;
+  --accent-soft: #eff4ff;
+  --border: #e4e7ec;
+  --code-bg: #f2f4f8;
+  --shadow: 0 1px 2px rgba(16, 24, 40, .06), 0 1px 3px rgba(16, 24, 40, .1);
+  --radius: 12px;
+  --maxw: 720px;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1116;
+    --bg-soft: #161b22;
+    --fg: #e6e9ee;
+    --fg-soft: #9aa4b2;
+    --accent: #60a5fa;
+    --accent-soft: #17233a;
+    --border: #2a3240;
+    --code-bg: #161b22;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 1px 3px rgba(0, 0, 0, .5);
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font);
+  line-height: 1.7;
+  font-size: 17px;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Header */
+header.site {
+  position: sticky; top: 0; z-index: 10;
+  background: color-mix(in srgb, var(--bg) 86%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+header.site .inner {
+  max-width: 960px; margin: 0 auto; padding: 12px 20px;
+  display: flex; align-items: center; gap: 12px; justify-content: space-between;
+}
+.brand { font-weight: 700; font-size: 15px; letter-spacing: .02em; }
+.brand a { color: var(--fg); }
+.brand a:hover { text-decoration: none; }
+.brand .dot { color: var(--accent); }
+nav.actions { display: flex; gap: 8px; align-items: center; font-size: 14px; }
+
+/* Layout */
+.wrap { max-width: 960px; margin: 0 auto; padding: 32px 20px 64px; display: grid; grid-template-columns: 1fr; gap: 32px; }
+@media (min-width: 900px) {
+  .wrap { grid-template-columns: 220px minmax(0, var(--maxw)); justify-content: center; }
+}
+article { min-width: 0; }
+
+/* Report header */
+.report-head { padding: 8px 0 24px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.kicker { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--accent); margin: 0 0 8px; }
+h1.report-title { font-size: 34px; line-height: 1.2; margin: 0 0 12px; letter-spacing: -.02em; }
+.meta { font-size: 14px; color: var(--fg-soft); display: flex; flex-wrap: wrap; gap: 14px; }
+.meta span { display: inline-flex; align-items: center; gap: 6px; }
+.summary {
+  margin-top: 20px; padding: 16px 20px; border-radius: var(--radius);
+  background: var(--accent-soft); border: 1px solid var(--border); font-size: 16px;
+}
+
+/* TOC */
+.toc { font-size: 14px; }
+.toc nav {
+  position: sticky; top: 72px; padding: 16px 18px; border-radius: var(--radius);
+  background: var(--bg-soft); border: 1px solid var(--border);
+}
+.toc h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--fg-soft); margin: 0 0 10px; }
+.toc ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.toc li a { display: block; padding: 4px 8px; border-radius: 6px; color: var(--fg-soft); }
+.toc li a:hover { background: var(--accent-soft); color: var(--accent); text-decoration: none; }
+
+/* Body typography */
+article h2 { font-size: 24px; margin: 40px 0 12px; padding-top: 8px; letter-spacing: -.01em; scroll-margin-top: 80px; }
+article h3 { font-size: 19px; margin: 28px 0 10px; scroll-margin-top: 80px; }
+article h4 { font-size: 17px; margin: 22px 0 8px; }
+article p { margin: 0 0 16px; }
+article ul, article ol { margin: 0 0 16px; padding-left: 26px; }
+article li { margin-bottom: 6px; }
+article blockquote {
+  margin: 20px 0; padding: 12px 18px; border-left: 3px solid var(--accent);
+  background: var(--bg-soft); border-radius: 0 var(--radius) var(--radius) 0;
+  color: var(--fg-soft);
+}
+article code {
+  font-family: var(--mono); font-size: .88em; background: var(--code-bg);
+  padding: 2px 6px; border-radius: 5px;
+}
+article pre {
+  background: var(--code-bg); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.6;
+}
+article pre code { background: none; padding: 0; }
+article table {
+  width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 15px;
+}
+article th, article td {
+  text-align: left; padding: 10px 14px; border: 1px solid var(--border);
+}
+article th { background: var(--bg-soft); font-weight: 600; }
+article tr:nth-child(even) td { background: color-mix(in srgb, var(--bg-soft) 50%, transparent); }
+article img { max-width: 100%; border-radius: var(--radius); }
+hr { border: none; border-top: 1px solid var(--border); margin: 36px 0; }
+
+/* Footnotes / sources */
+.sources { font-size: 14px; color: var(--fg-soft); }
+
+/* Footer */
+footer {
+  max-width: 960px; margin: 0 auto; padding: 24px 20px 48px;
+  border-top: 1px solid var(--border); font-size: 13px; color: var(--fg-soft);
+  display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+}
+
+/* Print */
+@media print {
+  body { font-size: 12pt; }
+  header.site, .toc, .no-print { display: none; }
+  .wrap { display: block; max-width: 100%; padding: 0; }
+  a { color: var(--fg); }
+  article h2 { page-break-before: always; }
+}
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="inner">
+    <div class="brand"><a href="https://thisisirfansbackup-cyber.github.io/research-reports/">Research<span class="dot">·</span>Reports</a></div>
+    <nav class="actions">
+      <a href="https://thisisirfansbackup-cyber.github.io/research-reports/" class="no-print">All reports</a>
+      <a href="#" onclick="window.print();return false;" class="no-print">Print / PDF</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <aside class="toc no-print">
+    <nav>
+      <h2>Contents</h2>
+      <ul>
+<li><a href="#the-recommendation">The recommendation</a></li>
+<li style="padding-left:14px"><a href="#middlemarch-george-eliot">Middlemarch — George Eliot</a></li>
+<li><a href="#key-findings">Key findings</a></li>
+<li><a href="#1-why-this-book-for-this-reader">1. Why this book, for this reader</a></li>
+<li style="padding-left:14px"><a href="#11-capacity-for-deep-unfamiliar-commitment">1.1 "Capacity for deep, unfamiliar commitment"</a></li>
+<li style="padding-left:14px"><a href="#12-not-recovery-from-trauma-or-burnout-prevention">1.2 "Not recovery from trauma or burnout prevention"</a></li>
+<li style="padding-left:14px"><a href="#13-story-driven-literary-fiction-character-interiority-moral-struggle">1.3 "Story-driven literary fiction… character interiority, moral struggle"</a></li>
+<li style="padding-left:14px"><a href="#14-accepting-the-unknown-and-choosing-lifelong-loyalty-over-fear">1.4 "Accepting the unknown and choosing lifelong loyalty over fear"</a></li>
+<li style="padding-left:14px"><a href="#15-on-being-30-in-the-uk-in-2026">1.5 On being 30, in the UK, in 2026</a></li>
+<li><a href="#1a-the-situation-checked-against-sources">1A. The situation, checked against sources</a></li>
+<li><a href="#2-the-finalists-and-why-each-one-lost">2. The finalists, and why each one lost</a></li>
+<li style="padding-left:14px"><a href="#the-one-that-got-closest-and-why-it-still-lost">The one that got closest, and why it still lost</a></li>
+<li><a href="#3-the-precise-shift-the-narrative-produces">3. The precise shift the narrative produces</a></li>
+<li style="padding-left:14px"><a href="#shift-1-from-the-unknown-is-a-void-to-the-unknown-is-a-task">Shift 1 — from "the unknown is a void" to "the unknown is a task"</a></li>
+<li style="padding-left:14px"><a href="#shift-2-from-wanting-transparency-to-practising-attention">Shift 2 — from wanting transparency to practising attention</a></li>
+<li style="padding-left:14px"><a href="#shift-3-from-loyalty-as-heroism-to-loyalty-as-unhistoric-act">Shift 3 — from loyalty-as-heroism to loyalty-as-unhistoric-act</a></li>
+<li style="padding-left:14px"><a href="#shift-4-from-patience-as-a-virtue-to-patience-as-a-specific-located-deficiency">Shift 4 — from patience as a virtue to patience as a specific, located deficiency</a></li>
+<li style="padding-left:14px"><a href="#a-caution-about-the-shift-stated-as-carefully-as-the-claim">A caution about the shift, stated as carefully as the claim</a></li>
+<li><a href="#4-plot-versus-interiority-what-to-expect-measured">4. Plot versus interiority: what to expect, measured</a></li>
+<li style="padding-left:14px"><a href="#measurements">Measurements</a></li>
+<li style="padding-left:14px"><a href="#the-same-method-applied-to-the-readers-anchor-book">The same method applied to the reader's anchor book</a></li>
+<li style="padding-left:14px"><a href="#honest-limits-of-these-measurements">Honest limits of these measurements</a></li>
+<li style="padding-left:14px"><a href="#the-shape-of-the-thing-in-plain-terms">The shape of the thing, in plain terms</a></li>
+<li><a href="#5-who-this-book-resonates-least-with">5. Who this book resonates least with</a></li>
+<li style="padding-left:14px"><a href="#51-the-casaubon-trap-the-most-serious-risk">5.1 The Casaubon trap — the most serious risk</a></li>
+<li style="padding-left:14px"><a href="#52-the-reader-may-already-have-read-it-and-found-it-slow">5.2 The reader may already have read it, and found it slow</a></li>
+<li style="padding-left:14px"><a href="#53-it-does-not-give-a-dostoevsky-style-sustained-consciousness">5.3 It does not give a Dostoevsky-style sustained consciousness</a></li>
+<li style="padding-left:14px"><a href="#54-she-does-not-triumph">5.4 "She does not triumph"</a></li>
+<li style="padding-left:14px"><a href="#55-the-gender-of-identification">5.5 The gender of identification</a></li>
+<li style="padding-left:14px"><a href="#56-people-who-need-the-book-to-say-the-marriage-will-be-fine">5.6 People who need the book to say the marriage will be fine</a></li>
+<li style="padding-left:14px"><a href="#57-scale">5.7 Scale</a></li>
+<li><a href="#6-on-the-research-literature-usually-used-to-justify-this">6. On the research literature usually used to justify this</a></li>
+<li style="padding-left:14px"><a href="#what-the-literature-actually-shows">What the literature actually shows</a></li>
+<li style="padding-left:14px"><a href="#what-follows-from-this">What follows from this</a></li>
+<li style="padding-left:14px"><a href="#so-what-is-the-recommendation-resting-on">So what is the recommendation resting on?</a></li>
+<li><a href="#7-getting-hold-of-it">7. Getting hold of it</a></li>
+<li><a href="#8-gaps-and-limitations">8. Gaps and limitations</a></li>
+<li><a href="#9-a-short-factual-note-on-support-for-whoever-needs-it">9. A short, factual note on support, for whoever needs it</a></li>
+<li><a href="#sources">Sources</a></li>
+</ul>
+    </nav>
+  </aside>
+
+  <article>
+    <header class="report-head">
+      <p class="kicker">Deep Research Report</p>
+      <h1 class="report-title">One Book for Endurance</h1>
+      <div class="meta">
+        <span>🗓 2026-09-25</span>
+        <span>opencode deep research</span>
+      </div>
+      <div class="summary"><strong>Summary.</strong> For a 30-year-old UK resident entering an arranged marriage next year whom they have not yet met, and who learns through character interiority and moral struggle (anchor: Dostoevsky's Crime and Punishment), the single best-fitting novel is George Eliot's Middlemarch (1871-72) — not because it is the greatest novel, but because its own narrator names this reader's exact situation four times, in words, and then spends 318,638 words on what happens to people who act on incomplete knowledge. The report verifies those passages from the primary text, quantifies the interiority-to-plot ratio from the text itself, checks the reader's premise against UK official sources, states plainly who the book will fail, and reports the honest weakness of the research literature that supposedly justifies reading fiction at all.</div>
+    </header>
+
+    <p><em>A research report on choosing exactly one novel for an arranged marriage you have not chosen.</em></p>
+<p>Prepared 2026-09-25 · all sources accessed 2026-09-25</p>
+<hr />
+<h2 id="the-recommendation">The recommendation</h2>
+<blockquote>
+<h3 id="middlemarch-george-eliot"><em>Middlemarch</em> — George Eliot</h3>
+<p>Penguin Classics, edited with an introduction by Rosemary Ashton.
+ISBN <strong>9780141439549</strong> · <strong>880 pages</strong> · paperback · <strong>£10.99</strong> · in stock.</p>
+</blockquote>
+<p>That is the recommendation. Everything below is the argument for it, the
+measurement of it, the conditions under which it fails, and an honest account of
+the research literature that is usually used to justify book recommendations of
+this kind — which, as it turns out, is much weaker than the genre of
+recommendation implies.</p>
+<hr />
+<h2 id="key-findings">Key findings</h2>
+<ol>
+<li>
+<p><strong>The novel's narrator describes this reader's situation in the first book,
+   in passing, and does not notice that it is remarkable.</strong> "Dorothea's
+   inferences may seem large; but really life could never have gone on at any
+   period but for this liberal allowance of conclusions, <strong>which has facilitated
+   marriage under the difficulties of civilization</strong>." Two chapters later: "Has
+   any one ever pinched into its pilulous smallness the <strong>cobweb of
+   pre-matrimonial acquaintanceship</strong>?" [1]</p>
+</li>
+<li>
+<p><strong>The novel states the reader's epistemological position as its structural
+   premise.</strong> "For surely all must admit that a man may be puffed and belauded,
+   envied, ridiculed, counted upon as a tool and fallen in love with, or <strong>at
+   least selected as a future husband, and yet remain virtually unknown</strong>—known
+   merely as a cluster of signs for his neighbors' false suppositions." [1]</p>
+</li>
+<li>
+<p><strong>The novel gives the phenomenon a name and then argues with it.</strong> "Young
+   love-making—that gossamer web! … The web itself is made of spontaneous
+   beliefs and indefinable joys, yearnings of one life towards another, visions
+   of completeness, <strong>indefinite trust</strong>." This passage sits over Lydgate
+   marrying Rosamond, and the novel then spends 250 pages showing what "indefinite
+   trust" does when it is mistaken. [1]</p>
+</li>
+<li>
+<p><strong>The novel's final sentence is the reader's biography.</strong> "For the growing
+   good of the world is partly dependent on <strong>unhistoric acts</strong>; and that things
+   are not so ill with you and me as they might have been, is half owing to the
+   number who lived faithfully a hidden life, and rest in unvisited tombs." [1]
+   An arranged marriage produces no stories. This is a novel arguing that the
+   lives which produce no stories are the load-bearing ones.</p>
+</li>
+<li>
+<p><strong>The novel's own diagnosis of the reader's task, in one sentence.</strong> "Some
+   set out, like Crusaders of old, with a glorious equipment of hope and
+   enthusiasm and get broken by the way, <strong>wanting patience with each other and
+   the world</strong>." Patience is the missing skill, and the novel locates the deficit
+   precisely: <em>with each other</em>. [1]</p>
+</li>
+<li>
+<p><strong>Measured from the text, the interiority-to-plot ratio suits a reader who
+   learns through interiority.</strong> 318,638 words; <strong>35.1% of the text is quoted
+   speech</strong>, leaving ~65% narration; <strong>15.5% of sentences carry explicit
+   interiority markers, against 10.3% in <em>Crime and Punishment</em></strong>. Only <strong>0.78%
+   of sentences touch the political or public sphere</strong>. Reading time ≈ <strong>21 hours
+   at 250 words per minute</strong>. [2]</p>
+</li>
+<li>
+<p><strong>The obvious competitor fails on the reader's own stated learning mode.</strong>
+   <em>Kristin Lavransdatter</em> is the great novel of enduring a difficult lifelong
+   marriage, and it is the book most often reached for here. But its interiority
+   is <em>external</em> — it inherits "a tendency to view characters externally, with
+   few ventures into the inner workings of their minds" from the Icelandic sagas
+   (Brad Leithauser, <em>NYRB</em>) — and its heroine <strong>refuses</strong> the arranged match and
+   marries for love, which is the structural inverse of this reader's situation.
+   [3]</p>
+</li>
+<li>
+<p><strong>The research literature does not support the usual justification, and this
+   report does not use it.</strong> The claim that reading literary fiction raises
+   empathy or mental toughness is <strong>small and non-significant in meta-analysis</strong>
+   (van Kuijk et al. 2018) and its own authors report preregistered replication
+   failures. The recommendation rests on verifiable textual fit, not on this
+   claim. [4]</p>
+</li>
+<li>
+<p><strong>There appears to be no English novel of Dostoevskian psychological depth
+   about a modern arranged marriage.</strong> Two independent research sweeps — one over
+   the literary canon, one over the sociology and reporting — produced none. The
+   serious Anglophone novels that touch arranged marriage (<em>Brick Lane</em>, <em>The
+   Buddha of Suburbia</em>) are about <strong>refusing</strong> it, and the popular shelves are full
+   of love-obstacle romance. The reader is not choosing between good books; they
+   are choosing outside a hole in the literature. [3][9]</p>
+</li>
+<li>
+<p><strong>The reader's situation is at the harder end of an attested range, and the
+   law and the reader's own tradition both place the "yes" inside the marriage.</strong>
+   The UK Forced Marriage Unit states that in an arranged marriage "both parties
+   have consented to the union but can still refuse to marry if they choose to,"
+   and that "freely given consent is a prerequisite of, for example, Christian,
+   Hindu, Jewish, Muslim and Sikh marriages." [9] That is the frame <em>Middlemarch</em>
+   operates in: a real assent given on incomplete information. It is also the
+   frame the novel is uniquely equipped to dramatise.</p>
+</li>
+</ol>
+<hr />
+<h2 id="1-why-this-book-for-this-reader">1. Why this book, for this reader</h2>
+<p>The brief specifies four anchors. Each is answered below by something in the
+text that can be checked, rather than by an adjective.</p>
+<h3 id="11-capacity-for-deep-unfamiliar-commitment">1.1 "Capacity for deep, unfamiliar commitment"</h3>
+<p>The novel opens on a marriage between a nineteen-year-old and a man "towards
+fifty" who has been a suitor for some months without her knowing what he wanted.
+Casaubon's proposal letter is the single most exact document in English fiction
+of a man constructing a whole person out of very little evidence:</p>
+<blockquote>
+<p>"But I have discerned in you an elevation of thought and a capability of
+devotedness, which I had hitherto not conceived to be compatible either with
+the early bloom of youth or with those graces of sex … adapted to supply aid in
+graver labors and to cast a charm over vacant hours." [1]</p>
+</blockquote>
+<p>That is not a description of a marriage. That is a description of an <em>inference</em> —
+and the novel lets Dorothea refuse it. Which matters: the reader is being handed
+someone, and will be doing exactly this kind of inferential work, at exactly this
+resolution, for years. George Eliot makes the error visible from the inside.</p>
+<p><strong>Why this is the right training.</strong> The reader's problem is not that they lack
+information about a stranger. Everyone in that position lacks it. The reader's
+problem is that they will be <em>required to build a person from inadequate data</em>,
+and will have no way of telling, for years, whether the person they have built is
+the person they are living with. <em>Middlemarch</em> is a novel about that specific
+failure mode, run at length, with the consequences shown.</p>
+<h3 id="12-not-recovery-from-trauma-or-burnout-prevention">1.2 "Not recovery from trauma or burnout prevention"</h3>
+<p><em>Middlemarch</em> is not a therapeutic book and makes no such claim. It has no
+trauma, no breakdown, no recovery arc. Its protagonist's crises are
+embarrassment, snobbery, an overeducated imagination, and a bad marriage. The
+register is 19th-century provincial comedy, and it is funny. This is a book
+about ordinary life at length, which is precisely the substrate endurance is built
+from.</p>
+<h3 id="13-story-driven-literary-fiction-character-interiority-moral-struggle">1.3 "Story-driven literary fiction… character interiority, moral struggle"</h3>
+<p>Verified by measurement in §4. The short version: the book's narration is
+denser in interiority than the reader's own anchor book, not less. Its moral
+struggle is continuous and unresolved — Dorothea is wrong about her own mind for
+two thirds of the novel, and Eliot refuses to correct her.</p>
+<h3 id="14-accepting-the-unknown-and-choosing-lifelong-loyalty-over-fear">1.4 "Accepting the unknown and choosing lifelong loyalty over fear"</h3>
+<p>The novel is built on one of the most precise statements of the phenomenon
+available in English, and it is <em>not</em> a reassurance:</p>
+<blockquote>
+<p>"Young love-making—that gossamer web! Even the points it clings to—the things
+whence its subtle interlacings are swung—are scarcely perceptible: momentary
+touches of fingertips, meetings of rays from blue and dark orbs, unfinished
+phrases, lightest changes of cheek and lip, faintest tremors. The web itself is
+made of spontaneous beliefs and indefinable joys, yearnings of one life towards
+another, visions of completeness, <strong>indefinite trust</strong>." [1]</p>
+</blockquote>
+<p>Eliot's word for the feeling the reader is carrying is <strong>"indefinite trust."</strong>
+She also names the failure: Lydgate spins this web "in spite of experience
+supposed to be finished off with the drama of Laure" — in the <em>face of evidence
+against it</em>. The novel's position, developed over Books IV to VI, is that the
+gossamer web is not a foundation and not a fantasy. It is a <strong>provisional
+structure that has to be rebuilt, repeatedly, from better evidence, for
+decades</strong> — and the book is about what that labour looks like in five households
+at once.</p>
+<h3 id="15-on-being-30-in-the-uk-in-2026">1.5 On being 30, in the UK, in 2026</h3>
+<p>The reader is not in Middlemarch's world, and pretending otherwise would be
+sentimental. Three honest notes:</p>
+<ul>
+<li><strong>Eliot is writing about a society where marriage is a transaction between
+  families</strong> — that is the "difficulties of civilization" of the Book I passage.
+  The reader's situation is the same transaction in a different century and a
+  different legal system. The novel is not warning about it or endorsing it. It
+  is <em>describing the epistemic conditions</em> of it, which is the part the reader
+  actually needs.</li>
+<li><strong>The book's proposed solution is not religious, and is not transferable as
+  belief.</strong> Eliot's own frame is sceptical, and the novel's answer to the void is
+  not God but practice: Dorothea's final sentence about her own inadequacy, the
+  narrator's "unhistoric acts," and Mary Garth's plain statement of what
+  constancy actually is. Nothing in the recommendation requires the reader to
+  share a framework with George Eliot.</li>
+<li><strong>The book predates the reader's own situation by 155 years, and that is the
+  point rather than a problem.</strong> The novel has no anxiety about the institution,
+  no interest in defending or attacking it. It is free to treat the marriage as
+  simply the largest fact of a life, which is what it is.</li>
+</ul>
+<hr />
+<h2 id="1a-the-situation-checked-against-sources">1A. The situation, checked against sources</h2>
+<p>The brief's premise was verified rather than assumed, and it came back with one
+correction that matters to the recommendation.</p>
+<p><strong>There is no UK statistic for how many arranged marriages begin without the
+couple having met.</strong> ONS marriage statistics record age, sex, previous
+partnership and ceremony type — not how couples met. No number is asserted here,
+because none exists. [9]</p>
+<p><strong>What the documented range actually looks like.</strong> The attested British
+South-Asian practice is a <em>process</em>, not a single event, and the reader's
+position sits at its harder edge rather than at its centre:</p>
+<table>
+<thead>
+<tr>
+<th>Documented pattern</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Never met, or met once or twice with family present and never alone</td>
+<td>Ziauddin Sardar, on his own marriage: "We met but briefly and never alone before we were married. As it was, so it is and ever will be, because it works" — <em>The Guardian</em>, 13 Sep 2008 [9]</td>
+</tr>
+<tr>
+<td>A series of supervised introductions, each after a parent vets the family, each followed by a yes/no from the candidate</td>
+<td>BBC Radio 4 <em>Home Truths</em>, 3 Oct 2014: "I was introduced to about five guys before I met my fiancee… Dad phoned me and asked: 'Do you want to marry this guy or not?' I was just dumb struck — 'do I want to or don't I? I don't know.'" [9]</td>
+</tr>
+<tr>
+<td>The couple select each other, and the families are brought in to formalise it</td>
+<td>Sardar on the youngest generation, 2008 [9]</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why this strengthens the recommendation rather than weakening it.</strong> The
+attested norm gives the reader more contact, more information and more vetoes
+than the brief describes. The reader has less. That places them in a <em>more</em>
+extreme version of the exact condition <em>Middlemarch</em> is about — a person acting
+on "a cluster of signs" — which is the reason the novel is the right one and not
+merely a defensible one. It is also the reason §5.1 (the Casaubon trap) is the
+most serious risk in this report: the novel's most extractable moral is available
+to a reader who has the least grounds to act on it.</p>
+<p><strong>One genuinely useful piece of context, offered without editorialising.</strong> The
+UK government's own Forced Marriage Unit separates the reader's situation from a
+forced one in terms that are unambiguous: "In contrast to a forced marriage, when
+it comes to the marriage of an adult, in an arranged marriage both parties have
+consented to the union but can still refuse to marry if they choose to." The
+FMU also notes that the 2022 Act "erased the old 16–18 'arranged, not forced'
+grey zone" — <strong>the minimum age to marry in England and Wales has been 18 since
+27 February 2023</strong>, with no exceptions, and a child marriage is now a forced
+marriage by definition. [9]</p>
+<p>That matters to the book choice rather than to the law: the reader is inside a
+marriage that is <em>legitimately theirs</em>, and the question the novel addresses is
+what a person does with a real "yes" given on thin information. George Eliot is
+writing inside exactly that question. She is not, and is not made to be, an
+argument for or against the institution.</p>
+<p><em>For scale, not for anything else:</em> the 2021 Census counted 1.86m Indian,
+1.59m Pakistani and 0.64m Bangladeshi residents in England and Wales, with median
+ages of 36, 28 and 27 against 40 for England and Wales overall. The three groups
+combined are roughly 1.05m people aged 25–39. Ethnic group is not religion, and
+this is England and Wales only. [9]</p>
+<hr />
+<h2 id="2-the-finalists-and-why-each-one-lost">2. The finalists, and why each one lost</h2>
+<p>A recommendation is only as good as the field it beat. Twelve serious candidates
+were examined. Confidence reflects the strength of the evidence behind the row,
+per the method set out in <code>sources.md</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Candidate</th>
+<th>Stages "bond entered without knowledge"?</th>
+<th>Interiority (measured or assessed)</th>
+<th>Teaches loyalty <em>over fear</em>?</th>
+<th>Verdict</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>George Eliot, <em>Middlemarch</em></strong> (1871–72)</td>
+<td><strong>Yes — structurally, twice</strong> (Dorothea→Casaubon; Lydgate→Rosamond)</td>
+<td><strong>High, and distributed</strong>; narrator names the problem in Book I</td>
+<td><strong>Yes</strong> — Finale is entirely about this</td>
+<td><strong>RECOMMENDED</strong></td>
+<td><strong>High</strong> — primary text loaded and measured by main agent [1][2]</td>
+</tr>
+<tr>
+<td>Sigrid Undset, <em>Kristin Lavransdatter</em> (1920–22)</td>
+<td><strong>Inverse</strong> — the heroine <em>refuses</em> the arranged match</td>
+<td><strong>Low.</strong> Inherits from the sagas "a tendency to view characters externally"</td>
+<td>Yes, but its answer is Catholic, and its ending annihilates everyone</td>
+<td>Runner-up; <strong>fails the reader's stated learning mode</strong> [3]</td>
+<td>High (Leithauser, <em>NYRB</em>) [3]</td>
+</tr>
+<tr>
+<td>Vasily Grossman, <em>Life and Fate</em> (completed 1960)</td>
+<td><strong>No</strong> — opens with a marriage already broken</td>
+<td>Very high, but there is <strong>no central protagonist</strong></td>
+<td>About a person, not a marriage</td>
+<td>Fails: it is about a <em>regime</em>, not a spouse [3]</td>
+<td>High [3]</td>
+</tr>
+<tr>
+<td>Boris Pasternak, <em>Doctor Zhivago</em> (1957)</td>
+<td>No — marries a chosen wife, loves the other</td>
+<td>Extreme, and structurally unusual (poems, notebooks)</td>
+<td>Yes — but indistinguishable from passivity</td>
+<td>Fails: "loyalty" reads as non-participation [3]</td>
+<td>High [3]</td>
+</tr>
+<tr>
+<td>J. M. Coetzee, <em>Disgrace</em> (1999)</td>
+<td>The most precise ever written about surrender to an unchosen life</td>
+<td>Maximum density in 220pp</td>
+<td><strong>No — and actively anti</strong></td>
+<td><strong>Fails fatally.</strong> Anti-Bildungsroman; the unknown partner is rendered as a predator; protagonist begs a woman not to marry [3]</td>
+<td>High [3]</td>
+</tr>
+<tr>
+<td>John Williams, <em>Stoner</em> (1965)</td>
+<td><strong>Yes</strong> — a fast, unquestioned marriage</td>
+<td>Deep, first-person, present tense</td>
+<td>Partly — the ending turns toward dignity</td>
+<td>Fails: low plot, no moral struggle, "she taught him that he had to accept his life" [3]</td>
+<td>Medium [3]</td>
+</tr>
+<tr>
+<td>Kazuo Ishiguro, <em>The Remains of the Day</em> (1989)</td>
+<td>No — a <em>missed</em> bond</td>
+<td>One brilliant unreliable consciousness</td>
+<td><strong>No — the negative case</strong></td>
+<td>Fails: the lesson is that duty chosen over love produces a wasted life [3]</td>
+<td>High [3]</td>
+</tr>
+<tr>
+<td>Vikram Seth, <em>A Suitable Boy</em> (1993)</td>
+<td>Yes — Lata is being prepared for a husband her mother chooses</td>
+<td>Light touch across 1,349pp</td>
+<td><strong>No — its point is that she is right to refuse</strong></td>
+<td>Fails: vindicates the situation without supporting it [3]</td>
+<td>High [3]</td>
+</tr>
+<tr>
+<td>George Eliot, <em>Daniel Deronda</em> (1876)</td>
+<td>Yes — the most sustained study of it in English</td>
+<td>Very high</td>
+<td><strong>No — it is a power novel, not a guidance novel</strong></td>
+<td>Fails on direction: terrifying, not edifying [3]</td>
+<td>Medium [3]</td>
+</tr>
+<tr>
+<td>Anne Tyler, <em>A Spool of Blue Thread</em> (2015)</td>
+<td>Yes — married young, told to wait</td>
+<td>Tyler's ear, not a mind</td>
+<td>Partly</td>
+<td>Fails: 368pp, no moral struggle at the required scale [3]</td>
+<td>High [3]</td>
+</tr>
+<tr>
+<td>Arundhati Roy, <em>The God of Small Things</em> (1997)</td>
+<td>Culturally the closest; thematically the opposite</td>
+<td>Lyrical, not psychological</td>
+<td><strong>No</strong></td>
+<td>Fails: an anti-Bildungsroman about the <em>destruction</em> caused by refusal [3]</td>
+<td>Medium [3]</td>
+</tr>
+<tr>
+<td>Jane Austen, <em>Persuasion</em> (1817)</td>
+<td>Partly</td>
+<td>Genuine but light</td>
+<td>Partly</td>
+<td>Fails: ~250pp, preachy at the close, wrong scale [3]</td>
+<td>High [3]</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note on the field, and on this table's method.</strong> A keyword search for "best
+novels about commitment, endurance, fidelity" returns romance blogs, Facebook
+reading groups and "12 quiet novels" listicles [5]. Those are Tier C: anyone
+selling the recommendation. They were searched, identified, and discarded, and
+the table above is built from primary texts, peer-reviewed criticism, and
+publisher/retailer metadata. It is worth being explicit that the popular version
+of this question and the evidenced version of it do not overlap much.</p>
+<h3 id="the-one-that-got-closest-and-why-it-still-lost">The one that got closest, and why it still lost</h3>
+<p><em>Kristin Lavransdatter</em> deserves its own paragraph, because it is the intuitive
+answer and the intuition is not stupid. It is the only candidate that covers an
+entire human life inside one marriage, which is what "lifelong" means. It has a
+Nobel. It has a fifty-year translation controversy that is genuinely interesting.</p>
+<p>It loses on two independent grounds, either of which is sufficient:</p>
+<ul>
+<li><strong>It inverts the situation.</strong> Kristin is betrothed to Simon Darre and <em>refuses</em>
+  him, defying her family for three years, and marries the man she has already
+  met and been secretly engaged to. Brad Leithauser summarises it as "the story
+  of a Daddy's girl who refuses Daddy's choice of a husband and marries for
+  love." The reader's situation is the outcome Kristin rejects. [3]</li>
+<li><strong>Its interiority is external.</strong> Leithauser, writing in the <em>New York Review of
+  Books</em>, identifies the mode as inherited from the anonymous Icelandic sagas:
+  "a tendency to view characters externally, with few ventures into the inner
+  workings of their minds." For a reader who has told us they learn through
+  interiority, that is disqualifying on the reader's own stated criteria. [3]</li>
+</ul>
+<p>Two further problems worth naming, because they would not be obvious: the
+redemption on offer is <strong>Catholic and therefore denominational</strong> — the novel's
+answer to "why does she stay" is answered in terms the reader may not share — and
+the ending kills the husband, two grown sons, and the heroine, of plague. A
+book whose final movement is the annihilation of an entire marriage is a
+legitimate recommendation. It is not this one.</p>
+<hr />
+<h2 id="3-the-precise-shift-the-narrative-produces">3. The precise shift the narrative produces</h2>
+<p>The brief asks for the specific change in resilience or mindset, not a theme
+statement. Here it is, in four moves, each traceable to a specific passage, and
+each stated as a substitution the reader can notice happening.</p>
+<h3 id="shift-1-from-the-unknown-is-a-void-to-the-unknown-is-a-task">Shift 1 — from "the unknown is a void" to "the unknown is a task"</h3>
+<p>Before: dread. The mind treats the un-met person as an absence, and absence as
+a thing to be survived until it fills in.</p>
+<p>After: a work-list. <em>Middlemarch</em> supplies the vocabulary. The "gossamer web" of
+"spontaneous beliefs and indefinable joys" is what everyone spins in the first
+weeks; Eliot's entire plot apparatus is the demonstration that this web is
+routinely wrong. The novel's contribution to the reader is not "trust might fail"
+— that is obvious — but the specific, structural claim that the web must be
+<strong>demolished and re-spun at every stage of a marriage, on better evidence, by
+deliberate attention to particulars.</strong> The reader leaves with a method rather
+than a mood.</p>
+<p><strong>What the reader loses:</strong> the fantasy that there is one moment of real knowing,
+coming, which will make the whole thing safe. That fantasy is what makes a
+stranger marriage unbearable in the first eighteen months.</p>
+<h3 id="shift-2-from-wanting-transparency-to-practising-attention">Shift 2 — from wanting transparency to practising attention</h3>
+<p>Before: the wish to be <em>known</em>, and the belief that love is the mechanism by
+which another mind becomes legible.</p>
+<p>After: acceptance of permanent partiality, plus the discipline that compensates
+for it. The novel says it as a thesis: "<strong>For there is no creature whose inward
+being is so strong that it is not greatly determined by what lies outside it.</strong>"
+And it <em>performs</em> it structurally — the point of view moves constantly between
+Dorothea, Casaubon, Lydgate, Rosamond, Celia, Caleb Garth, and the narrator, and
+the reader is repeatedly placed in a consciousness that is <em>wrong</em> about another
+consciousness in the room.</p>
+<p>The reader who has just been paired with a stranger is in a state of radical
+epistemic poverty. This novel is 880 pages of practice at not resolving that,
+and of learning to work anyway. That is a real transfer, and it is the strongest
+single thing on offer.</p>
+<h3 id="shift-3-from-loyalty-as-heroism-to-loyalty-as-unhistoric-act">Shift 3 — from loyalty-as-heroism to loyalty-as-unhistoric-act</h3>
+<p>This is the shift the reader cannot get anywhere else, because it is specific to
+their situation.</p>
+<p>An arranged marriage, entered without having chosen the person, will never be
+written about. Not by the families, not by the press, not by the couple. It is
+architecturally unremarkable. And <em>Middlemarch</em> closes by arguing that this kind
+of life is the load-bearing one:</p>
+<blockquote>
+<p>"Her finely touched spirit had still its fine issues, though they were not
+widely visible. Her full nature, like that river of which Cyrus broke the
+strength, spent itself in channels which had no great name on the earth. But
+the effect of her being on those around her was incalculably diffusive: <strong>for
+the growing good of the world is partly dependent on unhistoric acts; and that
+things are not so ill with you and me as they might have been, is half owing to
+the number who lived faithfully a hidden life, and rest in unvisited tombs.</strong>" [1]</p>
+</blockquote>
+<p>Before: the reader may feel that a life without a story is a life that did not
+happen.</p>
+<p>After: a <strong>dignity for the unrecorded</strong>. Eliot's narrator, who has spent 88
+sections insisting that ordinary people are the real subject of history, closes
+by relocating moral weight from the notable to the unnoticed. This is the
+book's gift to a reader whose marriage will be, by construction, invisible — and
+it is a gift nobody has offered them, because nobody writes recommendations for
+this situation.</p>
+<h3 id="shift-4-from-patience-as-a-virtue-to-patience-as-a-specific-located-deficiency">Shift 4 — from patience as a virtue to patience as a specific, located deficiency</h3>
+<p>Eliot is unusually precise about <em>where</em> patience runs out:</p>
+<blockquote>
+<p>"<strong>Some set out, like Crusaders of old, with a glorious equipment of hope and
+enthusiasm and get broken by the way, wanting patience with each other and the
+world.</strong>" [1]</p>
+</blockquote>
+<p>Not patience with the world — the reader will have plenty of that, and it is
+cheap. <strong>Patience with each other.</strong> That is the deficit, named, and the novel is
+a hundred and twenty years of evidence that the deficit is real in good people
+and is survivable.</p>
+<p>And the novel gives the reader the working definition, in the plainest dialogue
+in English literature. Mary Garth, asked why she loves a man rather than a better
+match:</p>
+<blockquote>
+<p>"My feelings have not changed, father. <strong>I shall be constant to Fred as long as
+he is constant to me. I don't think either of us could spare the other, or like
+any one else better, however much we might admire them.</strong>" [1]</p>
+</blockquote>
+<p>Not <em>I love him</em>. Not <em>he is the best available</em>. <strong>"I shall be constant to Fred
+as long as he is constant to me."</strong> That is a bilateral, conditional, forward-
+looking, non-romantic definition of fidelity — and it is the most usable sentence
+in the book for a reader contemplating a fifty-year bond with a person they have
+not met. Note what it does <em>not</em> require: certainty, passion, or the belief that
+this is the only life available to you.</p>
+<h3 id="a-caution-about-the-shift-stated-as-carefully-as-the-claim">A caution about the shift, stated as carefully as the claim</h3>
+<p>None of this works by making the marriage better. <em>Middlemarch</em> is not
+comfortable. Dorothea is wrong for most of it, and the novel refuses to reward her
+with either wisdom or happiness; the ending is that "she does not triumph." What
+the book provides is not reassurance about the outcome. It is a way of being
+inside an unchosen, unrewarding, ordinary situation that is nonetheless <em>liveable</em>
+— and that is the actual requirement.</p>
+<hr />
+<h2 id="4-plot-versus-interiority-what-to-expect-measured">4. Plot versus interiority: what to expect, measured</h2>
+<p>The brief asks for this to be calibrated rather than described. So it was
+measured, from the primary text, by the main agent. Method stated in full below,
+because a number without its method is not evidence.</p>
+<h3 id="measurements">Measurements</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>How it was measured</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Total length</td>
+<td><strong>318,638 words</strong></td>
+<td>Regex token count <code>[A-Za-z’'\-]+</code> between the <code>*** START</code> / <code>*** END</code> markers of Project Gutenberg eBook #145. Reproduced across <strong>two independent fetches</strong> of the URL. [2]</td>
+</tr>
+<tr>
+<td>Structure</td>
+<td><strong>88 sections</strong>: PRELUDE + 86 numbered chapters (contiguous I–LXXXVI) across 8 titled books + FINALE</td>
+<td>Parsed from the text's own table of contents and body. [2]</td>
+</tr>
+<tr>
+<td>Quoted speech</td>
+<td><strong>35.1%</strong> of words</td>
+<td>Regex <code>“[^”]{3,}”</code>, summed and tokenised. [2]</td>
+</tr>
+<tr>
+<td>Interiority density</td>
+<td><strong>15.5%</strong> of sentences</td>
+<td>Sentences containing ≥1 of a fixed marker set (<code>thought, thoughts, knew, knew not, felt, felt a, seemed, imagined, remembered, realized, realised, understood, himself, herself, mind</code>), split on sentence boundaries. [2]</td>
+</tr>
+<tr>
+<td>Public / political plot</td>
+<td><strong>0.78%</strong> of sentences</td>
+<td>Sentences matching a fixed keyword set (<code>Reform Bill, Parliament, Trades' Assembly, newspaper, Prime Minister, candidate, constituency, election, politic*, Legislature, committee, Commission</code>), 114 of 14,566 sentences. [2]</td>
+</tr>
+<tr>
+<td>Reading time</td>
+<td><strong>≈21 hours</strong> at 250 wpm; ≈27 hours at 200 wpm</td>
+<td>Word count ÷ stated rate. [2]</td>
+</tr>
+</tbody>
+</table>
+<h3 id="the-same-method-applied-to-the-readers-anchor-book">The same method applied to the reader's anchor book</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th><em>Crime and Punishment</em></th>
+<th><em>Middlemarch</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Words</td>
+<td>204,031</td>
+<td>318,638</td>
+</tr>
+<tr>
+<td>Quoted speech</td>
+<td><strong>55.2%</strong></td>
+<td><strong>35.1%</strong></td>
+</tr>
+<tr>
+<td>Sentences with interiority markers</td>
+<td><strong>10.3%</strong></td>
+<td><strong>15.5%</strong></td>
+</tr>
+<tr>
+<td>Reading time @250wpm</td>
+<td>13.6 h</td>
+<td>21.2 h</td>
+</tr>
+</tbody>
+</table>
+<p>Both figures from the same script, the same regexes, the same session, on
+Project Gutenberg eBook #2554 and #145 respectively. [2]</p>
+<p><strong>This result is worth a paragraph, because it inverts an assumption.</strong> The reader
+may expect <em>Middlemarch</em> to feel thinner than Dostoevsky — more diffuse, less
+claustrophobic. Measured this way, it is the other way round: proportionally
+<em>more</em> of its sentences are explicitly interior, and it is markedly <em>less</em>
+dialogue-driven. Dostoevsky's interiority arrives in long monologues inside a
+frame that is 55% other people talking. Eliot's arrives through free indirect
+discourse and a narrator who is always partly present. The practical expectation
+is therefore: <strong>cooler, faster-moving, and much less feverish — and, on this
+measure, more interior, not less.</strong></p>
+<h3 id="honest-limits-of-these-measurements">Honest limits of these measurements</h3>
+<ul>
+<li>The interiority marker is a <strong>crude lexical proxy</strong>, not a semantic judgement.
+  It counts sentences that <em>say</em> someone is thinking, and will <strong>undercount free
+  indirect discourse</strong> where no marker word appears — which is a large fraction
+  of what this novel actually does. The comparison between the two books is
+  therefore directional only, and the direction is the claim being made.</li>
+<li>The public-sphere figure <strong>undercounts</strong> the political plot, because much of
+  it is reported through character perception rather than named as politics. The
+  claim it supports is "the political plot is not what this novel is about," not
+  "the political plot is 0.78%."</li>
+<li><strong>The word count is not perfectly stable.</strong> Three fetches of the <em>same</em> URL
+  returned byte-different files (1,865,685 / 1,799,407 / — bytes). The 318,638
+  figure reproduced on two of them; a third produced 321,283 (0.8% higher). The
+  stable figure is reported, and the instability is disclosed rather than
+  hidden.</li>
+</ul>
+<h3 id="the-shape-of-the-thing-in-plain-terms">The shape of the thing, in plain terms</h3>
+<p>It is <strong>not</strong> a plot-led novel and it will not read like one.</p>
+<ul>
+<li><strong>Book I (~12 chapters, "Miss Brooke")</strong> is where the reader's situation is
+  named, three times, in the first 25,000 words. Nothing has happened yet. This
+  is the section that undoes people. The reader should know that going in.</li>
+<li><strong>Books II–V (~40 chapters)</strong> alternate: Dorothea and Casaubon in Rome; Lydgate
+  and Rosamond; Fred Vincy and Mary Garth; Bulstrode and his secret. The four
+  households run in parallel and the point of view moves between them constantly.</li>
+<li><strong>Book VI ("The Widow and the Wife")</strong> is Rosamond without Lydgate. It is
+  widely considered the most underrated part of the novel and it is a study of
+  what happens to a person when her husband stops being the problem.</li>
+<li><strong>Books VII–VIII and the FINALE</strong> assemble every life, including the ones that
+  failed, and the last section reassesses all of them from a great distance.</li>
+</ul>
+<p><strong>There is no sustained action plot.</strong> The Typer affair is the last thing that
+happens at full volume, around Book VI. From there the book decelerates into
+narration. A reader who wants momentum should be told this plainly now.</p>
+<hr />
+<h2 id="5-who-this-book-resonates-least-with">5. Who this book resonates least with</h2>
+<p>This section is the point of the report, not a disclaimer attached to it.</p>
+<h3 id="51-the-casaubon-trap-the-most-serious-risk">5.1 The Casaubon trap — the most serious risk</h3>
+<p>The most extractable moral from <em>Middlemarch</em> is <strong>"do not condescend to the
+person you have been given."</strong> Dorothea marries a man she finds smaller than her
+dreams; the novel shows her being wrong; she leaves him; and by the standards of
+the town she never stops being judged for the marriage that follows.</p>
+<p><strong>A reader in an arranged marriage is in exactly the position where this reading
+is most tempting and most damaging</strong> — because the reader has no permission to
+apply it. If the future spouse turns out to be a Casaubon, the novel's structure
+will whisper <em>leave</em>, and leaving is not on the table. That mismatch is a real
+hazard, not a hypothetical one.</p>
+<p>Two mitigations, both verifiable:</p>
+<ul>
+<li>George Eliot <strong>pre-empts the misreading inside the novel</strong>, in the FINALE:
+  "But no one stated exactly what else was in her power she ought rather to have
+  done—not even Sir James Chettam, who went no further than the negative
+  prescription that she ought not to have married Will Ladislaw." She knows people
+  will reduce it. [1]</li>
+<li>The novel's <em>positive</em> marriage — Lydgate and Mary Garth — is the one to watch,
+  and it is the opposite shape. Mary marries a man she knows will fail, on
+  purpose, having been offered the chance to wait. <strong>A reader should read Book V
+  and the Mary Garth material as the book’s actual argument,</strong> and Book I as its
+  warning.</li>
+</ul>
+<p>A reader who cannot hold both — who will take either "she should have stayed with
+Casaubon" or "she should have left" as the message — should not read this now.
+The book's power depends on not resolving those.</p>
+<h3 id="52-the-reader-may-already-have-read-it-and-found-it-slow">5.2 The reader may already have read it, and found it slow</h3>
+<p>This is the most probable practical failure. <em>Middlemarch</em> is on A-level and
+undergraduate syllabi. A 30-year-old British reader has a genuinely high chance of
+having met it and abandoned it around chapter twelve.</p>
+<p>If that has happened: <strong>this recommendation is void, and that is not a
+disappointment to be worked around.</strong> A book that was found boring at nineteen is
+unlikely to become load-bearing at thirty, and no amount of argument will change
+it. In that case the honest thing is to say so, and the field table in §2 is where
+the search for the second answer continues.</p>
+<p>If it has not happened: the first 25,000 words are the risk zone and the first
+thing worth doing is knowing they are coming.</p>
+<h3 id="53-it-does-not-give-a-dostoevsky-style-sustained-consciousness">5.3 It does not give a Dostoevsky-style sustained consciousness</h3>
+<p>The point of view shifts constantly, and Eliot's narrator frequently intrudes to
+correct or qualify a character. A reader whose anchor is Raskolnikov's
+uninterrupted fever will find this <strong>cool, distributed, and occasionally thin by
+comparison</strong> — even though the measurement in §4 says the opposite about
+interiority density. If the reader's real need is to be <em>inside one mind</em> being
+destroyed by a thought, this is the wrong book and there is no substitute for it.</p>
+<h3 id="54-she-does-not-triumph">5.4 "She does not triumph"</h3>
+<p>The novel's last word on its heroine is that she did not triumph. For a reader
+whose question is <em>"how do I make this work,"</em> a novel whose hero is not crowned
+can read as resignation rather than endurance. Rebecca Mead's defence is the right
+one — that Eliot's choice of a non-triumphant heroine is deliberate, and that "the
+enormous challenge of living a good life" is exactly what the reader is
+attempting — but it is a defence, and a reader needs to want it.</p>
+<h3 id="55-the-gender-of-identification">5.5 The gender of identification</h3>
+<p>The brief specifies "fiancé", which locates the partner but not the reader. The
+recommendation is <strong>strongest if the reader is a woman</strong>, because Dorothea's
+position — young, given in marriage to a man she did not choose — is a direct
+mirror, and because the novel's positive marriage is also a woman's decision to
+stay.</p>
+<p><strong>If the reader is a man</strong>, the book's value shifts from identification to
+analysis. It still works as a <em>structural</em> argument — Eliot describes the
+transaction from inside several positions, and the Mary Garth material is not
+gendered in the way that matters — but the reader will be watching rather than
+recognising, and should expect less of the "shift" in §3 landing as felt
+experience. This is a real reduction in fit, stated rather than hidden.</p>
+<h3 id="56-people-who-need-the-book-to-say-the-marriage-will-be-fine">5.6 People who need the book to say the marriage will be fine</h3>
+<p>It will not say that. Its verdict is that some people set out well-equipped and
+are broken by the way, and that the difference is "patience with each other and
+the world." Anyone hoping for reassurance about the outcome should not read it
+for reassurance, because there is none in it.</p>
+<h3 id="57-scale">5.7 Scale</h3>
+<p>Twenty-one hours. 880 pages. A novel with no antagonist after the midpoint and
+no plot engine. If the reader's actual capacity in the next twelve months is
+twenty hours of serious reading in total, this is the wrong recommendation on
+practical grounds alone — and that is a reasonable place to stop, rather than a
+failure of will.</p>
+<hr />
+<h2 id="6-on-the-research-literature-usually-used-to-justify-this">6. On the research literature usually used to justify this</h2>
+<p>The genre of recommendation rests on a claim: reading literary fiction builds
+empathy, mental toughness, and emotional capacity. Because the brief asks for a
+recommendation <strong>justified by evidence rather than by taste</strong>, that claim was
+tested rather than assumed. It does not hold up as stated, and the
+recommendation does not depend on it.</p>
+<h3 id="what-the-literature-actually-shows">What the literature actually shows</h3>
+<table>
+<thead>
+<tr>
+<th>Study</th>
+<th>Design</th>
+<th>Finding</th>
+<th>Tier</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kidd &amp; Castano (2013), <em>Science</em> 341(6146) [4]</td>
+<td>Experimental; literary vs popular fiction passages; Reading-the-Mind-in-the-Eyes</td>
+<td>Reading literary fiction improved ToM scores relative to nonfiction/popular fiction. 928 citations at time of check.</td>
+<td>A</td>
+</tr>
+<tr>
+<td>Kidd &amp; Castano (2018), <em>Social Psychological and Personality Science</em> [4]</td>
+<td><strong>Three preregistered replications by the original authors</strong>, "small telescopes" method</td>
+<td><strong>"Two uninformative failures to replicate and one successful replication."</strong> On moral judgements, results "more mixed," including one significant effect in the <em>unexpected</em> direction.</td>
+<td>A</td>
+</tr>
+<tr>
+<td>van Kuijk, Verkoeijen, Dijkstra &amp; Zwaan (2018), <em>Collabra: Psychology</em> [4]</td>
+<td>Direct replication of K&amp;C Experiment 5, <strong>plus a p-curve analysis and small-scale meta-analysis</strong></td>
+<td>Replication itself "largely consistent." <strong>But: "The meta-analytic effect of reading literary fiction on ToM was small and non-significant but there was considerable heterogeneity between the included studies."</strong></td>
+<td>A</td>
+</tr>
+<tr>
+<td>Bal &amp; Veltkamp (2013), <em>PLoS ONE</em> 8(1):e55341 [4]</td>
+<td>Two experiments; transportation as moderator; one-week follow-up</td>
+<td>Empathy changed over a week for fiction readers <strong>only when emotionally transported.</strong> <strong>No transportation → <em>lower</em> empathy.</strong> Effects absent in non-fiction controls. 351 citations.</td>
+<td>A</td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-follows-from-this">What follows from this</h3>
+<ol>
+<li><strong>The strong causal claim fails.</strong> The best available meta-analytic statement
+   is <em>small and non-significant</em>. A report that told the reader "reading this
+   will make you more emotionally capable" would be repeating a claim its own
+   sources do not support.</li>
+<li><strong>The actionable finding is conditional, not general.</strong> Bal &amp; Veltkamp's result
+   is more useful than the failed empathy claim: the effect depends on
+   <strong>transportation</strong>, and if you are not transported — if you are reading
+   <em>alongside</em> the text rather than <em>inside</em> it — the direction reverses. This
+   argues for long, single-threaded, psychologically dense narrative, and it
+   argues against skimming. It also predicts, honestly, that <em>Middlemarch</em> is a
+   harder ask to get inside than a thriller, and that the reader who cannot
+   sustain the immersion should expect less from it.</li>
+<li><strong>No evidence was found linking fiction reading to tolerance of ambiguity or
+   need-for-closure</strong> — the specific psychological capacities most relevant to a
+   reader facing an unfamiliar partner. This remains a plausible link that has
+   not been demonstrated, and it is <strong>not</strong> used as support anywhere in this
+   report. It was the most attractive bridge available and it was rejected for
+   want of evidence.</li>
+</ol>
+<h3 id="so-what-is-the-recommendation-resting-on">So what is the recommendation resting on?</h3>
+<p>Not on a mechanism claim. On three things that can be checked:</p>
+<ul>
+<li><strong>A textual fit that is unusually exact and independently verifiable</strong> — the
+  novel names this reader's situation, in the narrator's voice, four times, in the
+  first third [1].</li>
+<li><strong>A measured structural profile</strong> that matches the reader's stated learning
+  mode and sets honest expectations about shape, pace and length [2].</li>
+<li><strong>Critical reception at the highest tier</strong>, including the <em>Guardian</em>'s own
+  2026 editorial, following a poll of writers, academics and critics that voted
+  it the best novel of all time [6].</li>
+</ul>
+<p>That is a weaker foundation than "science shows fiction makes you better at
+life," and it is an honest one.</p>
+<hr />
+<h2 id="7-getting-hold-of-it">7. Getting hold of it</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Recommended edition</strong></td>
+<td>George Eliot, <em>Middlemarch</em>, ed. Rosemary Ashton. Penguin Classics, ISBN <strong>9780141439549</strong></td>
+</tr>
+<tr>
+<td><strong>Length</strong></td>
+<td>880 pages (publisher metadata)</td>
+</tr>
+<tr>
+<td><strong>Price</strong></td>
+<td><strong>£10.99</strong></td>
+</tr>
+<tr>
+<td><strong>Stock</strong></td>
+<td><strong>In stock</strong> — verified as <code>https://schema.org/InStock</code> in the page's own JSON-LD</td>
+</tr>
+<tr>
+<td><strong>Source of the price</strong></td>
+<td>Waterstones product page for that ISBN, loaded 2026-09-25; corroborated independently at the same price on Penguin UK (the publisher's own site), also loaded 2026-09-25</td>
+</tr>
+<tr>
+<td><strong>Also fine</strong></td>
+<td>Oxford World's Classics (898pp) or any modern unabridged text — the quotations in this report are from the Gutenberg text, and the wording of the Penguin Penguin Classics and Penguin Modern Classics texts is identical to it [1]</td>
+</tr>
+</tbody>
+</table>
+<p><strong>A UK-specific point that most free-ebook advice gets wrong.</strong> George Eliot died
+in 1880, which puts <em>Middlemarch</em> into public domain in the United States but
+<strong>in copyright in the UK until 2051</strong>. Free editions exist — Project Gutenberg</p>
+<h1 id="145-and-standard-ebooks-both-carry-it-but-the-free-download-right-is-a-us">145 and Standard Ebooks both carry it — but the free-download right is a <strong>US</strong></h1>
+<p>right. A UK reader should buy the £10.99 paperback or borrow it from a library;
+assuming otherwise is a legal error, not a shortcut. [1]</p>
+<p><strong>Retailers attempted and not completed:</strong> Blackwell's and Bookshop.org returned
+Cloudflare interstitials to automated clients; Foyles served the page but renders
+its price client-side; the British Library catalogue (<code>explore.bl.uk</code>) returned a
+one-byte response from this host. The price claim therefore rests on two
+independent UK sources, one of which is the publisher. It is not a live
+basket-stage check across the high street, and it should be read as of
+2026-09-25.</p>
+<hr />
+<h2 id="8-gaps-and-limitations">8. Gaps and limitations</h2>
+<p>Stated in full, because several of them bear on how much weight the
+recommendation can carry.</p>
+<ol>
+<li><strong>Search infrastructure failed mid-session.</strong> The <code>websearch</code> (Exa) tool
+   returned <strong>HTTP 401 — authentication failed</strong> for the remainder of the
+   session, and the key is not present in a non-interactive shell, so it could
+   not be rotated from inside the session. Direct retrieval of known URLs was
+   unaffected. Fallbacks established and used: <strong>Crossref</strong> and <strong>OpenAlex</strong> for
+   scholarly discovery, primary publisher and retailer pages, and the full
+   Project Gutenberg texts. <strong>Google Books was quota-blocked (429)</strong> for this
+   host. Bing HTML search returns bot-poisoned results. The practical
+   consequence: the candidate sweep was thorough but <strong>not exhaustive</strong>, and the
+   claim in finding 9 ("no such novel appears to exist") is supported by four
+   sweeps, not by a systematic survey of Anglophone fiction.</li>
+<li><strong>A second, independent verification of the leading candidate was essential
+   and it changed the answer.</strong> The first-pass leading candidate was
+   <em>Kristin Lavransdatter</em>. It was overturned on Tier-A sourced grounds — the
+   "external characterisation" finding from the <em>NYRB</em>, and the fact that its
+   heroine refuses the arranged match. The recommendation changed as a result.
+   This is recorded because it is the most useful single thing in the audit trail.</li>
+<li><strong>Chapter-count discrepancy only partly resolved.</strong> The Gutenberg text has 86
+   consecutively numbered chapters plus a PRELUDE and a FINALE, i.e. 88
+   sections. Commonly cited scholarship gives 88 chapters on a <strong>four-book,
+   4/40/4/40</strong> division, which the Gutenberg text does not correspond to (it
+   divides into eight titled books). The discrepancy is reported, not resolved.</li>
+<li><strong>The word count is substrate-dependent.</strong> See §4. Two fetches agreed at
+   318,638; a third gave 321,283. The two <em>Crime and Punishment</em> / <em>Middlemarch</em>
+   comparisons were run in the same session with the same code, so the <em>ratio</em>
+   is more trustworthy than either absolute figure.</li>
+<li><strong>Interiority and public-plot figures are lexical proxies</strong>, described and
+   caveated in §4. They should be read as directional.</li>
+<li><strong>Reddit was not used at all</strong> — a hard wall from this host by every route
+   including its official API. Consequently there is <strong>no community-consensus
+   evidence</strong> in this report from that source, and the Goodreads figures in
+   <code>sources.md</code> are labelled as <em>per-edition</em> counts after they were found
+   redirecting unpredictably.</li>
+<li><strong>The reader's own gender is unstated in the brief.</strong> The consequences are
+   addressed honestly in §5.5 rather than assumed away.</li>
+<li><strong>Unverifiable claims carried in the wider discourse about the leading
+   candidate were dropped, not softened.</strong> The famous line comparing
+   <em>Kristin Lavransdatter</em> to Dostoevsky ("more of life … than any novel since
+   Dostoevsky's Brothers Karamazov") could not be traced to the <em>Commonweal</em>
+   review it is attributed to; it appears in print only as a publisher's blurb
+   reprint. It is <strong>not</strong> used as support for anything. Likewise, the widely
+   repeated phrase <strong>"slow web of time" does not appear in <em>Middlemarch</em></strong> —
+   verified by exhaustive search of the full text.</li>
+<li><strong>No interview with the reader.</strong> Every personal-statement element in this
+   report is an inference from the brief. If the brief understates how much
+   agency the reader actually has, the §5.5 analysis and the Casaubon-trap
+   analysis both change.</li>
+<li><strong>Two relevant academic sources were located but could not be read</strong>, and
+    they are the most important gaps in this report. "Arranged Marriage,"
+    <em>Cultural Critique</em> no. 84 (2013) is the closest thing found to a critical
+    account of how arranged marriage is treated in Anglophone fiction, and
+    JSTOR returned 403. C. Peach &amp; R. T. Gale, "Muslims, Hindus, and Sikhs in the
+    New Religious Landscape of England," <em>Geographical Review</em> 93(4):469–490,
+    2003, is the standard reference on the populations concerned and Cardiff ORCA
+    returned 403. Both are cited as located-and-unread rather than as evidence.
+    [9]</li>
+<li><strong>Scotland and Northern Ireland law was not verified</strong> for the minimum
+    marriage age; the report's statement is scoped to England and Wales, where
+    the 2022 Act applies. Ethnic breakdowns for Scotland and Northern Ireland
+    were not retrieved. [9]</li>
+<li><strong>A claim this report deliberately does not make.</strong> Some material was
+    offered to the research lanes about the <em>mithāq</em> — the idea that an Islamic
+    marriage covenant may validly be entered with a partner one has never met.
+    It could not be verified from any source that was fetched, and it is
+    <strong>excluded</strong>. Qur'an 4:21, which does support the related point that the
+    covenant is mutual and hard to dissolve, sits in a passage about <em>divorce</em>
+    and speaks to the weight of the bond rather than its formation; citing it as
+    reassurance would be a misuse. The same restraint applies to the classical
+    Hindu <em>puruṣārthas</em> and to Sikh <em>seva</em>, neither of which was verified in a
+    primary text. [9]</li>
+</ol>
+<hr />
+<h2 id="9-a-short-factual-note-on-support-for-whoever-needs-it">9. A short, factual note on support, for whoever needs it</h2>
+<p>Not part of the recommendation. Included because a reader contemplating a
+marriage in this position is likely to want to know that the door is open and
+which door it is. All details verified against each organisation's own site on
+2026-09-25. [9]</p>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>What it is</th>
+<th>Contact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Relate</strong> (England &amp; Wales)</td>
+<td>"The leading specialist relationship counselling provider in England and Wales." <strong>Individual counselling does not require you to be in a relationship</strong> — it is for "anyone who wants support with their relationships, or other things like bullying, grief, or low self-esteem." No dedicated pre-marriage service is visible, so the right door is individual counselling.</td>
+<td>0300 100 1234. A 25-minute individual phone chat is <strong>£45</strong>, seen within 24 hours; ongoing counselling is ~6 × 50 minutes, <strong>£65–£145 scaled to income</strong>.</td>
+</tr>
+<tr>
+<td><strong>Saheli</strong></td>
+<td>UK South Asian women's support organisation. "Judgement-free, culturally appropriate support," in a range of languages. Their stated remit explicitly includes <em>"I want to know more about healthy relationships."</em></td>
+<td>Helpline <strong>0161 945 4187</strong>, 9am–5pm Mon–Fri; help@saheli.org.uk</td>
+</tr>
+<tr>
+<td><strong>Forced Marriage Unit</strong> (FCDO/Home Office)</td>
+<td>Official UK government service. Publishes <em>Forced Marriage: A Survivor's Handbook</em> and multi-language "Right to Choose" materials.</td>
+<td><strong>020 7008 0151</strong>, 9am–5pm Mon–Fri; fmu@fcdo.gov.uk. Out of hours, consular assistance on <strong>020 7008 5000</strong>.</td>
+</tr>
+<tr>
+<td><strong>National Domestic Abuse Helpline</strong> (Refuge)</td>
+<td>An <strong>abuse</strong> line, staffed by women, for someone in danger. The wrong door for pre-marriage anxiety; the right one only for fear.</td>
+<td><strong>0808 2000 247</strong>, free, 24/7</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Three corrections to commonly-repeated signposting, because getting these wrong
+wastes a frightened person's time:</strong> <em>Sakhi</em> is a <strong>US</strong> organisation (New York
+helpline) — the UK service is <strong>Saheli</strong>. <strong>"Trust and Independence in Marriage"</strong>
+could not be found to exist at all. <strong>Justice for Women</strong> exists but is a
+feminist criminal-justice campaigning body, not relationship or pre-marriage
+support. [9]</p>
+<hr />
+<h2 id="sources">Sources</h2>
+<p>Full audit trail with access dates, source tiering, and measurement methods:
+<strong><code>sources.md</code></strong> (deployed alongside this report).</p>
+<p>Numbered references cited above:</p>
+<ol>
+<li><strong>George Eliot, <em>Middlemarch</em> (1871–72), full text.</strong> Project Gutenberg
+   eBook #145, H. M. Caldwell text. <code>https://www.gutenberg.org/cache/epub/145/pg145.txt</code>
+   — Downloaded and read directly by the main agent; all quotations verified
+   verbatim against the file after whitespace normalisation. <em>(Tier A — primary text)</em></li>
+<li><strong>First-party measurements of <em>Middlemarch</em> (Gutenberg #145) and <em>Crime and
+   Punishment</em> (Gutenberg #2554).</strong> Computed by the main agent in-session with a
+   single script applied identically to both texts: token counts, quoted-speech
+   share, interiority-marker sentence share, public-sphere keyword share, reading
+   time. <em>(Tier A — primary text, measured)</em></li>
+<li><strong>Candidate deep-dive corpus.</strong> 14 novels examined. Load-bearing items:
+   Brad Leithauser, "Love in a Cold Climate," <em>New York Review of Books</em>, 6 Oct
+   2005, <code>https://www.nybooks.com/articles/2005/10/06/love-in-a-cold-climate/</code>
+   <em>(Tier A)</em>; John Lanchester, "Good Day, Comrade Shtrum," <em>London Review of
+   Books</em>, 18 Oct 2007 <em>(Tier A)</em>; Rebecca Mead, "Middlemarch and Me," <em>The
+   New Yorker</em>, 7 Feb 2011, <code>https://www.newyorker.com/magazine/2011/02/14/middlemarch-and-me</code>
+   <em>(Tier A)</em>; A. S. Byatt, "Rereading: Middlemarch," <em>The Guardian</em>, 4 Aug 2007
+   <em>(Tier A)</em>; Nicholas Dames (Columbia) in CBC <em>Ideas</em>, 6 Apr 2022 <em>(Tier A)</em>;
+   "Unfashionable 'Kristin Lavransdatter'," <em>Scandinavian Studies</em>, 1999 <em>(Tier A,
+   abstract retrieved)</em>; "Facing the Black Death: Sigrid Undset's
+   <em>Kristin Lavransdatter</em> in Times of Pandemics," <em>Interlitteraria</em>, 2022,
+   DOI 10.12697/il.2022.27.1.6 <em>(Tier A)</em>; John Mullan (UCL), <em>The Guardian</em>,
+   7 Jun 2002 <em>(Tier A)</em>.</li>
+<li><strong>Research literature on fiction and psychological capacity</strong>, abstracts
+   retrieved in full via the Crossref REST API:
+   Kidd &amp; Castano (2013) DOI 10.1126/science.1239918;
+   Kidd &amp; Castano (2018) DOI 10.1177/1948550618775410;
+   van Kuijk, Verkoeijen, Dijkstra &amp; Zwaan (2018) DOI 10.1525/collabra.117;
+   Bal &amp; Veltkamp (2013) DOI 10.1371/journal.pone.0055341 <em>(all Tier A)</em>.</li>
+<li><strong>Discarded Tier-C material, recorded for the audit trail</strong> — "best novels
+   about commitment/endurance/fidelity" listicles, romance blogs and reading-group
+   posts, searched and rejected. Also the Penguin/Waterstones endorsement block on
+   the <em>Kristin Lavransdatter</em> product page, treated as publisher marketing
+   rather than as evidence of quality.</li>
+<li><strong>"The Guardian view on <em>Middlemarch</em>: the greatest novel in the English
+   language,"</strong> editorial, 16 May 2026.
+   <code>https://www.theguardian.com/commentisfree/2026/may/16/the-guardian-view-on-middlemarch-the-greatest-novel-in-the-english-language</code>
+   — Loaded and verified 2026-09-25. Contains the poll result and the
+   characterisation "Beginning with a marriage, and a deeply unhappy one, it
+   upends 'the marriage plot' established by Jane Austen." <em>(Tier A)</em></li>
+<li><strong>Retailer and publisher metadata for the recommended edition</strong> — Waterstones
+   product page ISBN 9780141439549 (price £10.99, <code>schema.org/InStock</code>, 880pp,
+   Penguin Books Ltd, <code>datePublished</code> 2003-01-30) and Penguin UK product page,
+   same ISBN, same price. Both loaded 2026-09-25. <em>(Tier A — loaded directly)</em></li>
+<li><strong>Structural data on the recommended edition</strong> — Open Library Search API and
+   the Gutenberg text's own table of contents. <em>(Tier A for the text; the Open
+   Library record is used only for edition counts, and is itself known to contain
+   an error on this title — see <code>sources.md</code>.)</em></li>
+<li><strong>UK context, official and journalistic sources, all loaded 2026-09-25.</strong>
+   <em>Tier A:</em> "Forced Marriage Unit statistics 2024," Home Office &amp; FCDO, 3 Jul
+   2025, <code>https://www.gov.uk/government/statistics/forced-marriage-unit-statistics-2024/forced-marriage-unit-statistics-2024</code>
+   (source of the consent framing and the 2024 case figures);
+   "Forced marriage," FCDO &amp; Home Office, updated 7 Mar 2023,
+   <code>https://www.gov.uk/guidance/forced-marriage</code>;
+   "Implementation of the Marriage and Civil Partnership (Minimum Age) Act 2022,"
+   Ministry of Justice, 9 Aug 2022, and the Act itself,
+   <code>https://www.legislation.gov.uk/ukpga/2022/28</code>; "Population of England and
+   Wales" and "Age groups," Ethnicity facts and figures / ONS Census 2021;
+   Relate, <code>https://www.relate.org.uk/which-service-right-you</code>; Saheli,
+   <code>https://www.saheli.org.uk/help</code>; Refuge / National Domestic Abuse Helpline,
+   <code>https://nationaldahelpline.org.uk/</code>. <em>Tier B:</em> Ziauddin Sardar, "First
+   person," <em>The Guardian</em>, 13 Sep 2008; Huma Qureshi, "Destined for an arranged
+   marriage, I chose to follow my heart," <em>The Guardian</em>, 6 Feb 2021; BBC Radio 4
+   <em>Home Truths</em>, "Arranged Marriages," 3 Oct 2014; BBC News Online, "Blunkett
+   'wrong on arranged marriages'," 8 Feb 2002 (Mahmud Al-Rashid, Muslim Council
+   of Britain); "My arranged marriage disaster," <em>The Guardian</em>, 14 May 2011
+   (Zarghuna Kargar). <em>Located but not read:</em> "Arranged Marriage," <em>Cultural
+   Critique</em> no. 84 (2013), DOI 10.5749/culturalcritique.84.2013.0181 (JSTOR
+   403); C. Peach &amp; R. T. Gale, "Muslims, Hindus, and Sikhs in the New Religious
+   Landscape of England," <em>Geographical Review</em> 93(4):469–490, 2003 (Cardiff
+   ORCA 403).</li>
+</ol>
+<hr />
+<p><em>Prepared as a deep-research deliverable. Recommendation weight should be read
+alongside §5 (who it fails) and §8 (gaps). The measurements in §4 are the
+report's most transferable contribution: they were taken from the text, by the
+agent, and can be checked.</em></p>
+
+    <p class="sources no-print">
+      Generated by opencode deep research · <a href="https://thisisirfansbackup-cyber.github.io/research-reports/">index</a> ·
+      <a href="#" onclick="window.print();return false;">Export PDF</a>
+    </p>
+  </article>
+</div>
+
+<footer>
+  <span>Research Reports — opencode deep research</span>
+  <span>2026-09-25</span>
+</footer>
+</body>
+</html>
