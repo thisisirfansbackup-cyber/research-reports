@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Life in the UK — 408 Multiple Choice Practice Questions</title>
-<meta name="description" content="407 Life in the UK Test practice questions across 17 lessons, each with four multiple-choice options and one correct answer.">
+<title>Life in the UK — 407 Multiple Choice Practice Questions</title>
+<meta name="description" content="407 Life in the UK Test practice questions across 17 lessons, each with four multiple-choice options, Roman Urdu translation, and one correct answer.">
 <style>
 :root{color-scheme:light dark;--bg:#f7f7f5;--surface:#ffffff;--ink:#171a20;--ink-2:#555c67;--ink-3:#878e99;--line:#e5e7ea;--line-2:#d4d8dd;--accent:#0f7a6b;--accent-ink:#0b5c51;--accent-soft:#e0ece8;--ok:#0f7a3d;--ok-soft:#e3f2e8;--bad:#a62a2a;--bad-soft:#fbe8e8;--warn:#b45309;--warn-soft:#fbeedd;--mono:IBM Plex Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;--sans:Geist,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;--display:Space Grotesk,var(--sans);--radius:14px;--shadow:0 1px 2px rgba(23,26,32,.05),0 8px 24px rgba(23,26,32,.06);--maxw:900px}
 @media (prefers-color-scheme:dark){:root{--bg:#0f1216;--surface:#161a20;--ink:#e9ebee;--ink-2:#9aa3ae;--ink-3:#68717d;--line:#232930;--line-2:#313943;--accent:#3ec9b2;--accent-ink:#7fe3d2;--accent-soft:#14332c;--ok:#5fd08a;--ok-soft:#10291a;--bad:#f08a8a;--bad-soft:#2e141e}}
@@ -18,8 +18,9 @@ h1{font-family:var(--display);font-size:30px;margin:0 0 4px}
 .stat .l{font-size:13px;color:var(--ink-3)}
 .card{border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);padding:18px;margin:12px 0;position:relative}
 .card .q-num{font-family:var(--mono);font-size:12px;color:var(--ink-3);position:absolute;top:14px;right:14px}
-.card h3{font-family:var(--display);font-size:18px;margin:0 0 10px}
-.card p.q{font-size:16px;font-weight:600;margin:0 0 10px}
+.card h3{font-family:var(--display);font-size:18px;margin:0 0 6px}
+.card p.q{font-size:16px;font-weight:600;margin:0 0 6px}
+.card p.ur{font-size:14.5px;color:var(--ink-2);margin:0 0 10px;font-style:italic}
 .opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .opt{padding:10px 12px;border:1px solid var(--line-2);border-radius:10px;background:var(--surface);cursor:pointer;text-align:left;font-size:14px}
 .opt:hover{border-color:var(--accent-ink)}
@@ -35,7 +36,7 @@ footer{margin-top:32px;padding-top:24px;border-top:1px solid var(--line);font-si
 <body>
 <div class="container">
 <h1>Life in the UK — Multiple Choice Practice</h1>
-<p class="sub">407 questions across 17 lessons · Each question has 4 options with 1 correct answer</p>
+<p class="sub">407 questions across 17 lessons · Each question has 4 options, Roman Urdu translation, and 1 correct answer</p>
 
 <div class="stats">
 <div class="stat"><span class="v" id="totalCount">0</span><span class="l">Total Questions</span></div>
@@ -78,7 +79,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Where is Big Ben located?",
     "q": "Where is Big Ben located?",
-    "ur": "",
+    "ur": "Big Ben kahan hai?",
     "opt": [
       "In London",
       "In Scotland",
@@ -174,7 +175,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which two houses fought in the Wars of the Roses?",
     "q": "Which two houses fought in the Wars of the Roses?",
-    "ur": "",
+    "ur": "Wars of the Roses mein kaun se do gharanay aapas mein ladte thay?",
     "opt": [
       "The House of York and The House of Lancaster Agreement",
       "The House of York and The House of Lancaster Treaty",
@@ -222,7 +223,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What is the Cenotaph?",
     "q": "What is the Cenotaph?",
-    "ur": "",
+    "ur": "Cenotaph kya hai?",
     "opt": [
       "A war memorial",
       "A historical event",
@@ -294,7 +295,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Who was the captain of the English football team that won the World Cup in 1966?",
     "q": "Who was the captain of the English football team that won the World Cup in 1966?",
-    "ur": "",
+    "ur": "1966 mein World Cup jeetne wali England team ka captain kaun tha?",
     "opt": [
       "Bobby Moore",
       "Clarice Cliff",
@@ -414,7 +415,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What is a bank holiday?",
     "q": "What is a bank holiday?",
-    "ur": "",
+    "ur": "Bank holiday kya hota hai?",
     "opt": [
       "A public holiday when banks and many other businesses are closed for the day",
       "A royal decree",
@@ -486,7 +487,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "By law, which two types of media have to give balanced coverage to all political parties and equal time to rival viewpoints before an election?",
     "q": "By law, which two types of media have to give balanced coverage to all political parties and equal time to rival viewpoints before an election?",
-    "ur": "",
+    "ur": "Qanoon ke mutabiq election se pehle kaun si do media ko sab political parties ka balanced coverage aur mukhtalif raayon ko barabar waqt dena zaroori hai?",
     "opt": [
       "Radio",
       "Internet",
@@ -558,7 +559,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Who wrote Daffodils?",
     "q": "Who wrote Daffodils?",
-    "ur": "",
+    "ur": "'Daffodils' poem kisne likha?",
     "opt": [
       "Tony Blair",
       "Bonnie Prince Charlie",
@@ -582,7 +583,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Who was given the title of Lord Protector?",
     "q": "Who was given the title of Lord Protector?",
-    "ur": "",
+    "ur": "England ke Commonwealth ko 'Lord Protector' ka diwan kis ko diya gaya tha?",
     "opt": [
       "Florence Nightingale",
       "Charles I",
@@ -606,7 +607,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What are the 40 days before Easter called?",
     "q": "What are the 40 days before Easter called?",
-    "ur": "",
+    "ur": "Easter se pehle ke 40 dinon ko kya kehte hain?",
     "opt": [
       "A type of law",
       "Lent",
@@ -654,7 +655,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Where is Big Ben located?",
     "q": "Where is Big Ben located?",
-    "ur": "",
+    "ur": "Big Ben kahan hai?",
     "opt": [
       "In Wales",
       "At the Houses of Parliament",
@@ -750,7 +751,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which two houses fought in the Wars of the Roses?",
     "q": "Which two houses fought in the Wars of the Roses?",
-    "ur": "",
+    "ur": "Wars of the Roses mein kaun se do gharanay aapas mein ladte thay?",
     "opt": [
       "The House of York and The House of Lancaster Act",
       "The House of York and The House of Lancaster",
@@ -798,7 +799,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What is the Cenotaph?",
     "q": "What is the Cenotaph?",
-    "ur": "",
+    "ur": "Cenotaph kya hai?",
     "opt": [
       "A type of law",
       "A historical event",
@@ -870,7 +871,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Who was the captain of the English football team that won the World Cup in 1966?",
     "q": "Who was the captain of the English football team that won the World Cup in 1966?",
-    "ur": "",
+    "ur": "1966 mein World Cup jeetne wali England team ka captain kaun tha?",
     "opt": [
       "Oliver Cromwell",
       "Clarice Cliff",
@@ -990,7 +991,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What is a bank holiday?",
     "q": "What is a bank holiday?",
-    "ur": "",
+    "ur": "Bank holiday kya hota hai?",
     "opt": [
       "A type of law",
       "A public holiday when banks and many other businesses are closed for the day",
@@ -1062,7 +1063,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "By law, which two types of media have to give balanced coverage to all political parties and equal time to rival viewpoints before an election?",
     "q": "By law, which two types of media have to give balanced coverage to all political parties and equal time to rival viewpoints before an election?",
-    "ur": "",
+    "ur": "Qanoon ke mutabiq election se pehle kaun si do media ko sab political parties ka balanced coverage aur mukhtalif raayon ko barabar waqt dena zaroori hai?",
     "opt": [
       "Newspapers",
       "Internet",
@@ -1134,7 +1135,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Who wrote Daffodils?",
     "q": "Who wrote Daffodils?",
-    "ur": "",
+    "ur": "'Daffodils' poem kisne likha?",
     "opt": [
       "Bonnie Prince Charlie",
       "Tony Blair",
@@ -1158,7 +1159,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Who was given the title of Lord Protector?",
     "q": "Who was given the title of Lord Protector?",
-    "ur": "",
+    "ur": "England ke Commonwealth ko 'Lord Protector' ka diwan kis ko diya gaya tha?",
     "opt": [
       "Charles I",
       "Florence Nightingale",
@@ -1182,7 +1183,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What are the 40 days before Easter called?",
     "q": "What are the 40 days before Easter called?",
-    "ur": "",
+    "ur": "Easter se pehle ke 40 dinon ko kya kehte hain?",
     "opt": [
       "A royal decree",
       "A type of law",
@@ -1326,7 +1327,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Who was supported by clans from the Scottish Highlands and raised an army in 1745?",
     "q": "Who was supported by clans from the Scottish Highlands and raised an army in 1745?",
-    "ur": "",
+    "ur": "Kaun Scottish Highlands ke clans se supported hua aur 1745 mein army banayi?",
     "opt": [
       "Bonnie Prince Charlie",
       "William the Conqueror",
@@ -1566,7 +1567,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What is the name of the area in London where famous theatres are located?",
     "q": "What is the name of the area in London where famous theatres are located?",
-    "ur": "",
+    "ur": "London ka wo area jahan mashoor theatres hain, us ka naam kya hai?",
     "opt": [
       "A historical event",
       "A type of law",
@@ -1590,7 +1591,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which two of the following are key roles of school governors?",
     "q": "Which two of the following are key roles of school governors?",
-    "ur": "",
+    "ur": "In mein se kaun si cheez school governors ke do ahem kaam dono bata rahi hai?",
     "opt": [
       "Monitoring and evaluating school performance.  Setting the strategic direction of the school",
       "All of the above",
@@ -1614,7 +1615,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What led the American colonies to want their independence from Britain?",
     "q": "What led the American colonies to want their independence from Britain?",
-    "ur": "",
+    "ur": "American colonies ko Britain se alag hona kyun chahiye tha?",
     "opt": [
       "A royal decree",
       "A historical event",
@@ -1734,7 +1735,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Who was the first man in the world to run 1 mile in under 4 minutes?",
     "q": "Who was the first man in the world to run 1 mile in under 4 minutes?",
-    "ur": "",
+    "ur": "Duniya mein pehle kis ne 4 minute se kam mein 1 mile dauri?",
     "opt": [
       "A famous monarch",
       "Sir Roger Bannister",
@@ -1830,7 +1831,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "During the reign of Charles II, parts of London were destroyed. What was the cause of the destruction?",
     "q": "During the reign of Charles II, parts of London were destroyed. What was the cause of the destruction?",
-    "ur": "",
+    "ur": "Charles II ke dauraan London ke bade hisse tabah ho gaye, is ki wajah kya thi?",
     "opt": [
       "A fire (The Great Fire of London)",
       "In America",
@@ -1974,7 +1975,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Who was voted the greatest Briton of all time in 2002?",
     "q": "Who was voted the greatest Briton of all time in 2002?",
-    "ur": "",
+    "ur": "BBC ke 2002 ke poll mein sab se barraye Briton kaun chuna gaya tha?",
     "opt": [
       "Winston Churchill",
       "Sir Tim Berners-Lee",
@@ -2070,7 +2071,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What sort of event is the Grand National?",
     "q": "What sort of event is the Grand National?",
-    "ur": "",
+    "ur": "Grand National kis qism ka event hai?",
     "opt": [
       "A royal decree",
       "Horse racing",
@@ -2190,7 +2191,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Where was Anne Boleyn, the second wife of Henry VIII, executed?",
     "q": "Where was Anne Boleyn, the second wife of Henry VIII, executed?",
-    "ur": "",
+    "ur": "Henry VIII ki doosri biwi Anne Boleyn ko kahan saza di gayi thi?",
     "opt": [
       "In Spain",
       "The Tower of London",
@@ -2214,7 +2215,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Racial crime and smoking in public enclosed places are examples of what?",
     "q": "Racial crime and smoking in public enclosed places are examples of what?",
-    "ur": "",
+    "ur": "Racial crime aur enclosed public jagah smoking kis cheez ki misaal hain?",
     "opt": [
       "None of the above",
       "Cannot be determined",
@@ -2334,7 +2335,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "By law, which two types of media have to give balanced coverage to all political parties and equal time to rival viewpoints before an election?",
     "q": "By law, which two types of media have to give balanced coverage to all political parties and equal time to rival viewpoints before an election?",
-    "ur": "",
+    "ur": "Qanoon ke mutabiq election se pehle kaun si do media ko sab political parties ka balanced coverage aur mukhtalif raayon ko barabar waqt dena zaroori hai?",
     "opt": [
       "Television.  Radio",
       "Internet",
@@ -2358,7 +2359,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "When does Easter take place?",
     "q": "When does Easter take place?",
-    "ur": "",
+    "ur": "Easter kab hota hai?",
     "opt": [
       "In March or April",
       "In the 18th century",
@@ -2382,7 +2383,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which of the following is not a valid UK coin?",
     "q": "Which of the following is not a valid UK coin?",
-    "ur": "",
+    "ur": "In mein se kaun sa UK coin nahi hai?",
     "opt": [
       "None of the above",
       "25p",
@@ -2454,7 +2455,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which two of the following are fundamental principles of British life?",
     "q": "Which two of the following are fundamental principles of British life?",
-    "ur": "",
+    "ur": "In mein se kaun se do British Overseas Territory hain?",
     "opt": [
       "The rule of law.  Democracy",
       "The rule of law.  Democracy Agreement",
@@ -2550,7 +2551,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "On which day do televisions and newspapers run joke stories until midday?",
     "q": "On which day do televisions and newspapers run joke stories until midday?",
-    "ur": "",
+    "ur": "TV aur newspapers din bhar jokes aur fake khabray kis din chalate hain?",
     "opt": [
       "None of the above",
       "April Fool's Day (1st of April)",
@@ -2574,7 +2575,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which king was defeated by Oliver Cromwell during the Civil War and hid in an oak tree before escaping to Europe?",
     "q": "Which king was defeated by Oliver Cromwell during the Civil War and hid in an oak tree before escaping to Europe?",
-    "ur": "",
+    "ur": "Civil War mein Oliver Cromwell se harne wala king kaun tha, jo oak tree mein chhupne ke baad Europe bhaag gaya?",
     "opt": [
       "Henry VIII",
       "Arthur Conan Doyle",
@@ -2598,7 +2599,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Who was the father of Queen Elizabeth I?",
     "q": "Who was the father of Queen Elizabeth I?",
-    "ur": "",
+    "ur": "Queen Elizabeth I ke walid kaun the?",
     "opt": [
       "Henry VIII",
       "Bonnie Prince Charlie",
@@ -2718,7 +2719,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which of the following is an example of civil law?",
     "q": "Which of the following is an example of civil law?",
-    "ur": "",
+    "ur": "Civil law ki misal kaun si hai?",
     "opt": [
       "Discrimination in the workplace",
       "None of the above",
@@ -2790,7 +2791,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What sort of charity is Friends of the Earth?",
     "q": "What sort of charity is Friends of the Earth?",
-    "ur": "",
+    "ur": "Friends of the Earth kaisi charity hai?",
     "opt": [
       "A type of law",
       "A royal decree",
@@ -2838,7 +2839,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "In which country did the Boer War (1899–1902) take place?",
     "q": "In which country did the Boer War (1899–1902) take place?",
-    "ur": "",
+    "ur": "1899 se 1902 tak ka Boer War kis mulk mein hua?",
     "opt": [
       "Cannot be determined",
       "All of the above",
@@ -2862,7 +2863,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which action is known as canvassing?",
     "q": "Which action is known as canvassing?",
-    "ur": "",
+    "ur": "In kaam ko canvassing kya kehte hain?",
     "opt": [
       "All of the above",
       "Persuading people to vote for a political party",
@@ -2886,7 +2887,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which novel written by J. R. R. Tolkien was voted the UK's best-loved novel in 2003?",
     "q": "Which novel written by J. R. R. Tolkien was voted the UK's best-loved novel in 2003?",
-    "ur": "",
+    "ur": "J. R. R. Tolkien ka kaun sa novel 2003 mein UK ka sab se pyara novel chuna gaya?",
     "opt": [
       "The Lord of the Rings Agreement",
       "The Lord of the Rings Act",
@@ -2958,7 +2959,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Who made the first coins to be minted in Britain?",
     "q": "Who made the first coins to be minted in Britain?",
-    "ur": "",
+    "ur": "Britain mein pehli coins kisne banayi?",
     "opt": [
       "The people of the Iron Age",
       "The people of the Iron Age Agreement",
@@ -3006,7 +3007,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "There are 15 national parks in England, Wales, and Scotland. What are national parks?",
     "q": "There are 15 national parks in England, Wales, and Scotland. What are national parks?",
-    "ur": "",
+    "ur": "England, Wales aur Scotland ke 15 national parks asal mein kya hain?",
     "opt": [
       "None of the above",
       "Areas of protected countryside",
@@ -3078,7 +3079,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "How often are Prime Minister's Questions held in Parliament?",
     "q": "How often are Prime Minister's Questions held in Parliament?",
-    "ur": "",
+    "ur": "Prime Minister's Questions Parliament mein kitni baar hoti hai?",
     "opt": [
       "None of the above",
       "Cannot be determined",
@@ -3150,7 +3151,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which two of the following are famous British Paralympians?",
     "q": "Which two of the following are famous British Paralympians?",
-    "ur": "",
+    "ur": "In logon mein se kaun do mashoor British Paralympians hain?",
     "opt": [
       "Baroness Tanni Grey-Thompson.  Ellie Simmonds",
       "Florence Nightingale",
@@ -3174,7 +3175,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Who was reigning in England when English settlers first began to colonise the eastern coast of America?",
     "q": "Who was reigning in England when English settlers first began to colonise the eastern coast of America?",
-    "ur": "",
+    "ur": "American ke eastern coast par English settlers ne sab se pehle colonise karna shuru kiya, us waqt England mein kaun rehnta tha?",
     "opt": [
       "Emmeline Pankhurst",
       "Elizabeth I",
@@ -3222,7 +3223,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "On what day is the birth of Jesus Christ celebrated?",
     "q": "On what day is the birth of Jesus Christ celebrated?",
-    "ur": "",
+    "ur": "Jesus Christ ki paidaish kis din manaya jata hai?",
     "opt": [
       "Christmas Day (25th of December)",
       "A historical event",
@@ -3246,7 +3247,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What sort of battle was the Battle of Britain, fought between Germany and Britain in the summer of 1940?",
     "q": "What sort of battle was the Battle of Britain, fought between Germany and Britain in the summer of 1940?",
-    "ur": "",
+    "ur": "1940 ki garmi mein Germany aur Britain ke darmiyan hone wala Battle of Britain kaisi ladai thi?",
     "opt": [
       "A type of law",
       "An aerial battle (fought in the air)",
@@ -3294,7 +3295,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which two political parties formed the coalition government in 2010?",
     "q": "Which two political parties formed the coalition government in 2010?",
-    "ur": "",
+    "ur": "2010 mein kaunsi do political parties ne coalition government banayi?",
     "opt": [
       "The Conservative Party.  The Liberal Democrats Act",
       "The Conservative Party.  The Liberal Democrats",
@@ -3366,7 +3367,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Haggis is a traditional food from which part of the UK?",
     "q": "Haggis is a traditional food from which part of the UK?",
-    "ur": "",
+    "ur": "Haggis kis hisse ka traditional food hai?",
     "opt": [
       "In Spain",
       "In London",
@@ -3390,7 +3391,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which court deals with minor criminal offences in Scotland?",
     "q": "Which court deals with minor criminal offences in Scotland?",
-    "ur": "",
+    "ur": "Scotland mein choti criminal offences kis court mein sune jati hain?",
     "opt": [
       "The Justice of the Peace Court Treaty",
       "The Justice of the Peace Court Act",
@@ -3438,7 +3439,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "In 1913, the British government promised Home Rule for Ireland. Why were changes delayed until 1921?",
     "q": "In 1913, the British government promised Home Rule for Ireland. Why were changes delayed until 1921?",
-    "ur": "",
+    "ur": "1913 mein British government ne Ireland ke liye Home Rule ka waada kiya tha, lekin badlav 1921 tak kyun nahi aaye?",
     "opt": [
       "In 1948",
       "In 1901",
@@ -3462,7 +3463,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which of the following statements about Queen Elizabeth I is true?",
     "q": "Which of the following statements about Queen Elizabeth I is true?",
-    "ur": "",
+    "ur": "Queen Elizabeth I ke baare mein in mein se kaun baat sahi hai?",
     "opt": [
       "Emmeline Pankhurst",
       "William Shakespeare",
@@ -3606,7 +3607,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What was the biggest source of employment during the 18th century?",
     "q": "What was the biggest source of employment during the 18th century?",
-    "ur": "",
+    "ur": "18th century mein sab se bara kaam kaunsa tha?",
     "opt": [
       "A historical event",
       "A type of law",
@@ -3654,7 +3655,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which of the following is an example of a criminal offence?",
     "q": "Which of the following is an example of a criminal offence?",
-    "ur": "",
+    "ur": "In mein se kaun si cheez criminal offence hai?",
     "opt": [
       "None of the above",
       "Smoking in public places where it is not allowed",
@@ -3678,7 +3679,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which Scottish clan was killed for not taking the oath of loyalty on time?",
     "q": "Which Scottish clan was killed for not taking the oath of loyalty on time?",
-    "ur": "",
+    "ur": "Kaun sa Scottish clan is liye mara gaya ke usne gaddi ki kasam waqt par nahi li?",
     "opt": [
       "The MacDonalds of Glencoe Act",
       "The MacDonalds of Glencoe",
@@ -3726,7 +3727,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "The assassination of Archduke Franz Ferdinand of Austria in 1914 led to which war?",
     "q": "The assassination of Archduke Franz Ferdinand of Austria in 1914 led to which war?",
-    "ur": "",
+    "ur": "1914 mein Austria ke Archduke Franz Ferdinand ki hatlya kis jang ka sabab bani?",
     "opt": [
       "The First World War",
       "The First World War Treaty",
@@ -3798,7 +3799,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What was the process called by which Scottish landlords cleared small farms (crofts) to make room for large flocks of sheep and cattle?",
     "q": "What was the process called by which Scottish landlords cleared small farms (crofts) to make room for large flocks of sheep and cattle?",
-    "ur": "",
+    "ur": "Scottish landlords ne chhoti farms (crofts) khaali kar ke bade bhedon ke liye jagah banayi, is process ko kya kehte the?",
     "opt": [
       "The Highland Clearances Act",
       "The Highland Clearances Treaty",
@@ -3846,7 +3847,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which two of the following were battles of the English Civil War?",
     "q": "Which two of the following were battles of the English Civil War?",
-    "ur": "",
+    "ur": "In mein se kaun se do jang English Civil War mein laray gaye thay?",
     "opt": [
       "The Battle of Marston Moor.  The Battle of Naseby Treaty",
       "The Battle of Marston Moor.  The Battle of Naseby Act",
@@ -3894,7 +3895,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which UK landmark was voted Britain's favourite view in 2007?",
     "q": "Which UK landmark was voted Britain's favourite view in 2007?",
-    "ur": "",
+    "ur": "2007 ke vote mein kaun sa UK ka manzar sab se pasandeeda chuna gaya?",
     "opt": [
       "The Lake District (Wastwater) Agreement",
       "The Lake District (Wastwater)",
@@ -3918,7 +3919,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Who were the first people to live in Britain during what is called the Stone Age?",
     "q": "Who were the first people to live in Britain during what is called the Stone Age?",
-    "ur": "",
+    "ur": "Stone Age mein Britain mein pehle log kaun thay?",
     "opt": [
       "A famous monarch",
       "A military commander",
@@ -3942,7 +3943,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What was the name of the religious movement against the authority of the Pope and the Catholic Church during the reign of Henry VIII?",
     "q": "What was the name of the religious movement against the authority of the Pope and the Catholic Church during the reign of Henry VIII?",
-    "ur": "",
+    "ur": "Henry VIII ke dauraan mein kaun sa religious movement Pope aur Catholic Church se alag ho gaya?",
     "opt": [
       "The Reformation Act",
       "The Reformation",
@@ -3990,7 +3991,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which of the following is a major horse racing event in England?",
     "q": "Which of the following is a major horse racing event in England?",
-    "ur": "",
+    "ur": "In mein se kaun sa bara horse racing event har June mein England mein hota hai?",
     "opt": [
       "All of the above",
       "None of the above",
@@ -4158,7 +4159,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which of the following is a responsibility of the Home Secretary?",
     "q": "Which of the following is a responsibility of the Home Secretary?",
-    "ur": "",
+    "ur": "Home Secretary ka kaun sa masla hai?",
     "opt": [
       "None of the above",
       "Cannot be determined",
@@ -4182,7 +4183,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "When is St David's Day celebrated?",
     "q": "When is St David's Day celebrated?",
-    "ur": "",
+    "ur": "St David's Day kab manaya jata hai?",
     "opt": [
       "1st of March",
       "In the 20th century",
@@ -4206,7 +4207,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What happened to Mary, Queen of Scots, after she spent 20 years in prison?",
     "q": "What happened to Mary, Queen of Scots, after she spent 20 years in prison?",
-    "ur": "",
+    "ur": "Mary, Queen of Scots ke qaid rahi kar qareeb 20 saal baad unka kya hua?",
     "opt": [
       "A historical event",
       "A royal decree",
@@ -4230,7 +4231,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What did Francis Crick discover?",
     "q": "What did Francis Crick discover?",
-    "ur": "",
+    "ur": "Francis Crick ne kya dhoonda?",
     "opt": [
       "The structure of the DNA molecule Act",
       "The structure of the DNA molecule Treaty",
@@ -4350,7 +4351,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which Christian holiday commemorates the death of Jesus Christ?",
     "q": "Which Christian holiday commemorates the death of Jesus Christ?",
-    "ur": "",
+    "ur": "Kaun sa Christian tyohar Jesus Christ ki maut ki yaad dilata hai?",
     "opt": [
       "Cannot be determined",
       "All of the above",
@@ -4446,7 +4447,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "In what year were women first granted the right to vote in the UK?",
     "q": "In what year were women first granted the right to vote in the UK?",
-    "ur": "",
+    "ur": "Kaun se saal mein UK ki auraton ko pehli baar vote dene ka haq mila?",
     "opt": [
       "In 1859",
       "In 1954",
@@ -4470,7 +4471,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which two of the following are British Overseas Territories?",
     "q": "Which two of the following are British Overseas Territories?",
-    "ur": "",
+    "ur": "In mein se kaun se do British Overseas Territory hain?",
     "opt": [
       "None of the above",
       "All of the above",
@@ -4518,7 +4519,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Who designed the Cenotaph?",
     "q": "Who designed the Cenotaph?",
-    "ur": "",
+    "ur": "Whitehall mein mojood Cenotaph kisne design kiya tha?",
     "opt": [
       "Nick Park",
       "Sir Edwin Lutyens",
@@ -4542,7 +4543,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "How often are members of the Welsh Government / Parliament elected?",
     "q": "How often are members of the Welsh Government / Parliament elected?",
-    "ur": "",
+    "ur": "Welsh Government aur Senedd ke members kitni der mein elect hote hain?",
     "opt": [
       "All of the above",
       "Every four years",
@@ -4590,7 +4591,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "The Man Booker Prize is awarded in which category?",
     "q": "The Man Booker Prize is awarded in which category?",
-    "ur": "",
+    "ur": "Man Booker Prize kis category mein diya jata hai?",
     "opt": [
       "All of the above",
       "None of the above",
@@ -4638,7 +4639,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What is the Turner Prize?",
     "q": "What is the Turner Prize?",
-    "ur": "",
+    "ur": "Turner Prize kis cheez ke liye diya jata hai?",
     "opt": [
       "A royal decree",
       "A contemporary art award",
@@ -4926,7 +4927,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which two policy areas are NOT controlled by the devolved administrations?",
     "q": "Which two policy areas are NOT controlled by the devolved administrations?",
-    "ur": "",
+    "ur": "In mein se kaun se do policy areas devolved administrations ke paas nahi hain?",
     "opt": [
       "None of the above",
       "All of the above",
@@ -4950,7 +4951,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "How old do citizens of the UK, the Irish Republic, or the Commonwealth have to be to stand for public office?",
     "q": "How old do citizens of the UK, the Irish Republic, or the Commonwealth have to be to stand for public office?",
-    "ur": "",
+    "ur": "UK, Irish Republic ya Commonwealth ke shehri ko public office ke liye kam az kam kitni umar ke hona chahiye?",
     "opt": [
       "21 years old",
       "At least 18 years old",
@@ -4974,7 +4975,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "How did the government promote free trade policies during the Victorian age?",
     "q": "How did the government promote free trade policies during the Victorian age?",
-    "ur": "",
+    "ur": "Victorian age mein hukumat ne free trade ko kaise promote kiya?",
     "opt": [
       "All of the above",
       "None of the above",
@@ -4998,7 +4999,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Who was Admiral Nelson?",
     "q": "Who was Admiral Nelson?",
-    "ur": "",
+    "ur": "Admiral Nelson kaun thay?",
     "opt": [
       "The British officer in charge of the British fleet at the Battle of Trafalgar Agreement",
       "The British officer in charge of the British fleet at the Battle of Trafalgar",
@@ -5022,7 +5023,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "During the Middle Ages, who were the serfs?",
     "q": "During the Middle Ages, who were the serfs?",
-    "ur": "",
+    "ur": "Middle Ages mein serfs kaun hote thay?",
     "opt": [
       "None of the above",
       "Peasants who worked a small area of their lord's agricultural land",
@@ -5046,7 +5047,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which invention led to the rapid development of industry in Britain during the 18th and 19th centuries?",
     "q": "Which invention led to the rapid development of industry in Britain during the 18th and 19th centuries?",
-    "ur": "",
+    "ur": "18th aur 19th saalon mein Britain mein industry ki tez raftaar kis ijaad ne banayi?",
     "opt": [
       "All of the above",
       "None of the above",
@@ -5190,7 +5191,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which building was constructed in Hyde Park to hold the Great Exhibition of 1851?",
     "q": "Which building was constructed in Hyde Park to hold the Great Exhibition of 1851?",
-    "ur": "",
+    "ur": "1851 ki Great Exhibition ke liye Hyde Park mein kaun si imarat banayi gayi thi?",
     "opt": [
       "The Crystal Palace Agreement",
       "The Crystal Palace Act",
@@ -5262,7 +5263,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Where is Loch Lomond and The Trossachs National Park located?",
     "q": "Where is Loch Lomond and The Trossachs National Park located?",
-    "ur": "",
+    "ur": "Loch Lomond and The Trossachs National Park kis desh mein hai?",
     "opt": [
       "In London",
       "In Spain",
@@ -5382,7 +5383,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Why were women given the right to vote in 1918?",
     "q": "Why were women given the right to vote in 1918?",
-    "ur": "",
+    "ur": "1918 mein Britain ki auraton ko vote dene ka haq kyun diya gaya?",
     "opt": [
       "In recognition of the contribution women made to the war effort during the First World War",
       "Cannot be determined",
@@ -5406,7 +5407,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What do you need to drive legally in the UK?",
     "q": "What do you need to drive legally in the UK?",
-    "ur": "",
+    "ur": "UK mein gari chalane ke liye aapko kya chahiye?",
     "opt": [
       "A historical event",
       "A type of law",
@@ -5502,7 +5503,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What was Edward Elgar famous for?",
     "q": "What was Edward Elgar famous for?",
-    "ur": "",
+    "ur": "Sir Edward Elgar kis cheez ke liye mashhoor hain?",
     "opt": [
       "A royal decree",
       "Being a musician and composer",
@@ -5550,7 +5551,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Where does the Scottish Grand National take place?",
     "q": "Where does the Scottish Grand National take place?",
-    "ur": "",
+    "ur": "Scottish Grand National ka horse race kahan hota hai?",
     "opt": [
       "In Scotland",
       "In Ayr",
@@ -5670,7 +5671,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What are the Proms?",
     "q": "What are the Proms?",
-    "ur": "",
+    "ur": "Proms kya hote hain?",
     "opt": [
       "A type of law",
       "An eight-week summer season of daily orchestral classical music concerts",
@@ -5694,7 +5695,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What was Sir Isaac Newton known for?",
     "q": "What was Sir Isaac Newton known for?",
-    "ur": "",
+    "ur": "Sir Isaac Newton kya cheez ke liye mashoor thay?",
     "opt": [
       "Discovering gravity",
       "A royal decree",
@@ -5766,7 +5767,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which two universities participate in an annual rowing race that takes place on the River Thames?",
     "q": "Which two universities participate in an annual rowing race that takes place on the River Thames?",
-    "ur": "",
+    "ur": "River Thames par hone wale saalana rowing race mein kaun si do universities hissa leti hain?",
     "opt": [
       "The University of Oxford.  The University of Cambridge Act",
       "The University of Oxford.  The University of Cambridge Treaty",
@@ -5814,7 +5815,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Is St Helena part of the UK?",
     "q": "Is St Helena part of the UK?",
-    "ur": "",
+    "ur": "Kya St Helena United Kingdom ka hissa hai?",
     "opt": [
       "No",
       "Cannot be determined",
@@ -5982,7 +5983,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which two languages combined to become the English language?",
     "q": "Which two languages combined to become the English language?",
-    "ur": "",
+    "ur": "In mein se kaun si do languages mil kar English language banati hain?",
     "opt": [
       "Anglo-Saxon.  Norman French",
       "None of the above",
@@ -6054,7 +6055,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What is the name of the war memorial located in Whitehall?",
     "q": "What is the name of the war memorial located in Whitehall?",
-    "ur": "",
+    "ur": "Whitehall mein mojood war memorial ka naam kya hai?",
     "opt": [
       "The Cenotaph",
       "The Cenotaph Act",
@@ -6222,7 +6223,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "When is St Andrew's Day celebrated?",
     "q": "When is St Andrew's Day celebrated?",
-    "ur": "",
+    "ur": "St Andrew's Day kab manaya jata hai?",
     "opt": [
       "In the 18th century",
       "In the Middle Ages",
@@ -6246,7 +6247,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Who was the architect who rebuilt St Paul's Cathedral after the Great Fire of 1666?",
     "q": "Who was the architect who rebuilt St Paul's Cathedral after the Great Fire of 1666?",
-    "ur": "",
+    "ur": "1666 ke London ke bade aag ke baad St Paul's Cathedral kisne dobara banwaya?",
     "opt": [
       "Tanni Grey-Thompson",
       "Captain James Cook",
@@ -6318,7 +6319,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Whom did Britain fight against in the Crimean War?",
     "q": "Whom did Britain fight against in the Crimean War?",
-    "ur": "",
+    "ur": "Crimean War mein Britain kis desh se lad raha tha?",
     "opt": [
       "Russia",
       "A famous monarch",
@@ -6342,7 +6343,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "How old do you have to be to buy alcohol in the UK?",
     "q": "How old do you have to be to buy alcohol in the UK?",
-    "ur": "",
+    "ur": "UK mein moped chalane ke liye umar kitni honi chahiye?",
     "opt": [
       "At least 18 years old",
       "21 years old",
@@ -6366,7 +6367,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which of the following is a Crown dependency but not part of the UK?",
     "q": "Which of the following is a Crown dependency but not part of the UK?",
-    "ur": "",
+    "ur": "In mein se kaun sa UK coin nahi hai?",
     "opt": [
       "The Isle of Man Act",
       "The Isle of Man",
@@ -6414,7 +6415,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "How many members does the Northern Ireland Assembly have?",
     "q": "How many members does the Northern Ireland Assembly have?",
-    "ur": "",
+    "ur": "Northern Ireland Assembly mein kitne members hain?",
     "opt": [
       "None of the above",
       "Cannot be determined",
@@ -6438,7 +6439,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Who was in command of the British fleet at the Battle of Trafalgar?",
     "q": "Who was in command of the British fleet at the Battle of Trafalgar?",
-    "ur": "",
+    "ur": "Battle of Trafalgar mein British fleet ka command kiske paas tha?",
     "opt": [
       "A religious leader",
       "A military commander",
@@ -6462,7 +6463,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What was inscribed on Iron Age coins?",
     "q": "What was inscribed on Iron Age coins?",
-    "ur": "",
+    "ur": "Iron Age mein Britain mein banaye gaye coins par kya likha hota tha?",
     "opt": [
       "The names of Iron Age kings Agreement",
       "The names of Iron Age kings Act",
@@ -6510,7 +6511,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Where is the Tate Britain / Tate art gallery located?",
     "q": "Where is the Tate Britain / Tate art gallery located?",
-    "ur": "",
+    "ur": "Tate Britain art gallery kahan hai?",
     "opt": [
       "In France",
       "In London",
@@ -6534,7 +6535,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What is the version of the Bible produced during the reign of King James I known as?",
     "q": "What is the version of the Bible produced during the reign of King James I known as?",
-    "ur": "",
+    "ur": "King James I ke dauran banne wali Bible ka naam kya hai?",
     "opt": [
       "The Authorised Version (or King James Version)",
       "The Authorised Version (or King James Version) Act",
@@ -6558,7 +6559,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What is the 1960s period known for?",
     "q": "What is the 1960s period known for?",
-    "ur": "",
+    "ur": "Britain mein 1960s sab se zyada kis cheez ke liye mashoor hain?",
     "opt": [
       "A historical event",
       "A growth in British fashion and pop music (the \"Swinging Sixties\")",
@@ -6582,7 +6583,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Between 1680 and 1720, many refugees known as Huguenots came to England. Which country did they come from?",
     "q": "Between 1680 and 1720, many refugees known as Huguenots came to England. Which country did they come from?",
-    "ur": "",
+    "ur": "1680 se 1720 ke darmiyaan England mein bohat se Huguenot panah wale aaye. Wo kis desh se aaye thay?",
     "opt": [
       "Cannot be determined",
       "France",
@@ -6606,7 +6607,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What is the most famous tennis tournament played in the UK?",
     "q": "What is the most famous tennis tournament played in the UK?",
-    "ur": "",
+    "ur": "UK mein khelne wala sab se mashoor tennis tournament kaun sa hai?",
     "opt": [
       "The Wimbledon Championships",
       "The Wimbledon Championships Treaty",
@@ -6702,7 +6703,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Who invented the World Wide Web (www)?",
     "q": "Who invented the World Wide Web (www)?",
-    "ur": "",
+    "ur": "World Wide Web kisne invent kiya tha?",
     "opt": [
       "Sir Tim Berners-Lee",
       "Margaret Thatcher",
@@ -6726,7 +6727,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "How are civil servants appointed, and to which political party do they belong?",
     "q": "How are civil servants appointed, and to which political party do they belong?",
-    "ur": "",
+    "ur": "Civil servants ki appointment kaise hoti hai aur wo kis party se taluq rakhte hain?",
     "opt": [
       "All of the above",
       "They are appointed on merit and are politically neutral",
@@ -6750,7 +6751,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What is known as the \"Dunkirk spirit\"?",
     "q": "What is known as the \"Dunkirk spirit\"?",
-    "ur": "",
+    "ur": "'Dunkirk spirit' se kya murad hai?",
     "opt": [
       "The evacuation of Allied forces from France during World War II Agreement",
       "The evacuation of Allied forces from France during World War II",
@@ -6822,7 +6823,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which major sports event took place in the UK in 2012?",
     "q": "Which major sports event took place in the UK in 2012?",
-    "ur": "",
+    "ur": "2012 mein UK mein kaun sa bada international sports event hua?",
     "opt": [
       "The Olympic Games Treaty",
       "The Olympic Games Act",
@@ -6846,7 +6847,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "King Charles I believed in the \"Divine Right of Kings,\" so he tried to:",
     "q": "King Charles I believed in the \"Divine Right of Kings,\" so he tried to:",
-    "ur": "",
+    "ur": "King Charles I Divine Right of Kings mein yazeen rakhta tha. Is ka asar kya hua?",
     "opt": [
       "Cannot be determined",
       "All of the above",
@@ -6894,7 +6895,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Who was voted the greatest Briton of all time in a 2002 BBC poll?",
     "q": "Who was voted the greatest Briton of all time in a 2002 BBC poll?",
-    "ur": "",
+    "ur": "BBC ke 2002 ke poll mein sab se barraye Briton kaun chuna gaya tha?",
     "opt": [
       "Sir Tim Berners-Lee",
       "Sir Edwin Lutyens",
@@ -6918,7 +6919,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which of the following statements about the UK workforce is true?",
     "q": "Which of the following statements about the UK workforce is true?",
-    "ur": "",
+    "ur": "UK ki workforce ke baare mein kaun si baat sach hai?",
     "opt": [
       "Cannot be determined",
       "All of the above",
@@ -6942,7 +6943,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "When is St George's Day celebrated?",
     "q": "When is St George's Day celebrated?",
-    "ur": "",
+    "ur": "St George's Day kab manaya jata hai?",
     "opt": [
       "23rd of April",
       "In the 20th century",
@@ -7038,7 +7039,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What are public holidays called in the UK?",
     "q": "What are public holidays called in the UK?",
-    "ur": "",
+    "ur": "UK mein public holidays ko kya kehte hain?",
     "opt": [
       "A historical event",
       "Bank holidays",
@@ -7182,7 +7183,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What religion did Elizabeth I follow?",
     "q": "What religion did Elizabeth I follow?",
-    "ur": "",
+    "ur": "Elizabeth I ka mazhab kya tha?",
     "opt": [
       "A royal decree",
       "Protestantism (She was a Protestant)",
@@ -7206,7 +7207,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Who became famous for his \"Tramp\" character in silent films?",
     "q": "Who became famous for his \"Tramp\" character in silent films?",
-    "ur": "",
+    "ur": "Silent films mein apne 'Tramp' character ke liye kaun actor mashoor hua?",
     "opt": [
       "Oliver Cromwell",
       "Charlie Chaplin",
@@ -7230,7 +7231,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which armed force fought in the Battle of Britain?",
     "q": "Which armed force fought in the Battle of Britain?",
-    "ur": "",
+    "ur": "1940 mein Battle of Britain mein kaun sa armed force lara tha?",
     "opt": [
       "The Royal Air Force (RAF) Agreement",
       "The Royal Air Force (RAF)",
@@ -7374,7 +7375,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "James I was king of which country before becoming King of England?",
     "q": "James I was king of which country before becoming King of England?",
-    "ur": "",
+    "ur": "England ka King banne se pehle James I kis mulk ka King James VI tha?",
     "opt": [
       "In London",
       "Scotland (where he was King James VI)",
@@ -7398,7 +7399,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which of the following statements about shops in the UK is correct?",
     "q": "Which of the following statements about shops in the UK is correct?",
-    "ur": "",
+    "ur": "UK ke shops ke baare mein in mein se kaun si baat sahi hai?",
     "opt": [
       "Most shops in the UK open seven days a week",
       "None of the above",
@@ -7470,7 +7471,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which castle is located in Scotland?",
     "q": "Which castle is located in Scotland?",
-    "ur": "",
+    "ur": "In mein se kaun sa castle Scotland mein hai?",
     "opt": [
       "All of the above",
       "None of the above",
@@ -7518,7 +7519,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "When is St Patrick's Day celebrated?",
     "q": "When is St Patrick's Day celebrated?",
-    "ur": "",
+    "ur": "St David's Day kab manaya jata hai?",
     "opt": [
       "17th of March",
       "In the 20th century",
@@ -7542,7 +7543,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "How are members of the Northern Ireland Assembly elected?",
     "q": "How are members of the Northern Ireland Assembly elected?",
-    "ur": "",
+    "ur": "Northern Ireland Assembly ke members kaise elect hote hain?",
     "opt": [
       "By a system of proportional representation",
       "Cannot be determined",
@@ -7590,7 +7591,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which of the following British actresses has not won an Oscar?",
     "q": "Which of the following British actresses has not won an Oscar?",
-    "ur": "",
+    "ur": "In mein se kaun si British actress ne Oscar nahi jeeta hai?",
     "opt": [
       "Emma Watson",
       "None of the above",
@@ -7614,7 +7615,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "During the Enlightenment, what subject did Adam Smith develop groundbreaking ideas about?",
     "q": "During the Enlightenment, what subject did Adam Smith develop groundbreaking ideas about?",
-    "ur": "",
+    "ur": "Enlightenment ke dauran Adam Smith ne kis cheez par groundbreaking ideas diye?",
     "opt": [
       "All of the above",
       "None of the above",
@@ -7734,7 +7735,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Who appoints life peers in the House of Lords?",
     "q": "Who appoints life peers in the House of Lords?",
-    "ur": "",
+    "ur": "House of Lords mein life peers ko kaun appoint karta hai?",
     "opt": [
       "The Monarch (on the advice of the Prime Minister) Agreement",
       "The Monarch (on the advice of the Prime Minister)",
@@ -7782,7 +7783,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What was the first war to be extensively covered by the media?",
     "q": "What was the first war to be extensively covered by the media?",
-    "ur": "",
+    "ur": "Kaun sa war pehla tha jise newspapers aur us daur ke media ne poori tarah cover kiya?",
     "opt": [
       "The Crimean War Treaty",
       "The Crimean War Act",
@@ -7902,7 +7903,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What is the traditional cooked breakfast dish of Northern Ireland?",
     "q": "What is the traditional cooked breakfast dish of Northern Ireland?",
-    "ur": "",
+    "ur": "Northern Ireland ka traditional cooked breakfast dish kaun sa hai?",
     "opt": [
       "The Ulster fry",
       "The Ulster fry Agreement",
@@ -7950,7 +7951,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "How many times has the UK hosted the Olympic Games?",
     "q": "How many times has the UK hosted the Olympic Games?",
-    "ur": "",
+    "ur": "UK ne Olympic Games kitni baar host ki hain?",
     "opt": [
       "In 1851",
       "In 1954",
@@ -7974,7 +7975,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Why were canals built during the Industrial Revolution?",
     "q": "Why were canals built during the Industrial Revolution?",
-    "ur": "",
+    "ur": "Industrial Revolution ke dauran canals kyun banaye gaye thay?",
     "opt": [
       "None of the above",
       "Cannot be determined",
@@ -8118,7 +8119,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "In 1776, which British colonies declared their independence demanding \"No taxation without representation\"?",
     "q": "In 1776, which British colonies declared their independence demanding \"No taxation without representation\"?",
-    "ur": "",
+    "ur": "1776 mein kaun se British colonies ne 'no taxation without representation' keh kar apni azadi ka elaan kiya?",
     "opt": [
       "The 13 North American colonies",
       "The 13 North American colonies Treaty",
@@ -8262,7 +8263,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What medal did Mary Peters win at the 1972 Olympic Games?",
     "q": "What medal did Mary Peters win at the 1972 Olympic Games?",
-    "ur": "",
+    "ur": "1972 Munich Olympics mein Mary Peters ne UK ke liye kaun sa medal jeeta?",
     "opt": [
       "A historical event",
       "A gold medal (in the pentathlon)",
@@ -8358,7 +8359,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Who led a team of scientists to split the atom for the first time?",
     "q": "Who led a team of scientists to split the atom for the first time?",
-    "ur": "",
+    "ur": "Us team ka leader kaun tha jisne pehli baar atom ko toda?",
     "opt": [
       "Ernest Rutherford",
       "A famous monarch",
@@ -8406,7 +8407,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which two sides fought in the English Civil War in 1642?",
     "q": "Which two sides fought in the English Civil War in 1642?",
-    "ur": "",
+    "ur": "1642 mein shuru hone wale English Civil War mein kaun se do fareek aamne saamne larte?",
     "opt": [
       "The Cavaliers (supporters of the King).  The Roundheads (supporters of Parliament)",
       "The Cavaliers (supporters of the King).  The Roundheads (supporters of Parliament) Act",
@@ -8454,7 +8455,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What was the religion of the Puritans?",
     "q": "What was the religion of the Puritans?",
-    "ur": "",
+    "ur": "Puritans ka din kya tha?",
     "opt": [
       "Protestantism (They were strict Protestants)",
       "A royal decree",
@@ -8478,7 +8479,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What was the name of the 19th-century Irish movement that favoured complete independence from the UK?",
     "q": "What was the name of the 19th-century Irish movement that favoured complete independence from the UK?",
-    "ur": "",
+    "ur": "19th century mein us Irish movement ka naam kya tha jisne UK se poori tarah azadi maangi thi?",
     "opt": [
       "The Fenians Act",
       "The Fenians Agreement",
@@ -8502,7 +8503,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which two British pop music groups were famous during the \"Swinging Sixties\"?",
     "q": "Which two British pop music groups were famous during the \"Swinging Sixties\"?",
-    "ur": "",
+    "ur": "Swinging Sixties mein kaun se do British pop music groups mashoor thay?",
     "opt": [
       "The Beatles.  The Rolling Stones Treaty",
       "The Beatles.  The Rolling Stones Act",
@@ -8526,7 +8527,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What is the minimum age required to ride/drive a motorcycle in the UK?",
     "q": "What is the minimum age required to ride/drive a motorcycle in the UK?",
-    "ur": "",
+    "ur": "UK mein motorcycle chalane ke liye kam az kam umar kitni honi chahiye?",
     "opt": [
       "24 years old",
       "20 years old",
@@ -8598,7 +8599,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Who in government is responsible for crime, policing, and immigration?",
     "q": "Who in government is responsible for crime, policing, and immigration?",
-    "ur": "",
+    "ur": "Hukumat mein crime, policing aur immigration ke liye kaun jawabdar hota hai?",
     "opt": [
       "The Home Secretary Treaty",
       "The Home Secretary",
@@ -8622,7 +8623,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What genre/type of films are the Wallace and Gromit films created by Nick Park?",
     "q": "What genre/type of films are the Wallace and Gromit films created by Nick Park?",
-    "ur": "",
+    "ur": "Nick Park ke Wallace and Gromit films kis qism ke hain?",
     "opt": [
       "A historical event",
       "A royal decree",
@@ -8766,7 +8767,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What is one of the highest-grossing film franchises produced in the UK?",
     "q": "What is one of the highest-grossing film franchises produced in the UK?",
-    "ur": "",
+    "ur": "In mein se kaun sa film franchise UK mein bana hai aur duniya mein sab se zyada box office kamaata hai?",
     "opt": [
       "A historical event",
       "A type of law",
@@ -8838,7 +8839,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Who can apply for / take part in the National Citizen Service programme?",
     "q": "Who can apply for / take part in the National Citizen Service programme?",
-    "ur": "",
+    "ur": "National Citizen Service (NCS) program mein kaun hissa le sakta hai?",
     "opt": [
       "A military commander",
       "A famous monarch",
@@ -8934,7 +8935,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "How old do you have to be to ride/drive a moped in the UK?",
     "q": "How old do you have to be to ride/drive a moped in the UK?",
-    "ur": "",
+    "ur": "UK mein moped chalane ke liye umar kitni honi chahiye?",
     "opt": [
       "16 years old",
       "13 years old",
@@ -9030,7 +9031,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Who became Prime Minister after Margaret Thatcher and played an important role in the Northern Ireland peace process?",
     "q": "Who became Prime Minister after Margaret Thatcher and played an important role in the Northern Ireland peace process?",
-    "ur": "",
+    "ur": "Margaret Thatcher ke baad Prime Minister kaun bane aur unhone Northern Ireland ke peace process mein kya kirdar ada kiya?",
     "opt": [
       "Florence Nightingale",
       "John Major",
@@ -9078,7 +9079,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which Paralympic athlete won gold medals for swimming at the 2008, 2012, and 2016 Paralympic Games?",
     "q": "Which Paralympic athlete won gold medals for swimming at the 2008, 2012, and 2016 Paralympic Games?",
-    "ur": "",
+    "ur": "Kaun si Paralympic athlete ne 2008, 2012 aur 2016 ke Paralympic Games mein swimming ke gold medals jeete?",
     "opt": [
       "John Major",
       "Ellie Simmonds",
@@ -9102,7 +9103,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which country of the UK is associated with the rose?",
     "q": "Which country of the UK is associated with the rose?",
-    "ur": "",
+    "ur": "UK ka kaun sa mulk rose se represent hota hai?",
     "opt": [
       "In Spain",
       "In America",
@@ -9126,7 +9127,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What major engineering project was Isambard Kingdom Brunel responsible for constructing?",
     "q": "What major engineering project was Isambard Kingdom Brunel responsible for constructing?",
-    "ur": "",
+    "ur": "Isambard Kingdom Brunel ne kaun sa bara engineering project banaya?",
     "opt": [
       "The Great Western Railway Treaty",
       "The Great Western Railway Act",
@@ -9150,7 +9151,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What is the Commonwealth?",
     "q": "What is the Commonwealth?",
-    "ur": "",
+    "ur": "Commonwealth kya hai?",
     "opt": [
       "An association of countries that support each other and work together to achieve shared goals in democracy and development",
       "A historical event",
@@ -9246,7 +9247,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which of the following is NOT a constitutional institution?",
     "q": "Which of the following is NOT a constitutional institution?",
-    "ur": "",
+    "ur": "In mein se kaun si cheez constitutional institution NAHI hai?",
     "opt": [
       "The armed forces Act",
       "The armed forces Treaty",
@@ -9270,7 +9271,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What food shortage caused the Great Famine in Ireland during the mid-19th century?",
     "q": "What food shortage caused the Great Famine in Ireland during the mid-19th century?",
-    "ur": "",
+    "ur": "19th century ke beech mein Ireland mein kaun sa khaaj aksar fail hua aur Great Famine ka waja bana?",
     "opt": [
       "A royal decree",
       "A historical event",
@@ -9294,7 +9295,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Senior opposition MPs chosen to challenge government policy and propose alternative policies form a group known as:",
     "q": "Senior opposition MPs chosen to challenge government policy and propose alternative policies form a group known as:",
-    "ur": "",
+    "ur": "Opposition ke senior MPs, jo government policy par sawaal uthate aur apne alternatives dete hain, ko kya kaha jata hai?",
     "opt": [
       "The Shadow Cabinet",
       "The Shadow Cabinet Act",
@@ -9342,7 +9343,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Who was the longest-serving Prime Minister of the 20th century?",
     "q": "Who was the longest-serving Prime Minister of the 20th century?",
-    "ur": "",
+    "ur": "20th century ka sab se lambi kaam karne wala Prime Minister kaun tha?",
     "opt": [
       "Margaret Thatcher",
       "Oliver Cromwell",
@@ -9390,7 +9391,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "To which area of study did David Hume contribute during the Scottish Enlightenment?",
     "q": "To which area of study did David Hume contribute during the Scottish Enlightenment?",
-    "ur": "",
+    "ur": "David Hume ne Scottish Enlightenment ke dauran kis field mein kaam kiya?",
     "opt": [
       "Cannot be determined",
       "None of the above",
@@ -9414,7 +9415,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What proportion of the population died in England as a result of the Black Death?",
     "q": "What proportion of the population died in England as a result of the Black Death?",
-    "ur": "",
+    "ur": "Black Death se England ki aabadi ka takreeban kitna hissa mar gaya?",
     "opt": [
       "A type of law",
       "A historical event",
@@ -9462,7 +9463,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What are two constitutional responsibilities of the Monarch?",
     "q": "What are two constitutional responsibilities of the Monarch?",
-    "ur": "",
+    "ur": "In mein se kaun se do kaam constitutional taur par Monarch ke zimme hain?",
     "opt": [
       "A royal decree",
       "To appoint the government.  To advise, warn, and encourage the Prime Minister regarding government policies",
@@ -9486,7 +9487,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What kind of disaster was the Black Death?",
     "q": "What kind of disaster was the Black Death?",
-    "ur": "",
+    "ur": "Black Death kis qism ki aafat thi?",
     "opt": [
       "A historical event",
       "A royal decree",
@@ -9510,7 +9511,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which country was Britain in frequent conflict with over global trade and colonies during the 18th century?",
     "q": "Which country was Britain in frequent conflict with over global trade and colonies during the 18th century?",
-    "ur": "",
+    "ur": "18th century mein Britain kaun se mulk se trade aur colonies par baar baar lara raha tha?",
     "opt": [
       "Cannot be determined",
       "France",
@@ -9582,7 +9583,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Which of the following plays was written by William Shakespeare?",
     "q": "Which of the following plays was written by William Shakespeare?",
-    "ur": "",
+    "ur": "In mein se kaun si play William Shakespeare ne likhi thi?",
     "opt": [
       "All of the above",
       "Macbeth",
@@ -9606,7 +9607,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "Where was William the Conqueror from?",
     "q": "Where was William the Conqueror from?",
-    "ur": "",
+    "ur": "William the Conqueror kahan ka tha?",
     "opt": [
       "In London",
       "In Scotland",
@@ -9630,7 +9631,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What were the settlers of Dutch origin called who fought against the British in South Africa?",
     "q": "What were the settlers of Dutch origin called who fought against the British in South Africa?",
-    "ur": "",
+    "ur": "South Africa mein British ke khilaf lagne wale Dutch settlers ko kya kaha jata tha?",
     "opt": [
       "The Boers",
       "The Boers Act",
@@ -9678,7 +9679,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What achievement made Sir Roger Bannister famous?",
     "q": "What achievement made Sir Roger Bannister famous?",
-    "ur": "",
+    "ur": "Sir Roger Bannister kis kaam ki wajah se mashoor hue?",
     "opt": [
       "In 1918",
       "In 1997",
@@ -9750,7 +9751,7 @@ const CARDS = CARDS_DATA = [
     "tf": false,
     "orig": "What did the Factories Act of 1847 introduce?",
     "q": "What did the Factories Act of 1847 introduce?",
-    "ur": "",
+    "ur": "Factories Act 1847 ne kya shuru kiya?",
     "opt": [
       "A historical event",
       "A type of law",
@@ -9832,7 +9833,8 @@ function render(){
     cards.forEach(c=>{
       const div=document.createElement("div");
       div.className="card";
-      div.innerHTML=`<span class="q-num">Q${c.n}</span><h3>${c.q}</h3><div class="opts">${c.opt.map((o,i)=>`<button class="opt" data-a="${i}">${["A","B","C","D"][i]}. ${o}</button>`).join("")}</div><div class="expl" id="expl-${c.n}"></div>`;
+      const urHtml = c.ur ? `<p class="ur">${esc(c.ur)}</p>` : '';
+      div.innerHTML=`<span class="q-num">Q${c.n}</span><h3>${c.q}</h3>${urHtml}<div class="opts">${c.opt.map((o,i)=>`<button class="opt" data-a="${i}">${["A","B","C","D"][i]}. ${o}</button>`).join("")}</div><div class="expl" id="expl-${c.n}"></div>`;
       cardCont.appendChild(div);
       div.querySelectorAll(".opt").forEach(b=>{
         b.addEventListener("click",()=>{
